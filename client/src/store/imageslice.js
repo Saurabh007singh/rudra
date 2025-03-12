@@ -8,7 +8,7 @@ const initialState={
 }
 
 export const getImages=createAsyncThunk("/images/getImages",async(id)=>{
-  const response = await axios.get(`http://localhost:5000/api/images/${id}`);
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/images/${id}`);
   return response.data
 })
 

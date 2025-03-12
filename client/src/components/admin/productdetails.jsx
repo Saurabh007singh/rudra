@@ -70,7 +70,7 @@ dispatch(getImages(id))
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/upload/${id}`, // Your backend API endpoint
+        `${import.meta.env.VITE_API_URL}/api/upload/${id}`, // Your backend API endpoint
         formData,
         {
           headers: {
