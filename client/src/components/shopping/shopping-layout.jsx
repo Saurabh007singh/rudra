@@ -11,7 +11,7 @@ import { Footer } from "./shopping-footer";
 export const ShoppingLayout = () => {
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.auth);
+  const { user,isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(fetchAllProducts());

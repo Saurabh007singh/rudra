@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AuthLayout from "./components/auth/auth-layout";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
@@ -25,7 +25,6 @@ import { ProductDetails } from "./components/admin/productdetails";
 import { AboutUs } from "./pages/shopping/aboutus";
 import { ContactUs } from "./pages/shopping/contact-us";
 
-
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
     (state) => state.auth
@@ -41,6 +40,8 @@ function App() {
   return (
     <div className="flex flex-col overflow-hidden bg-white ">
       <Routes>
+        <Route path="/" element={<Navigate to="/shop/home" />}></Route>
+
         <Route
           path="/auth"
           element={
@@ -81,14 +82,8 @@ function App() {
             element={<AdminFeatures></AdminFeatures>}
           ></Route>
         </Route>
-        <Route
-          path="/shop"
-          element={
-            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-              <ShoppingLayout />
-            </CheckAuth>
-          }
-        >
+
+        <Route path="/shop" element={<ShoppingLayout isAuthenticated={isAuthenticated} user={user}/>}>
           <Route path="home" element={<ShoppingHome></ShoppingHome>}></Route>
           <Route
             path="category/:category"
@@ -104,20 +99,22 @@ function App() {
           ></Route>
           <Route
             path="checkout"
-            element={<ShoppingCheckout></ShoppingCheckout>}
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+             <ShoppingCheckout></ShoppingCheckout>
+            </CheckAuth>
+            }
           ></Route>
           <Route
             path="account"
-            element={<ShoppingAccount></ShoppingAccount>}
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <ShoppingAccount></ShoppingAccount>
+            </CheckAuth>
+            }
           ></Route>
-          <Route
-            path="about"
-            element={<AboutUs></AboutUs>}
-          ></Route>
-          <Route
-            path="contact-us"
-            element={<ContactUs></ContactUs>}
-          ></Route>
+          <Route path="about" element={<AboutUs></AboutUs>}></Route>
+          <Route path="contact-us" element={<ContactUs></ContactUs>}></Route>
         </Route>
 
         <Route path="*" element={<NotFound></NotFound>} />

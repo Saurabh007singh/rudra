@@ -1,4 +1,5 @@
 import { FaCartPlus } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 
 export function ShoppingProductTile({
@@ -6,6 +7,10 @@ export function ShoppingProductTile({
   handleGetProductsDetails,
   handleAddToCart,
 }) {
+
+  const {isAuthenticated } = useSelector((state) => state.auth);
+
+
   return (
 
     <div className="flex flex-col justify-between p-1 h-auto md:h-[350px] hover:shadow-lg transition-shadow">
@@ -44,10 +49,14 @@ export function ShoppingProductTile({
         </span>
       </div>
       <div className="flex justify-end">
-        <FaCartPlus
+        {isAuthenticated?<FaCartPlus
           onClick={() => handleAddToCart(product._id)}
           className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
-        />
+        />:<FaCartPlus
+        
+        className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
+      />}
+        
       </div>
     </div>
   </div>

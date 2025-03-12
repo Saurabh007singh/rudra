@@ -47,7 +47,8 @@ export function ShoppingProduct() {
   
   const list=productList.filter(product=>product.category===filterOptions[randomIndex].id)
 
-  const { user } = useSelector((state) => state.auth);
+  const { user,isAuthenticated } = useSelector((state) => state.auth);
+
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -212,8 +213,9 @@ function handleAddToCart(getCurrentProductId) {
                 </span>
               </div>
               <div className="w-[90%] border h-40 mt-1"></div>
+              
 
-              <div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
+              {isAuthenticated?<div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
                 <button
                   className="text-md w-[44%] h-12 bg-[#786B4A] text-white"
                   onClick={() => handleAddToCart(productDetails._id)}
@@ -226,7 +228,21 @@ function handleAddToCart(getCurrentProductId) {
                 >
                   Checkout
                 </button>
-              </div>
+              </div>:<div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
+                <button
+                  className="text-md w-[44%] h-12 bg-[#786B4A] text-white"
+                  
+                >
+                  Add To Cart
+                </button>
+                <button
+                  className="text-md w-[45%] h-12 bg-white text-[#786B4A] border"
+                  
+                >
+                  Buy Now
+                </button>
+              </div>}
+              
               <div className="flex flex-row gap-2">
                 <IoLogoFacebook className="w-6 h-6 text-[#786B4A]" />
                 <RiTwitterXFill className="w-6 h-6 text-[#786B4A]" />{" "}
