@@ -63,7 +63,7 @@ const navigate=useNavigate()
           onClick={() => handleAddToCart(product._id)}
           className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
         />:  <Dialog>
-        <DialogTrigger asChild>
+        <DialogTrigger>
           <FaCartPlus
             className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
           />

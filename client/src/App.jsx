@@ -24,6 +24,7 @@ import { ShoppingCategory } from "./pages/shopping/shopcategory";
 import { ProductDetails } from "./components/admin/productdetails";
 import { AboutUs } from "./pages/shopping/aboutus";
 import { ContactUs } from "./pages/shopping/contact-us";
+import { Category } from "./pages/shopping/shopcategorymain";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -88,6 +89,10 @@ function App() {
           <Route
             path="category/:category"
             element={<ShoppingCategory></ShoppingCategory>}
+          ></Route>
+          <Route
+            path="category"
+            element={<Category></Category>}
           ></Route>
           <Route
             path="product/:id"

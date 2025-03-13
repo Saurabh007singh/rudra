@@ -128,7 +128,7 @@ export function ShoppingProduct() {
             &gt;
             <Link to="/shop/listing" className="text-[#5A769E]">
               {" "}
-              Collection
+              Products
             </Link>{" "}
             &gt;
             <Link

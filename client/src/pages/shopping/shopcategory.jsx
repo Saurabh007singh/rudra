@@ -1,7 +1,7 @@
 import { ShoppingProductTile } from "@/components/shopping/shopping-product-tile";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export function ShoppingCategory() {
   const { category } = useParams();
@@ -96,16 +96,35 @@ const navigate=useNavigate()
       <img
         src={image}
         alt={title}
-        className="w-auto h-auto lg:h-[500px] lg:w-full"
+        className="w-auto h-auto lg:h-[400px] lg:w-full"
       />
-      <section className="py-2 bg-gray-50 ">
+      <div className="flex felx-row mt-10 ml-4 lg:ml-10">
+          <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
+            <Link to="/shop/home" className="text-[#5A769E]">
+              Home
+            </Link>
+            &gt;
+            <Link to="/shop/category" className="text-[#5A769E]">
+              
+              Category
+            </Link>
+            &gt;
+            <Link
+              className="text-[#9B7442]"
+            >
+             
+              {title}
+            </Link>
+          </nav>
+        </div>
+        <section className="py-2 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-[20px] p-2 font-bold font-title text-center text-[#06402B]">
-           {title}
+          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+            {title}
           </h2>
         </div>
       </section>
-      <div className="grid lg:grid-cols-4 gap-4 grid-cols-2 mt-2 mb-2 p-2">
+      <div className="grid lg:grid-cols-4 gap-4 grid-cols-2 mt-2 mb-2 p-2 lg:mx-10">
         {isLoading ? (
           <>Loading</>
         ) : (
