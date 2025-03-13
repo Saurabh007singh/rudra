@@ -4,7 +4,7 @@ export function AboutUs() {
       <img src="/images/aboutus.webp" alt="" />
       <div className="flex flex-col  items-center mt-10 mb-20">
         <h1 className="text-4xl font-semibold mb-10">Our Story</h1>
-        <p className="text-center mx-40">
+        <p className="text-center lg:mx-40 mx-5">
           At Nestasia, we believe that home is a sanctuary, and our products are
           designed to enhance your living experience. That's why we're on a
           mission to create unique, design-driven home decor and lifestyle
@@ -29,7 +29,7 @@ export function AboutUs() {
       <div className="bg-[#FFFAF1] w-full h-auto flex flex-col items-center">
         <h1 className="text-4xl text-[#9A713B] mt-10 mb-5">Why Rudra?</h1>
         <h2 className="text-2xl text-[#9A713B]">Make Yaggya Special</h2>
-        <p className="text-center mx-40 mt-4 text-[#9A713B]">At our core, we prioritize our customers above everything else, which is why we are dedicated to creating products that excel in both aesthetics and practicality. Our values of beauty, quality, and utility drive us to constantly innovate and deliver on our promise of providing a seamless experience to our customers in every aspect.</p>
+        <p className="text-center lg:mx-40 mx-5 mt-4 text-[#9A713B]">At our core, we prioritize our customers above everything else, which is why we are dedicated to creating products that excel in both aesthetics and practicality. Our values of beauty, quality, and utility drive us to constantly innovate and deliver on our promise of providing a seamless experience to our customers in every aspect.</p>
       <img src="/images/aboutus2.avif" alt="" />
       </div>
 

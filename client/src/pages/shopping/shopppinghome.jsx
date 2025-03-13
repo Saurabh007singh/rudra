@@ -109,17 +109,17 @@ export const ShoppingHome = () => {
 
       <section className="py-2 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+          <h2 className="lg:text-[30px] text-[24px]  p-2 font-serif text-center ">
             Featured Products
           </h2>
         </div>
       </section>
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-4 border mx-10">
+      <div className="flex flex-col lg:flex-row justify-center items-center   gap-6 mx-10">
         {isLoading ? (
           <p>Loading</p>
         ) : (
           starProduct.map((item) => (
-            <div onClick={() => { navigate(`/shop/product/${item._id}`); }} key={item._id} className="h-[450px] w-[400px] border ">
+            <div onClick={() => { navigate(`/shop/product/${item._id}`); }} key={item._id} className="h-[450px] w-[400px]  shadow-lg ">
               <img src={item.image} alt=""  className="object-cover h-full w-full hover:scale-110 transition-transform duration-300"/>
               
             </div>
@@ -130,12 +130,12 @@ export const ShoppingHome = () => {
 
       <section className="py-2 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+          <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
             Hawan Essentials
           </h2>
         </div>
       </section>
-      <div className="grid lg:grid-cols-4 gap-4 grid-cols-2 mb-2 p-2 lg:mx-10 border ">
+      <div className="grid lg:grid-cols-4 gap-4 grid-cols-2 mb-2 p-2 lg:mx-10  ">
         {isLoading ? (
           <>Loading</>
         ) : (
@@ -157,12 +157,12 @@ export const ShoppingHome = () => {
 
       <section className="py-2 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+          <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
             Dhoop & Fragnances
           </h2>
         </div>
       </section>
-      <div className="grid lg:grid-cols-5 gap-4 grid-cols-2 mt-2 mb-2 p-2 lg:mx-10 border">
+      <div className="grid lg:grid-cols-5 gap-4 grid-cols-2 mt-2 mb-2 p-2 lg:mx-10 ">
         {isLoading ? (
           <>Loading</>
         ) : (
@@ -178,7 +178,7 @@ export const ShoppingHome = () => {
       </div>
       <section className="py-2 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+          <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
             Our Videos
           </h2>
         </div>
@@ -219,7 +219,7 @@ export const ShoppingHome = () => {
     >
       <section className="py-2 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+          <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
             Blogs
           </h2>
         </div>
@@ -244,8 +244,8 @@ export const ShoppingHome = () => {
 
 <div className="mx-10 mt-10 flex flex-col lg:items-start gap-4 mb-10">
 <div >
-  <h1 className="text-[18px] font-semibold">About Rudra</h1>
-  <span>Nestasia - India's Most Loved Lifestyle AndHome Decor StoreMake Home Special is not only a motto Nestasia follows but also a way to celebrate creativity and individuality. With products that are as functional as they’re beautiful, Nestasia is a home decor brand with a wide range of uniquely designed, quality...
+  <h1 className="text-[18px] text-center font-semibold">About Rudra</h1>
+  <span className="text-center">Nestasia - India's Most Loved Lifestyle AndHome Decor StoreMake Home Special is not only a motto Nestasia follows but also a way to celebrate creativity and individuality. With products that are as functional as they’re beautiful, Nestasia is a home decor brand with a wide range of uniquely designed, quality...
 
 </span>
 </div>
@@ -254,16 +254,18 @@ export const ShoppingHome = () => {
   <DialogContent className="w-[90vw] max-w-[900px] h-[80vh]"> {/* Increase width & height */}
     <DialogHeader>
       <DialogTitle>Are you absolutely sure?</DialogTitle>
-      <DialogDescription>
-        <ScrollArea className="h-[250px] w-[100%] rounded-md border p-4"> 
-          Jokester began sneaking into the castle in the middle of the night and leaving
+      
+        <ScrollArea className="h-[250px] w-[100%] rounded-md border p-4">
+          <DialogDescription> 
+          <span>Jokester began sneaking into the castle in the middle of the night and leaving
           jokes all over the place: under the king's pillow, in his soup, even in the
           royal toilet. The king was furious, but he couldn't seem to stop Jokester. And
           then, one day, the people of the kingdom discovered that the jokes left by
           Jokester were so funny that they couldn't help but laugh. And once they
-          started laughing, they couldn't stop.
+          started laughing, they couldn't stop.</span>
+          </DialogDescription>
         </ScrollArea>
-      </DialogDescription>
+      
     </DialogHeader>
   </DialogContent>
 </Dialog>

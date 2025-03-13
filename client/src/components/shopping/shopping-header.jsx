@@ -18,7 +18,7 @@ import { Separator } from "../ui/separator";
 
 function MenuItems({ closeSheet }) {
   return (
-    <div className="flex flex-col lg:flex-row lg:mt-2 lg:justify-center lg:items-center lg:gap-6 ">
+    <div className="flex flex-col lg:flex-row lg:mt-2 lg:justify-center lg:items-center lg:gap-6 gap-6  ">
       {shoppingViewHeaderMenuItems.map((items) => (
         <Link
           to={items.path}

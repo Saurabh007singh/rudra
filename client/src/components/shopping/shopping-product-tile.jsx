@@ -23,7 +23,7 @@ const navigate=useNavigate()
 
   return (
 
-    <div className="flex flex-col justify-between p-1 h-auto md:h-[350px] hover:shadow-lg transition-shadow">
+    <div className="flex flex-col justify-between p-1 h-auto md:h-[350px]  transition-shadow shadow-lg">
   <div
     onClick={() => handleGetProductsDetails(product?._id)}
     className="h-[70%] overflow-hidden hover:cursor-pointer"
