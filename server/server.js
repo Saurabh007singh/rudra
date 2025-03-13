@@ -1,5 +1,7 @@
 require("dotenv").config();
 const express = require("express");
+
+
 const db = require("./utils/db");
 const router = require("./router/auth-router");
 const cookieParser = require("cookie-parser");
@@ -13,10 +15,10 @@ const imageUploadRouter=require("./router/productImages")
 
 const app = express();
 
-const PORT = process.env.PORT;
+
 app.use(
   cors({
-    origin:"https://rudra-1-iuwc.onrender.com",
+    origin:[process.env.CLIENT_BASE_URL,'http://localhost/:5173',"https://rudra-1-iuwc.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",
@@ -40,7 +42,7 @@ app.use("/api/shop/cart",cartProductsRouter)
 app.use("/api/address",addressRouter)
 app.use("/api",imageUploadRouter)
 
-
+const PORT = process.env.PORT;
 db().then(() => {
   app.listen(PORT, () => {
     console.log("connected successfully on port 5000");
