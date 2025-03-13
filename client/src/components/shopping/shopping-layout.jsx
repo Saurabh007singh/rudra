@@ -15,8 +15,9 @@ export const ShoppingLayout = () => {
 
   useEffect(() => {
     dispatch(fetchAllProducts());
-    dispatch(fetchCartItems({ userId: user?.id }));
-  });
+    if(isAuthenticated && user?.id){dispatch(fetchCartItems({ userId: user?.id }));}
+    
+  },[dispatch,isAuthenticated]);
 
   return (
     <div className=" relative flex flex-col h-full ">
