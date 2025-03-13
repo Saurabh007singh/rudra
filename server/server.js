@@ -13,10 +13,10 @@ const imageUploadRouter=require("./router/productImages")
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.use(
   cors({
-    origin: process.env.CLIENT_BASE_URL,
+    origin:"https://rudra-1-iuwc.onrender.com",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",
