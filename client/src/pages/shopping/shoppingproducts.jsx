@@ -24,13 +24,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { filterOptions } from "@/config/const ";
 import { ShoppingProductTile } from "@/components/shopping/shopping-product-tile";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export function ShoppingProduct() {
-
-
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
-
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -42,12 +46,14 @@ export function ShoppingProduct() {
     (state) => state.adminProducts
   );
 
-  const array=[1,2,3,4,5,6,7];
-  const randomIndex=Math.floor(Math.random()*array.length)
-  
-  const list=productList.filter(product=>product.category===filterOptions[randomIndex].id)
+  const array = [1, 2, 3, 4, 5, 6, 7];
+  const randomIndex = Math.floor(Math.random() * array.length);
 
-  const { user,isAuthenticated } = useSelector((state) => state.auth);
+  const list = productList.filter(
+    (product) => product.category === filterOptions[randomIndex].id
+  );
+
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
 
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -59,8 +65,6 @@ export function ShoppingProduct() {
   }, [dispatch, id]);
 
   function handleAddToCart(getCurrentProductId) {
-
-  
     dispatch(
       addToCart({
         userId: user?.id,
@@ -72,7 +76,7 @@ export function ShoppingProduct() {
       toast({ title: "Product Added to cart" });
     });
   }
-  //for description 
+  //for description
   const formatDescription = (description) => {
     return description.split("  ").map((part, index) => (
       <span key={index}>
@@ -81,8 +85,6 @@ export function ShoppingProduct() {
       </span>
     ));
   };
-
-  
 
   //  for rendring images
 
@@ -96,10 +98,7 @@ export function ShoppingProduct() {
     dispatch(getImages(id));
   }, [dispatch]);
 
-
-
-
-function handleAddToCart(getCurrentProductId) {
+  function handleAddToCart(getCurrentProductId) {
     dispatch(
       addToCart({
         userId: user?.id,
@@ -116,10 +115,8 @@ function handleAddToCart(getCurrentProductId) {
     navigate(`/shop/product/${getCurrentProductId}`);
   }
 
-
   return (
     <div className=" flex flex-col gap-6">
-     
       {isFetchProductsLoading ? (
         <p>Loading...</p>
       ) : productDetails ? (
@@ -166,8 +163,13 @@ function handleAddToCart(getCurrentProductId) {
               <CarouselNext />
             </Carousel>
             <div className=" grid grid-cols-5 p-3 ">
-              {slides.map(items=><img key={items} className="h-20 w-20 border rounded-sm" src={items}/>
-              )}
+              {slides.map((items) => (
+                <img
+                  key={items}
+                  className="h-20 w-20 border rounded-sm"
+                  src={items}
+                />
+              ))}
             </div>
           </div>
           <ScrollArea className="lg:w-1/2 w-full h-[600px] ">
@@ -213,36 +215,76 @@ function handleAddToCart(getCurrentProductId) {
                 </span>
               </div>
               <div className="w-[90%] border h-40 mt-1"></div>
-              
 
-              {isAuthenticated?<div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
-                <button
-                  className="text-md w-[44%] h-12 bg-[#786B4A] text-white"
-                  onClick={() => handleAddToCart(productDetails._id)}
-                >
-                  Add To Cart
-                </button>
-                <button
-                  className="text-md w-[45%] h-12 bg-white text-[#786B4A] border"
-                  onClick={() => navigate("/shop/checkout")}
-                >
-                  Checkout
-                </button>
-              </div>:<div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
-                <button
-                  className="text-md w-[44%] h-12 bg-[#786B4A] text-white"
+              {isAuthenticated ? (
+                <div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
+                  <button
+                    className="text-md w-[44%] h-12 bg-[#786B4A] text-white"
+                    onClick={() => handleAddToCart(productDetails._id)}
+                  >
+                    Add To Cart
+                  </button>
+                  <button
+                    className="text-md w-[45%] h-12 bg-white text-[#786B4A] border"
+                    onClick={() => navigate("/shop/checkout")}
+                  >
+                    Checkout
+                  </button>
+                </div>
+              ) : (
+                <div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
+                  <Dialog>
+                    <DialogTrigger asChild><button className="text-md w-[44%] h-12 bg-[#786B4A] text-white">
+                    Add To Cart
+                  </button>
+                  </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle className="text-center">
+                          You need to log in
+                        </DialogTitle>
+                        <DialogDescription className=" text-center">
+                          You must log in to add items to the cart. Please log
+                          in{" "}
+                          <span
+                            onClick={() => navigate("/auth/login")}
+                            className="font font-semibold underline hover:text-[#A27E4C]"
+                          >
+                            Here
+                          </span>{" "}
+                          first.
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+                  <Dialog>
+                    <DialogTrigger asChild><button className="text-md w-[45%] h-12 bg-white text-[#786B4A] border">
+                    Buy Now
+                  </button>
+                  </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle className="text-center">
+                          You need to log in
+                        </DialogTitle>
+                        <DialogDescription className=" text-center">
+                          You must log in to add items to the cart. Please log
+                          in{" "}
+                          <span
+                            onClick={() => navigate("/auth/login")}
+                            className="font font-semibold underline hover:text-[#A27E4C]"
+                          >
+                            Here
+                          </span>{" "}
+                          first.
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
                   
-                >
-                  Add To Cart
-                </button>
-                <button
-                  className="text-md w-[45%] h-12 bg-white text-[#786B4A] border"
-                  
-                >
-                  Buy Now
-                </button>
-              </div>}
-              
+                </div>
+              )}
+
               <div className="flex flex-row gap-2">
                 <IoLogoFacebook className="w-6 h-6 text-[#786B4A]" />
                 <RiTwitterXFill className="w-6 h-6 text-[#786B4A]" />{" "}
@@ -252,16 +294,21 @@ function handleAddToCart(getCurrentProductId) {
                 <span className=" font-semibold font-arial text-2xl">
                   Description
                 </span>
-                <div><IoIosArrowDown className={`${isDescriptionOpen ? 'transform rotate-180':null } mt-3  cursor-pointer transition-transform duration-300`} onClick={()=>setIsDescriptionOpen(!isDescriptionOpen)}></IoIosArrowDown></div>
-                
+                <div>
+                  <IoIosArrowDown
+                    className={`${
+                      isDescriptionOpen ? "transform rotate-180" : null
+                    } mt-3  cursor-pointer transition-transform duration-300`}
+                    onClick={() => setIsDescriptionOpen(!isDescriptionOpen)}
+                  ></IoIosArrowDown>
+                </div>
               </div>
               <Separator className="w-[90%]" />
-              {
-                isDescriptionOpen && (<span className=" w-[80%] font-arial ">
+              {isDescriptionOpen && (
+                <span className=" w-[80%] font-arial ">
                   {formatDescription(productDetails.description)}
-                </span>)
-              }
-              
+                </span>
+              )}
             </div>
           </ScrollArea>
         </div>
@@ -270,34 +317,35 @@ function handleAddToCart(getCurrentProductId) {
       )}
 
       <section className="py-2 ">
-              <div className="container mx-auto px-4">
-                <h2 className="text-[30px] p-2 font-[arial] text-center ">
-                  Also Try
-                </h2>
-              </div>
-            </section>
-            <div className="grid lg:grid-cols-4 gap-4 grid-cols-2 mb-2 p-2 lg:mx-10 border ">
-              {isLoading ? (
-                <>Loading</>
-              ) : (
-                list.map((items) => (
-                  <ShoppingProductTile
-                    product={{ ...items }}
-                    key={items._id}
-                    handleAddToCart={handleAddToCart}
-                    handleGetProductsDetails={handleGetProductsDetails}
-                  ></ShoppingProductTile>
-                ))
-              )}
-            </div>
-       <div className="relative h-[400px]">
-    <img src="/images/banner.avif" alt="banner image"  className="w-full h-full object-cover object-center"/>
-    </div>
-
-      <div className="">
-
+        <div className="container mx-auto px-4">
+          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+            Also Try
+          </h2>
+        </div>
+      </section>
+      <div className="grid lg:grid-cols-4 gap-4 grid-cols-2 mb-2 p-2 lg:mx-10 border ">
+        {isLoading ? (
+          <>Loading</>
+        ) : (
+          list.map((items) => (
+            <ShoppingProductTile
+              product={{ ...items }}
+              key={items._id}
+              handleAddToCart={handleAddToCart}
+              handleGetProductsDetails={handleGetProductsDetails}
+            ></ShoppingProductTile>
+          ))
+        )}
+      </div>
+      <div className="relative h-[400px]">
+        <img
+          src="/images/banner.avif"
+          alt="banner image"
+          className="w-full h-full object-cover object-center"
+        />
       </div>
 
+      <div className=""></div>
     </div>
   );
 }

@@ -1,5 +1,15 @@
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { useNavigate } from "react-router-dom";
+
 
 
 export function ShoppingProductTile({
@@ -9,7 +19,7 @@ export function ShoppingProductTile({
 }) {
 
   const {isAuthenticated } = useSelector((state) => state.auth);
-
+const navigate=useNavigate()
 
   return (
 
@@ -52,10 +62,22 @@ export function ShoppingProductTile({
         {isAuthenticated?<FaCartPlus
           onClick={() => handleAddToCart(product._id)}
           className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
-        />:<FaCartPlus
-        
-        className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
-      />}
+        />:  <Dialog>
+        <DialogTrigger asChild>
+          <FaCartPlus
+            className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
+          />
+          
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="text-center">You need to log in</DialogTitle>
+            <DialogDescription className=" text-center">
+              You must log in to add items to the cart. Please log in <span onClick={()=>navigate("/auth/login")} className="font font-semibold underline hover:text-[#A27E4C]">Here</span> first.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>}
         
       </div>
     </div>
