@@ -18,7 +18,7 @@ const app = express();
 
 app.use(
   cors({
-    origin:[process.env.CLIENT_BASE_URL,'http://localhost/:5173',"https://rudra-1-iuwc.onrender.com"],
+    origin:process.env.CLIENT_BASE_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",
