@@ -33,11 +33,11 @@ dispatch(updateCartQuantity({
     <div className="flex-1">
       <h3 className="font-extrabold">{cartItems.title}</h3>
       <div className="flex items-center mt-1 gap-2 ">
-        <Button variant="outline" size="icon" onClick={()=>handleUpdateQuantity(cartItems,'minus')} disabled={cartItems.quantity === 1 } className="h-8 w-8 rounded-full ">
+        <Button variant="outline" size="icon" onClick={()=>handleUpdateQuantity(cartItems,'minus')} disabled={cartItems.quantity === 1 } className="h-8 w-8 rounded-full text-[#9B7442] ">
           <Minus className="w-4 h-4"></Minus>
         </Button>
         <span className="font-semibold">{cartItems.quantity}</span>
-        <Button variant="outline" size="icon"  onClick={()=>handleUpdateQuantity(cartItems,'plus')} className="h-8 w-8 rounded-full">
+        <Button variant="outline" size="icon"  onClick={()=>handleUpdateQuantity(cartItems,'plus')} className="h-8 w-8 rounded-full text-[#9B7442]">
           <Plus className="w-4 h-4"></Plus>
         </Button>
       </div>
@@ -46,7 +46,7 @@ dispatch(updateCartQuantity({
     <p className="font-semiBold">
     ₹{((cartItems?.salePrice>0 ? cartItems.salePrice:cartItems.price)*cartItems.quantity).toFixed(2)}
     </p>
-    <Trash onClick={()=>handleCartItemDelete(cartItems)} className="cursor-pointer mt-1" size={20}></Trash>
+    <Trash onClick={()=>handleCartItemDelete(cartItems)} className="cursor-pointer mt-1 text-[#9B7442]" size={20}></Trash>
     </div>
   </div>
 }

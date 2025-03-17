@@ -1,5 +1,10 @@
 const createOrder = async (req,res)=>{
-  const {userId,cartItems,addressInfo,orderStatus,paymentMethod,paymentStatus,totalAmount,orderDate,orderUpdateDate,paymentId,payerId}=req.body;
+  try {
+    const {userId,cartItems,addressInfo,orderStatus,paymentMethod,paymentStatus,totalAmount,orderDate,orderUpdateDate,paymentId,payerId}=req.body;
+    
+  } catch (error) {
+    
+  }
 
    
 

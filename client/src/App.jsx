@@ -25,6 +25,7 @@ import { ProductDetails } from "./components/admin/productdetails";
 import { AboutUs } from "./pages/shopping/aboutus";
 import { ContactUs } from "./pages/shopping/contact-us";
 import { Category } from "./pages/shopping/shopcategorymain";
+import { PaymentOptions } from "./components/shopping/paymentsoptions";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -115,6 +116,14 @@ function App() {
             element={
               <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <ShoppingAccount></ShoppingAccount>
+            </CheckAuth>
+            }
+          ></Route>
+          <Route
+            path="pay"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <PaymentOptions></PaymentOptions>
             </CheckAuth>
             }
           ></Route>

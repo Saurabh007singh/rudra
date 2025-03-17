@@ -13,8 +13,8 @@ export function AddressCard({addressInfo,handleEditAddress,handleDeleteAddress})
         <Label>Delivery Instructions: {addressInfo?.notes}</Label>
       </CardContent>
       <CardFooter className="flex justify-between p-3">
-        <Button onClick={()=>handleEditAddress(addressInfo)}>Edit</Button>
-        <Button onClick={()=>handleDeleteAddress(addressInfo)}>Delete</Button>
+        <button className="text-md w-[44%] h-12 bg-[#786B4A] text-white" onClick={()=>handleEditAddress(addressInfo)}>Edit</button >
+        <button className="text-md w-[44%] h-12 bg-[#786B4A] text-white" onClick={()=>handleDeleteAddress(addressInfo)}>Delete</button >
       </CardFooter>
     </Card>
   )

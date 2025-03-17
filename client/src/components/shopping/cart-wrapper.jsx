@@ -48,14 +48,14 @@ export function CartWrapper({ cartItems ,setOpenCartSheet}) {
               ₹{totalCartAmount}.00
             </span>
           </div>
-          <Button
+          <button
             onClick={() => {navigate("/shop/checkout");
               setOpenCartSheet(false)
             }}
-            className="w-full mt-6 "
+            className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "
           >
             CheckOut
-          </Button>
+          </button>
         </div>
       )}
     </SheetContent>

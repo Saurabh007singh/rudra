@@ -51,9 +51,9 @@ export function Category() {
       </div>
       <div className="">
           {filterOptions.map(items => <div key={items.id}>
-              <section className="lg:py-2 ">
-                <div className="container mx-auto px-4">
-                  <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
+              <section  className="lg:py-2 cursor-pointer">
+                <div  className="container mx-auto px-4 cursor-pointer">
+                  <h2  className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
                     {items.label}
                   </h2>
                 </div>

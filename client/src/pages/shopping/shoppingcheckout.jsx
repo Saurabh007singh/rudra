@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux"
 import { Address } from "./address"
 import { UserCartItemsContent } from "@/components/shopping/usercartcontent"
+import { useNavigate } from "react-router-dom"
+
 
 export const ShoppingCheckout=()=>{
+  const navigate=useNavigate()
 
   
   const {cartItems}=useSelector((state) => state.shopCart)
@@ -37,7 +40,9 @@ export const ShoppingCheckout=()=>{
             <span className="font-bold text-2xl mt-2">
               ₹{totalCartAmount}.00
             </span>
+            
           </div>
+          <button onClick={()=>navigate("/shop/pay")} className="text-md  h-12 bg-[#786B4A] text-white">Proceed To pay</button>
       </div>
     </div>
   </div>)
