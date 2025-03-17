@@ -109,6 +109,7 @@ event.preventDefault();
                                   { id: "inShipping", label: "In Shipping" },
                                   { id: "rejected", label: "Rejected" },
                                   { id: "delivered", label: "Delivered" },
+                                  { id: "returned", label: "Returned" },
                                 ],
                               },
                             ]}

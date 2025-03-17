@@ -1,7 +1,12 @@
 import { IoLogoFacebook } from "react-icons/io";
 import { RiTwitterXFill } from "react-icons/ri";
 import { FaPinterestP } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import {
   Carousel,
   CarouselContent,
@@ -34,7 +39,7 @@ import {
 } from "@/components/ui/dialog";
 
 export function ShoppingProduct() {
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -290,25 +295,14 @@ export function ShoppingProduct() {
                 <RiTwitterXFill className="w-6 h-6 text-[#786B4A]" />{" "}
                 <FaPinterestP className="w-6 h-6 text-[#786B4A]" />
               </div>
-              <div className="w-[90%] flex flex-row justify-between ">
-                <span className=" font-semibold font-arial text-2xl">
-                  Description
-                </span>
-                <div>
-                  <IoIosArrowDown
-                    className={`${
-                      isDescriptionOpen ? "transform rotate-180" : null
-                    } mt-3  cursor-pointer transition-transform duration-300`}
-                    onClick={() => setIsDescriptionOpen(!isDescriptionOpen)}
-                  ></IoIosArrowDown>
-                </div>
-              </div>
-              <Separator className="w-[90%]" />
-              {isDescriptionOpen && (
-                <span className=" w-[80%] font-arial ">
-                  {formatDescription(productDetails.description)}
-                </span>
-              )}
+              <Accordion type="single" collapsible className="w-[90%]">
+  <AccordionItem value="item-1">
+    <AccordionTrigger className="text-[20px] font-arial">Description</AccordionTrigger>
+    <AccordionContent className="text-[15px] font-arial">
+      {formatDescription(productDetails.description)}
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
             </div>
           </ScrollArea>
         </div>
