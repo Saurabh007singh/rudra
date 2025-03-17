@@ -43,8 +43,8 @@ export function CartWrapper({ cartItems ,setOpenCartSheet}) {
       ) : (
         <div>
           <div className="flex justify-between">
-            <span className="font-bold text-2xl mt-2">Total</span>
-            <span className="font-bold text-2xl mt-2">
+            <span className="font-Bold lg:text-[24px] text-[16px] mt-2">Total</span>
+            <span className="font-Bold lg:text-[24px] text-[16px] mt-2">
               ₹{totalCartAmount}.00
             </span>
           </div>

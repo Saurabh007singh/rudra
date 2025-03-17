@@ -31,7 +31,7 @@ dispatch(updateCartQuantity({
   return <div className="flex items-center space-x-4">
     <img src={cartItems?.image} alt={cartItems?.title} className='w-20 h-20 rounded object-cover' />
     <div className="flex-1">
-      <h3 className="font-extrabold">{cartItems.title}</h3>
+      <h3 className="font-semibold">{cartItems.title}</h3>
       <div className="flex items-center mt-1 gap-2 ">
         <Button variant="outline" size="icon" onClick={()=>handleUpdateQuantity(cartItems,'minus')} disabled={cartItems.quantity === 1 } className="h-8 w-8 rounded-full text-[#9B7442] ">
           <Minus className="w-4 h-4"></Minus>

@@ -8,9 +8,9 @@ return(<div className="flex flex-col ">
           <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
             <Link to="/shop/home" className="text-[#5A769E]">
               Home
-            </Link>{" "}
+            </Link>
             &gt;
-            <span className="text-[#5A769E]">
+            <span className="text-[#98723C]">
               
               Blogs
             </span>
