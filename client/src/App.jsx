@@ -26,6 +26,7 @@ import { AboutUs } from "./pages/shopping/aboutus";
 import { ContactUs } from "./pages/shopping/contact-us";
 import { Category } from "./pages/shopping/shopcategorymain";
 import { PaymentOptions } from "./components/shopping/paymentsoptions";
+import { Blogs } from "./pages/shopping/blogs";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -87,6 +88,7 @@ function App() {
 
         <Route path="/shop" element={<ShoppingLayout isAuthenticated={isAuthenticated} user={user}/>}>
           <Route path="home" element={<ShoppingHome></ShoppingHome>}></Route>
+          <Route path="blogs" element={<Blogs></Blogs>}></Route>
           <Route
             path="category/:category"
             element={<ShoppingCategory></ShoppingCategory>}
