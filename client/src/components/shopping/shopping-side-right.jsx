@@ -1,4 +1,13 @@
-import { Delete, DeleteIcon, Heart, LogOutIcon, Search, ShoppingCart, Trash, UserCog } from "lucide-react";
+import {
+  Delete,
+  DeleteIcon,
+  Heart,
+  LogOutIcon,
+  Search,
+  ShoppingCart,
+  Trash,
+  UserCog,
+} from "lucide-react";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -30,8 +39,10 @@ import {
 } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { ShoppingProductTile } from "./shopping-product-tile";
-import { deleteFromWhishList, fetchWhishList } from "@/store/shop/whish-list-slice";
-import { fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
+import {
+  deleteFromWhishList,
+  fetchWhishList,
+} from "@/store/shop/whish-list-slice";
 
 function HeaderRight({ user, isAuthenticated }) {
   const navigate = useNavigate();
@@ -41,12 +52,17 @@ function HeaderRight({ user, isAuthenticated }) {
   const { productList, isLoading } = useSelector(
     (state) => state.adminProducts
   );
-  const {whishList,isWishLoading}=useSelector(state=>state.whish)
+  const { whishList, isWishLoading } = useSelector((state) => state.whish);
 
-  let filtredWishList=[]
-  if(!isLoading && !isWishLoading){filtredWishList=productList.filter(product=>whishList.includes(product._id))
-}
   
+
+  let filtredWishList = [];
+  if (!isLoading && !isWishLoading) {
+    filtredWishList = productList.filter((product) =>
+      whishList.includes(product._id)
+    );
+  }
+
   const [openWishSheet, setOpenWishSheet] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -73,23 +89,29 @@ function HeaderRight({ user, isAuthenticated }) {
     setOpenSearch(false);
   }
 
-  function handleDeleteWhishList(id){
-    dispatch(deleteFromWhishList({userId:user?.id,productId:id}))
+  function handleDeleteWhishList(id) {
+    dispatch(deleteFromWhishList({ userId: user?.id, productId: id }));
   }
 
   return (
-    <div className="flex flex-row gap-2 justify-center items-center mt-2 ">
-      {
-        isAuthenticated?<Sheet
+    <div className=" flex flex-row gap-2 justify-center items-center mt-2 ">
+      {isAuthenticated ? (
+        <Sheet
           open={openWishSheet}
           onOpenChange={() => setOpenWishSheet(false)}
         >
-          <Heart
-            onClick={() => {
-              setOpenWishSheet(true);
-            }}
-            className="text-[#9A713B] hover:scale-110 "
-          />
+          <div className=" relative">
+            <Heart
+              onClick={() => {
+                setOpenWishSheet(true);
+              }}
+              className="text-[#9A713B] hover:scale-110 "
+            />
+
+            <span className="absolute top-[-12px] right-[-7px] font-bold text-[red]">
+              {whishList.length}
+            </span>
+          </div>
 
           <SheetContent className="sm:max-w-md overflow-y-auto">
             <SheetHeader>
@@ -97,27 +119,50 @@ function HeaderRight({ user, isAuthenticated }) {
                 <SheetDescription></SheetDescription>Your Wishlist
               </SheetTitle>
             </SheetHeader>
-            {
-              !isLoading && !isWishLoading?
-             filtredWishList.map(items=><div key={items._id} className="felx flex-col items-center mt-2">
-              <div className="flex flex-row justify-between  ">
-                <div onClick={()=>{navigate(`/shop/product/${items._id}`);setOpenWishSheet(false);}} className="flex flex-row gap-2 "><img src={items.image} className="h-20 w-20 object-cover border" alt={items.title}/>
-                <span className="w-[50%]">{items.title}</span></div>
-                
-                <Trash className="my-auto" onClick={()=>{handleDeleteWhishList(items._id)}} />
-              </div>
-             </div>):null
-            }
+
+            {!isLoading && !isWishLoading
+              ? filtredWishList.map((items) => (
+                  <div
+                    key={items._id}
+                    className="felx flex-col items-center mt-2"
+                  >
+                    <div className="flex flex-row justify-between  ">
+                      <div
+                        onClick={() => {
+                          navigate(`/shop/product/${items._id}`);
+                          setOpenWishSheet(false);
+                        }}
+                        className="flex flex-row gap-2 "
+                      >
+                        <img
+                          src={items.image}
+                          className="h-20 w-20 object-cover border"
+                          alt={items.title}
+                        />
+                        <span className="w-[50%]">{items.title}</span>
+                      </div>
+
+                      <Trash
+                        className="my-auto"
+                        onClick={() => {
+                          handleDeleteWhishList(items._id);
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))
+              : null}
           </SheetContent>
-        </Sheet>:<Sheet
-           open={openWishSheet}
-           onOpenChange={() => setOpenWishSheet(false)}
+        </Sheet>
+      ) : (
+        <Sheet
+          open={openWishSheet}
+          onOpenChange={() => setOpenWishSheet(false)}
         >
           <Heart
             onClick={() => {
               setOpenWishSheet(true);
             }}
-           
             className="text-[#9A713B] hover:scale-110 "
           />
 
@@ -136,9 +181,7 @@ function HeaderRight({ user, isAuthenticated }) {
             </span>
           </SheetContent>
         </Sheet>
-      }
-      
-
+      )}
 
       <Dialog className="w-full" open={openSearch} onOpenChange={setOpenSearch}>
         <DialogTrigger>
@@ -182,12 +225,14 @@ function HeaderRight({ user, isAuthenticated }) {
           open={openCartSheet}
           onOpenChange={() => setOpenCartSheet(false)}
         >
-          <ShoppingCart
+          <div className="relative"><ShoppingCart
             onClick={() => {
               setOpenCartSheet(true);
             }}
             className="text-[#9A713B] hover:scale-110 "
           />
+          <span className="absolute top-[-12px] right-[-7px] font-bold text-[red]">{cartItems.length}</span></div>
+          
 
           <CartWrapper
             cartItems={cartItems}

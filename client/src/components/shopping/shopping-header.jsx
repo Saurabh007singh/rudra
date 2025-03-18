@@ -13,7 +13,7 @@ import { shoppingViewHeaderMenuItems } from "@/config/const ";
 
 import { useState } from "react";
 
-import { SidebarRight } from "./shopping-side-right.";
+import { SidebarRight } from "./shopping-side-right";
 import { Separator } from "../ui/separator";
 
 function MenuItems({ closeSheet }) {
