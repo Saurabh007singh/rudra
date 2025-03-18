@@ -1,4 +1,4 @@
-import { LogOutIcon, Search, ShoppingCart, UserCog } from "lucide-react";
+import { Delete, DeleteIcon, Heart, LogOutIcon, Search, ShoppingCart, Trash, UserCog } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "../ui/avatar";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "@/store/auth-slice";
 import {
@@ -30,6 +30,8 @@ import {
 } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { ShoppingProductTile } from "./shopping-product-tile";
+import { deleteFromWhishList, fetchWhishList } from "@/store/shop/whish-list-slice";
+import { fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 
 function HeaderRight({ user, isAuthenticated }) {
   const navigate = useNavigate();
@@ -39,6 +41,13 @@ function HeaderRight({ user, isAuthenticated }) {
   const { productList, isLoading } = useSelector(
     (state) => state.adminProducts
   );
+  const {whishList,isWishLoading}=useSelector(state=>state.whish)
+
+  let filtredWishList=[]
+  if(!isLoading && !isWishLoading){filtredWishList=productList.filter(product=>whishList.includes(product._id))
+}
+  
+  const [openWishSheet, setOpenWishSheet] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [openSearch, setOpenSearch] = useState(false);
@@ -64,8 +73,73 @@ function HeaderRight({ user, isAuthenticated }) {
     setOpenSearch(false);
   }
 
+  function handleDeleteWhishList(id){
+    dispatch(deleteFromWhishList({userId:user?.id,productId:id}))
+  }
+
   return (
-    <div className="flex flex-row gap-3 justify-center items-center mt-2 ">
+    <div className="flex flex-row gap-2 justify-center items-center mt-2 ">
+      {
+        isAuthenticated?<Sheet
+          open={openWishSheet}
+          onOpenChange={() => setOpenWishSheet(false)}
+        >
+          <Heart
+            onClick={() => {
+              setOpenWishSheet(true);
+            }}
+            className="text-[#9A713B] hover:scale-110 "
+          />
+
+          <SheetContent className="sm:max-w-md overflow-y-auto">
+            <SheetHeader>
+              <SheetTitle>
+                <SheetDescription></SheetDescription>Your Wishlist
+              </SheetTitle>
+            </SheetHeader>
+            {
+              !isLoading && !isWishLoading?
+             filtredWishList.map(items=><div key={items._id} className="felx flex-col items-center mt-2">
+              <div className="flex flex-row justify-between  ">
+                <div onClick={()=>{navigate(`/shop/product/${items._id}`);setOpenWishSheet(false);}} className="flex flex-row gap-2 "><img src={items.image} className="h-20 w-20 object-cover border" alt={items.title}/>
+                <span className="w-[50%]">{items.title}</span></div>
+                
+                <Trash className="my-auto" onClick={()=>{handleDeleteWhishList(items._id)}} />
+              </div>
+             </div>):null
+            }
+          </SheetContent>
+        </Sheet>:<Sheet
+           open={openWishSheet}
+           onOpenChange={() => setOpenWishSheet(false)}
+        >
+          <Heart
+            onClick={() => {
+              setOpenWishSheet(true);
+            }}
+           
+            className="text-[#9A713B] hover:scale-110 "
+          />
+
+          <SheetContent className="sm:max-w-md overflow-y-auto">
+            <SheetHeader>
+              <SheetTitle>
+                Your WishList
+                <SheetDescription></SheetDescription>
+              </SheetTitle>
+            </SheetHeader>
+            <span
+              className="hover:text-[#9A713B] hover:underline cursor-pointer "
+              onClick={() => navigate("/auth/login")}
+            >
+              Please Login to Continue...
+            </span>
+          </SheetContent>
+        </Sheet>
+      }
+      
+
+
       <Dialog className="w-full" open={openSearch} onOpenChange={setOpenSearch}>
         <DialogTrigger>
           <Search className="text-[#9A713B] hover:scale-110 " />

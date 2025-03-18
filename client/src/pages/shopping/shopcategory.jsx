@@ -29,7 +29,6 @@ const navigate=useNavigate()
       navigate(`/shop/product/${getCurrentProductId}`);
     }
 
-  console.log(category);
   let title = "";
   let items = [];
   let image = "";

@@ -52,7 +52,6 @@ export const editProduct = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   "/products/deleteProduct",
   async ({ id }) => {
-    console.log(id)
     const result = await axios.delete(
       `${import.meta.env.VITE_API_URL}/api/admin/products/delete/${id}`
     );

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { fetchAllProducts } from "@/store/admin/product-slice";
 import { fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 import { Footer } from "./shopping-footer";
+import { fetchWhishList } from "@/store/shop/whish-list-slice";
 
 export const ShoppingLayout = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,13 @@ export const ShoppingLayout = () => {
   const { user,isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
+    
+    
     dispatch(fetchAllProducts());
-    if(isAuthenticated && user?.id){dispatch(fetchCartItems({ userId: user?.id }));}
+    if(isAuthenticated && user?.id){
+      dispatch(fetchCartItems({ userId: user?.id }));
+      dispatch(fetchWhishList({userId:user?.id}))
+    }
     
   },[dispatch,isAuthenticated]);
 
