@@ -121,6 +121,42 @@ export const addProductFormElements = [
       {id:"false",label:"No"},
     ]
     
+  },
+  {
+    label: "Features",
+    name: "features",
+    componentType: "textarea",
+    placeholder: "Enter product features",
+  },
+  {
+    label: "Size",
+    name: "size",
+    componentType: "textarea",
+    placeholder: "Enter product size",
+  },
+  {
+    label: "Products Included",
+    name: "productsIncluded",
+    componentType: "textarea",
+    placeholder: "Enter Included product",
+  },
+  {
+    label: "Returns",
+    name: "returns",
+    componentType: "textarea",
+    placeholder: "Enter product return description",
+  },
+  {
+    label: "Care Instructions",
+    name: "careInstructions",
+    componentType: "textarea",
+    placeholder: "Enter product care instructions",
+  },
+  {
+    label: "More Info",
+    name: "moreInfo",
+    componentType: "textarea",
+    placeholder: "Enter more info about the product",
   }
 ];
 

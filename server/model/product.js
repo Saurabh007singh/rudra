@@ -11,8 +11,13 @@ const ProductSchema=new mongoose.Schema({
   starProduct:String,
   category:String,
   productCode:Number,
-  offer:String
-
+  offer:String,
+  features:String,
+  size:String,
+  productsIncluded:String,
+  returns:String,
+  careInstructions:String,
+  moreInfo:String
 },{
   timestamps:true
 })

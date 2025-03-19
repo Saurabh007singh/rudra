@@ -39,7 +39,6 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import { ShoppingProductTile } from "./shopping-product-tile";
 import {
   deleteFromWhishList,
-  fetchWhishList,
 } from "@/store/shop/whish-list-slice";
 
 function HeaderRight({ user, isAuthenticated }) {

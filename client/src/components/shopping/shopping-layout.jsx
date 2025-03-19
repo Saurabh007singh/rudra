@@ -8,22 +8,20 @@ import { fetchAllProducts } from "@/store/admin/product-slice";
 import { fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 import { Footer } from "./shopping-footer";
 import { fetchWhishList } from "@/store/shop/whish-list-slice";
+import { FaWindows } from "react-icons/fa";
 
 export const ShoppingLayout = () => {
   const dispatch = useDispatch();
 
-  const { user,isAuthenticated } = useSelector((state) => state.auth);
-
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+ 
   useEffect(() => {
-    
-    
     dispatch(fetchAllProducts());
-    if(isAuthenticated && user?.id){
+    if (isAuthenticated && user?.id) {
       dispatch(fetchCartItems({ userId: user?.id }));
-      dispatch(fetchWhishList({userId:user?.id}))
+      dispatch(fetchWhishList({ userId: user?.id }));
     }
-    
-  },[dispatch,isAuthenticated]);
+  }, [dispatch, isAuthenticated]);
 
   return (
     <div className=" relative flex flex-col h-full ">

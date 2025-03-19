@@ -6,7 +6,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 import {
   Carousel,
   CarouselContent,
@@ -38,14 +38,11 @@ import {
 } from "@/components/ui/dialog";
 
 export function ShoppingProduct() {
-
-
   const { id } = useParams();
   const dispatch = useDispatch();
   const { productDetails, isFetchProductsLoading } = useSelector(
     (state) => state.shopProducts
   );
-
   const { productList, isLoading } = useSelector(
     (state) => state.adminProducts
   );
@@ -176,7 +173,7 @@ export function ShoppingProduct() {
               ))}
             </div>
           </div>
-          <ScrollArea className="lg:w-1/2 w-full h-[600px] ">
+          <div className="lg:w-1/2 w-full h-[auto] ">
             <div className=" flex flex-col gap-3 lg:items-start items-center  lg:justify-items-start  ">
               <div className=" inline-block  text-center  lg:text-left">
                 <h1 className="text-[30px] font-arial leading-tight">
@@ -238,10 +235,11 @@ export function ShoppingProduct() {
               ) : (
                 <div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
                   <Dialog>
-                    <DialogTrigger asChild><button className="text-md w-[44%] h-12 bg-[#786B4A] text-white">
-                    Add To Cart
-                  </button>
-                  </DialogTrigger>
+                    <DialogTrigger asChild>
+                      <button className="text-md w-[44%] h-12 bg-[#786B4A] text-white">
+                        Add To Cart
+                      </button>
+                    </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
                         <DialogTitle className="text-center">
@@ -262,10 +260,11 @@ export function ShoppingProduct() {
                     </DialogContent>
                   </Dialog>
                   <Dialog>
-                    <DialogTrigger asChild><button className="text-md w-[45%] h-12 bg-white text-[#786B4A] border">
-                    Buy Now
-                  </button>
-                  </DialogTrigger>
+                    <DialogTrigger asChild>
+                      <button className="text-md w-[45%] h-12 bg-white text-[#786B4A] border">
+                        Buy Now
+                      </button>
+                    </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
                         <DialogTitle className="text-center">
@@ -285,7 +284,6 @@ export function ShoppingProduct() {
                       </DialogHeader>
                     </DialogContent>
                   </Dialog>
-                  
                 </div>
               )}
 
@@ -295,15 +293,87 @@ export function ShoppingProduct() {
                 <FaPinterestP className="w-6 h-6 text-[#786B4A]" />
               </div>
               <Accordion type="single" collapsible className="w-[90%]">
-  <AccordionItem value="item-1">
-    <AccordionTrigger className="text-[20px] font-arial">Description</AccordionTrigger>
-    <AccordionContent className="text-[15px] font-arial">
-      {formatDescription(productDetails.description)}
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    Description
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                    {formatDescription(productDetails.description)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible className="w-[90%]">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    Features
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                    {formatDescription(productDetails.features)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible className="w-[90%]">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    Size & Details
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                    {formatDescription(productDetails.size)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible className="w-[90%]">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    Products Included
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                    {formatDescription(productDetails.productsIncluded)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible className="w-[90%]">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    Returns
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                    {formatDescription(productDetails.returns)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible className="w-[90%]">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    Care Instructions
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                    {formatDescription(productDetails.careInstructions)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible className="w-[90%]">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    Shipping
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                   
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Accordion type="single" collapsible className="w-[90%]">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-[20px] font-arial">
+                    More information
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] font-arial">
+                    {formatDescription(productDetails.moreInfo)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
-          </ScrollArea>
+          </div>
         </div>
       ) : (
         <p>No product found</p>
@@ -330,15 +400,6 @@ export function ShoppingProduct() {
           ))
         )}
       </div>
-      <div className="relative h-[400px]">
-        <img
-          src="/images/banner.avif"
-          alt="banner image"
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
-
-      <div className=""></div>
     </div>
   );
 }

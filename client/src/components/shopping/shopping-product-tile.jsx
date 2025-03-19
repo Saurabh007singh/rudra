@@ -27,7 +27,6 @@ export function ShoppingProductTile({
   const { toast } = useToast();
   const index=whishList.indexOf(product?._id)
   
-console.log(product)
 
    function handleAddToWhishList() {
      

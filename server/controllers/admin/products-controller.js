@@ -26,9 +26,9 @@ const handleImageUpload = async (req, res) => {
 
 const addProduct=async(req,res)=>{
   try {
-    const {image,title,description,category,brand,price,salePrice,totalStock,productCode,offer,starProduct}=req.body;
+    const {image,title,description,category,brand,price,salePrice,totalStock,productCode,offer,starProduct,features,size,productsIncluded,returns,careInstructions,moreInfo}=req.body;
     
-    const newlyCreatedProduct=new Product({image,title,description,category,brand,price,salePrice,totalStock,productCode,offer,starProduct});
+    const newlyCreatedProduct=new Product({image,title,description,category,brand,price,salePrice,totalStock,productCode,offer,starProduct,features,size,productsIncluded,returns,careInstructions,moreInfo});
 
     await newlyCreatedProduct.save();
     res.status(201).json({
@@ -73,7 +73,7 @@ const editProduct=async(req,res)=>{
      
    const {id}=req.params;
 
-    const {image,title,description,category,brand,price,salePrice,totalStock,productCode,offer,starProduct}=req.body;
+    const {image,title,description,category,brand,price,salePrice,totalStock,productCode,offer,starProduct,features,size,productsIncluded,returns,careInstructions,moreInfo}=req.body;
 
     const findProduct=await Product.findById(id);
     if(!findProduct) return res.status(404).json({
@@ -92,6 +92,12 @@ const editProduct=async(req,res)=>{
     findProduct.productCode=productCode || findProduct.productCode
     findProduct.offer=offer||findProduct.offer
     findProduct.starProduct=starProduct || findProduct.starProduct
+    findProduct.features=features || findProduct.features
+    findProduct.size=size ||findProduct.size
+    findProduct.productsIncluded=productsIncluded||findProduct.productsIncluded
+    findProduct.returns=returns||findProduct.returns
+    findProduct.careInstructions=careInstructions||findProduct.careInstructions
+    findProduct.moreInfo=moreInfo||findProduct.moreInfo
 
     await findProduct.save();
     res.status(200).json({
