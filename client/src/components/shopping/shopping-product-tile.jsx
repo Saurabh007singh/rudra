@@ -27,7 +27,7 @@ export function ShoppingProductTile({
   const { toast } = useToast();
   const index=whishList.indexOf(product?._id)
   
-
+console.log(product)
 
    function handleAddToWhishList() {
      
@@ -148,6 +148,14 @@ export function ShoppingProductTile({
           </DialogContent>
         </Dialog>
       )}
+      {product.offer !== "no" ? (
+  <div className="absolute top-0 left-0 h-7 rounded-r-lg px-4  w-auto bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white font-bold text-sm shadow-lg animate-pulse-scale animate-pulse ">
+    <span className="flex items-center justify-center">
+      <span className="text-lg font-extrabold">{product.offer}</span>
+    </span>
+  </div>
+) : null}
+      
     </div>
   );
 }

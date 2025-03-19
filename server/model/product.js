@@ -9,7 +9,9 @@ const ProductSchema=new mongoose.Schema({
   salePrice:Number,
   totalStock:Number,
   starProduct:String,
-  category:String
+  category:String,
+  productCode:Number,
+  offer:String
 
 },{
   timestamps:true

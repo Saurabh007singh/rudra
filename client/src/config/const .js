@@ -100,6 +100,20 @@ export const addProductFormElements = [
     placeholder: "Enter total stock",
   },
   {
+    label: "Product Code",
+    name: "productCode",
+    componentType: "input",
+    type: "number",
+    placeholder: "Enter product code",
+  },
+  {
+    label: "Offer",
+    name: "offer",
+    componentType: "input",
+    type: "text",
+    placeholder: "Enter offer",
+  },
+  {
     label: "StarProduct",
     name: "starProduct",
     componentType: "select",

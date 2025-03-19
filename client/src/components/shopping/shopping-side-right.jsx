@@ -1,6 +1,4 @@
 import {
-  Delete,
-  DeleteIcon,
   Heart,
   LogOutIcon,
   Search,
@@ -119,8 +117,11 @@ function HeaderRight({ user, isAuthenticated }) {
                 <SheetDescription></SheetDescription>Your Wishlist
               </SheetTitle>
             </SheetHeader>
-
-            {!isLoading && !isWishLoading
+            
+            
+            {
+              whishList.length===0?<span>Add prodcts to WishList</span>:  
+            !isLoading && !isWishLoading
               ? filtredWishList.map((items) => (
                   <div
                     key={items._id}

@@ -31,7 +31,6 @@ function CommonForm({
             id={getControlItem.name}
             type={getControlItem.type}
             value={value}
-            required
             onChange={(event) =>
               setFormData({
                 ...formData,

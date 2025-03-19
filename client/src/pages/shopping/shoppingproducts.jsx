@@ -15,7 +15,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { getImages } from "@/store/imageslice";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
