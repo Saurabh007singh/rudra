@@ -34,6 +34,10 @@ export const ShoppingHome = () => {
     { url: "/images/banner1.avif" },
     { url: "/images/banner2.avif" },
   ];
+  const mobileImages = [
+    { url: "/images/mobilebanner1.avif" },
+    { url: "/images/mobilebanner2.avif" },
+  ];
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -96,11 +100,21 @@ export const ShoppingHome = () => {
         </div>
         <ScrollBar orientation="horizontal" className="hidden" />
       </ScrollArea>
-      <div className="relative w-full h-[500px] ">
+      <div className="relative w-full h-[500px] hidden lg:block md:block sm:block ">
         <SimpleImageSlider
           width="100%"
           height={500}
           images={images}
+          showNavs={true}
+          autoPlay={true}
+          autoPlayDelay={2.0}
+        />
+      </div>
+      <div className="relative w-[full] h-[500px] lg:hidden md:hidden sm:hidden  ">
+        <SimpleImageSlider
+          width="100%"
+          height={500}
+          images={mobileImages}
           showNavs={true}
           autoPlay={true}
           autoPlayDelay={2.0}
