@@ -32,6 +32,7 @@ const navigate=useNavigate()
   let title = "";
   let items = [];
   let image = "";
+  let image2=""
 
   switch (category) {
     case "havan":
@@ -40,6 +41,7 @@ const navigate=useNavigate()
         (products) => products.category === "Hawan Essentials"
       );
       image = "/images/banner1.avif";
+      image2="/images/mobilebanner2.avif"
       break;
 
     case "dhoop":
@@ -48,6 +50,7 @@ const navigate=useNavigate()
         (products) => products.category === "Dhoop & Fragrances"
       );
       image = "/images/banner2.avif";
+      image2="/images/mobilebanner1.avif"
       break;
     case "sacred":
       title = "Sacred Purification Items";
@@ -95,8 +98,14 @@ const navigate=useNavigate()
       <img
         src={image}
         alt={title}
-        className="w-auto h-auto lg:h-[500px] lg:w-full"
+        className="w-auto h-auto lg:h-[450px] lg:w-full hidden lg:block md:block sm:block"
       />
+      <img
+        src={image2}
+        alt={title}
+        className="w-auto h-auto lg:h-[500px] lg:w-full lg:hidden md:hidden sm:hidden"
+      />
+     
       <div className="flex felx-row mt-10 ml-4 lg:ml-10">
           <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
             <Link to="/shop/home" className="text-[#5A769E]">

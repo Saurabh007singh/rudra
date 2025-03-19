@@ -100,7 +100,7 @@ export const ShoppingHome = () => {
         </div>
         <ScrollBar orientation="horizontal" className="hidden" />
       </ScrollArea>
-      <div className="relative w-full h-[500px] hidden lg:block md:block sm:block ">
+      <div className="relative w-full h-[auto] hidden lg:block md:block sm:block ">
         <SimpleImageSlider
           width="100%"
           height={500}
@@ -110,7 +110,7 @@ export const ShoppingHome = () => {
           autoPlayDelay={2.0}
         />
       </div>
-      <div className="relative w-[full] h-[500px] lg:hidden md:hidden sm:hidden  ">
+      <div className="relative w-[full] h-[auto] lg:hidden md:hidden sm:hidden  ">
         <SimpleImageSlider
           width="100%"
           height={500}
