@@ -31,8 +31,8 @@ import {
 
 export const ShoppingHome = () => {
   const images = [
-    { url: "/images/banner1.webp" },
-    { url: "/images/banner2.webp" },
+    { url: "/images/banner1.avif" },
+    { url: "/images/banner2.avif" },
   ];
 
   const dispatch = useDispatch();

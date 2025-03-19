@@ -154,34 +154,7 @@ function HeaderRight({ user, isAuthenticated }) {
               : null}
           </SheetContent>
         </Sheet>
-      ) : (
-        <Sheet
-          open={openWishSheet}
-          onOpenChange={() => setOpenWishSheet(false)}
-        >
-          <Heart
-            onClick={() => {
-              setOpenWishSheet(true);
-            }}
-            className="text-[#9A713B] hover:scale-110 "
-          />
-
-          <SheetContent className="sm:max-w-md overflow-y-auto">
-            <SheetHeader>
-              <SheetTitle>
-                Your WishList
-                <SheetDescription></SheetDescription>
-              </SheetTitle>
-            </SheetHeader>
-            <span
-              className="hover:text-[#9A713B] hover:underline cursor-pointer "
-              onClick={() => navigate("/auth/login")}
-            >
-              Please Login to Continue...
-            </span>
-          </SheetContent>
-        </Sheet>
-      )}
+      ) : null}
 
       <Dialog className="w-full" open={openSearch} onOpenChange={setOpenSearch}>
         <DialogTrigger>
