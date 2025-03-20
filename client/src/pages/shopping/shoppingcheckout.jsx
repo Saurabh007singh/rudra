@@ -23,7 +23,9 @@ export const ShoppingCheckout=()=>{
         )
       : 0;
 
-  return(<div className="felx flex-col">
+  return(
+    <div>
+      {totalCartAmount !==0 ?<div className="felx flex-col">
     <div className="relative h-[400px]">
     <img src="/images/banner.avif" alt="banner image"  className="w-full h-full object-cover object-center"/>
     </div>
@@ -45,5 +47,25 @@ export const ShoppingCheckout=()=>{
           <button onClick={()=>navigate("/shop/pay")} className="text-md  h-12 bg-[#786B4A] text-white">Proceed To pay</button>
       </div>
     </div>
-  </div>)
+  </div>:<div className="bg-gray-100 flex items-center justify-center h-screen">
+            <div className="bg-white p-12 rounded-lg shadow-lg text-center max-w-md w-full">
+                <div className="text-6xl text-orange-500 mb-4">
+                    🛒
+                </div>
+                <h1 className="text-3xl font-bold text-gray-800 mb-4">
+                    Your Cart is Empty
+                </h1>
+                <p className="text-lg text-gray-600 mb-8">
+                    It looks like you haven't added anything to your cart yet. Let's change that!
+                </p>
+                <button 
+                    className="bg-orange-500 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    onClick={() => window.location.href = '/shop/home'} // Change '/shop' to the actual page where users can shop
+                >
+                    Start Shopping
+                </button>
+            </div>
+        </div>}
+      </div>
+  )
 }

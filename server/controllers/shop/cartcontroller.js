@@ -70,9 +70,10 @@ const fetchCartItems = async (req, res) => {
     
 
     if(!cart) {
-       return res.status(404).json({
+       return res.status(400).json({
         success: false,
         message: "cart not found",
+        
       });
     }
 
@@ -180,7 +181,7 @@ const updateCartItemQuantity = async (req, res) => {
   }
 };
 
-const deleteCart = async (req, res) => {
+const deleteCartItems = async (req, res) => {
   try {
     const {userId,productId}=req.params;
     if(!productId || !userId){
@@ -240,9 +241,51 @@ const deleteCart = async (req, res) => {
   }
 };
 
+const deleteCart=async(req,res)=>{
+try {
+  const {userId}=req.params;
+
+      if(!userId){
+       return res.status(400).json({
+          success:false,
+         message:"userId not found"
+        })}
+          const cart=await Cart.findOne({userId})
+
+          if (!cart) {
+            return res.status(404).json({
+              success: false,
+              message: "Cart not found for this user",
+            });
+          }
+
+          cart.items=[]
+
+          await cart.save();
+
+
+             return res.status(200).json({
+                success:true,
+                message:"items deleted successsfully"
+                })
+} catch (error) {
+  return res.status(404).json({
+    success:false,
+    message:"some error occured"
+  })
+}
+
+
+       
+
+
+}
+
+
 module.exports = {
   addToCart,
   updateCartItemQuantity,
   deleteCart,
   fetchCartItems,
+  deleteCartItems
 };

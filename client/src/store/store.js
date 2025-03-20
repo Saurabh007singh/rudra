@@ -6,6 +6,7 @@ import shopCartSlice from "../store/shop/cart-slice/cart-slice"
 import shopAddressSlice from "../store/shop/address-slice/index"
 import imageSlice from "../store/imageslice"
 import whishListSlice from "../store/shop/whish-list-slice"
+import orderSlice from "../store/shop/order-slice"
 
 const store=configureStore({
   reducer:{
@@ -15,7 +16,8 @@ const store=configureStore({
     shopCart:shopCartSlice,
     address:shopAddressSlice,
     images:imageSlice,
-    whish:whishListSlice
+    whish:whishListSlice,
+    orders:orderSlice
   }
 })
 

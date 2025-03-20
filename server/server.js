@@ -12,6 +12,7 @@ const cartProductsRouter=require("./router/cart-routes")
 const addressRouter=require("./router/address-routes")
 const imageUploadRouter=require("./router/productImages")
 const whishListRouter=require("./router/whishrouter")
+const orderRoutes=require("./router/order-routes")
 
 
 const app = express();
@@ -43,6 +44,7 @@ app.use("/api/shop/cart",cartProductsRouter)
 app.use("/api/address",addressRouter)
 app.use("/api",imageUploadRouter)
 app.use("/api/whish",whishListRouter)
+app.use("/api/orders",orderRoutes)
 
 const PORT = process.env.PORT;
 db().then(() => {

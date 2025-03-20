@@ -27,6 +27,9 @@ import { ContactUs } from "./pages/shopping/contact-us";
 import { Category } from "./pages/shopping/shopcategorymain";
 import { PaymentOptions } from "./components/shopping/paymentsoptions";
 import { Blogs } from "./pages/shopping/blogs";
+import { PayUpi } from "./components/payment/payviaupi";
+import { PayPayPal } from "./components/payment/payviapaypal";
+import { Congrats } from "./components/payment/congrats";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -129,12 +132,38 @@ function App() {
             </CheckAuth>
             }
           ></Route>
+          
+          
           <Route path="about" element={<AboutUs></AboutUs>}></Route>
           <Route path="contact-us" element={<ContactUs></ContactUs>}></Route>
         </Route>
 
         <Route path="*" element={<NotFound></NotFound>} />
         <Route path="/unauth" element={<Unauth></Unauth>} />
+        <Route
+            path="confirmation"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <Congrats></Congrats>
+            </CheckAuth>
+            }
+          ></Route>
+          <Route
+            path="pay1"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <PayUpi></PayUpi>
+            </CheckAuth>
+            }
+          ></Route>
+          <Route
+            path="pay2"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <PayPayPal></PayPayPal>
+            </CheckAuth>
+            }
+          ></Route>
       </Routes>
     </div>
   );

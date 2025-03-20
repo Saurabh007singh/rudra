@@ -225,6 +225,7 @@ export function ShoppingProduct() {
                   >
                     Add To Cart
                   </button>
+                  
                   <button
                     className="text-md w-[45%] h-12 bg-white text-[#786B4A] border"
                     onClick={() => navigate("/shop/checkout")}

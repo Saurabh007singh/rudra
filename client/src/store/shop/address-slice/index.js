@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   isLoading: true,
   addressList: [],
+  selectedAddress:{}
 };
 
 export const addNewAddress = createAsyncThunk(
@@ -55,7 +56,9 @@ export const deleteAddress= createAsyncThunk(
 const addressSlice = createSlice({
   name: "address",
   initialState,
-  reducers: {},
+  reducers:{setAddress:(state,action)=>{
+state.selectedAddress=[...action.payload.address]
+  },} ,
   extraReducers: (builder) => {
     builder.addCase(addNewAddress.pending,(state)=>{
       state.isLoading=true;
@@ -93,4 +96,6 @@ const addressSlice = createSlice({
   },
 });
 
+
+export const { setAddress } = addressSlice.actions;
 export default addressSlice.reducer;

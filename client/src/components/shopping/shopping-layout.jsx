@@ -9,6 +9,7 @@ import { fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 import { Footer } from "./shopping-footer";
 import { fetchWhishList } from "@/store/shop/whish-list-slice";
 import { FaWindows } from "react-icons/fa";
+import { getAllAddress } from "@/store/shop/address-slice";
 
 export const ShoppingLayout = () => {
   const dispatch = useDispatch();
@@ -20,8 +21,11 @@ export const ShoppingLayout = () => {
     if (isAuthenticated && user?.id) {
       dispatch(fetchCartItems({ userId: user?.id }));
       dispatch(fetchWhishList({ userId: user?.id }));
+      dispatch(getAllAddress(user.id));
     }
   }, [dispatch, isAuthenticated]);
+
+  
 
   return (
     <div className=" relative flex flex-col h-full ">

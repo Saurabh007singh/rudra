@@ -6,12 +6,11 @@ const OrderSchema=new mongoose.Schema({
     productId:String,
     title:String,
     image:String,
-    Price:String,
+    price:String,
     salePrice:String,
     quantity:Number  
   }],
   address:{
-    addressId:String,
     address:String,
     city:String,
     pinCode:String,
@@ -29,4 +28,4 @@ const OrderSchema=new mongoose.Schema({
 
 })
 
-module.exports=mongoose.Model("Order",OrderSchema)
+module.exports=mongoose.model("Order",OrderSchema)
