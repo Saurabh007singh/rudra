@@ -33,8 +33,6 @@ export const ShoppingCheckout = () => {
   }, [dispatch]);
 
   const address = addressList[0];
-  console.log(address);
-
   const totalCartAmount =
     cartItems && cartItems.length > 0
       ? cartItems.reduce(
@@ -65,19 +63,19 @@ export const ShoppingCheckout = () => {
         <>
           {totalCartAmount !== 0 ? (
             <>
-              <div className="  flex flex-col w-full lg:w-[50%] h-full lg:mx-auto items-center   border">
-                <div className=" sticky flex px-4 w-full flex-row justify-between items-center h-14 bg-[#FFFFFF]">
+              <div className="flex flex-col w-full lg:w-[60%] mx-auto border">
+                <div className="sticky flex px-4 w-full flex-row justify-between items-center h-14 bg-[#FFFFFF]">
                   <div>
                     <img src="/images/rudra.png" alt="" className="h-8" />
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <span className="font-semibold">Order Total</span>
+                    <span className="font-semibold text-lg md:text-xl">Order Total</span>
                     <div className="flex items-center gap-1 flex-row">
-                      <span className="line-through text-[12px] text-slate-500 font-semibold">
+                      <span className="line-through text-sm md:text-base text-slate-500 font-semibold">
                         ₹{totalPrice}
                       </span>
-                      <span className="font-semibold text-[22px]">
+                      <span className="font-semibold text-lg md:text-2xl">
                         ₹{totalCartAmount}
                       </span>
                       <ChevronDown />
@@ -85,115 +83,147 @@ export const ShoppingCheckout = () => {
                   </div>
                 </div>
                 <div className="h-7 bg-[#786B4A] w-full text-center">
-                  <span className="text-white text-center p-4 font-arial">
-                    Roodra Rewards - ₹1 for every ₹100 spent(Prepaid orders only
-                    )
+                  <span className="text-white text-xs md:text-sm p-2">
+                    Roodra Rewards - ₹1 for every ₹100 spent (Prepaid orders only)
                   </span>
                 </div>
-                <div className="flex flex-col w-[95%] bg-slate-50 rounded-sm m-2 shadow-lg p-1 gap-2">
-                  <div className="flex justify-between flex-row ">
+
+                <div className="flex flex-col w-[95%] bg-slate-50 rounded-sm m-2 shadow-lg p-3 gap-3">
+                  {/* Deliver To Section */}
+                  <div className="flex justify-between flex-row">
                     <div className="flex flex-row gap-1">
                       <MapPin />
-                      <span className="font-semibold ">Deliver to</span>
-                      <div className=" bg-[#e3dfd5] rounded-xl">
-                        <span className="font-semibold p-2">Home</span>
+                      <span className="font-semibold text-sm md:text-base">Deliver to</span>
+                      <div className="bg-[#e3dfd5] rounded-xl">
+                        <span className="font-semibold text-sm md:text-base p-2">Home</span>
                       </div>
                     </div>
-                    <div onClick={()=>{navigate("/shop/account")}} className="flex flex-row hover:scale-110 cursor-pointer transition duration-300">
-                      <span className="font-semibold">Edit</span>
+                    <div
+                      onClick={() => {
+                        navigate("/shop/account");
+                      }}
+                      className="flex flex-row hover:scale-110 cursor-pointer transition duration-300"
+                    >
+                      <span className="font-semibold text-sm md:text-base">Edit</span>
                       <ChevronRight />
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 mx-2 p-2 mb-2 bg-white shadow-xl rounded-lg">
-                    <span>{address.address}</span>
+                    <span className="text-sm md:text-base">{address.address}</span>
                     <div className="flex flex-row gap-1">
-                      <span>{address.city}</span>,<span>{address.state}</span>,
-                      <span className="font-semibold">{address.pincode}</span>
+                      <span className="text-sm md:text-base">{address.city}</span>,{" "}
+                      <span className="text-sm md:text-base">{address.state}</span>,{" "}
+                      <span className="font-semibold text-sm md:text-base">
+                        {address.pincode}
+                      </span>
                     </div>
-                    <div className="flex felx-row gap-2">
+                    <div className="flex flex-row gap-2">
                       <Phone className="h-5" />
-                      <span>{address.phone}</span>
+                      <span className="text-sm md:text-base">{address.phone}</span>
                       <Mail className="h-5" />
-                      <span>{user.email}</span>
+                      <span className="text-sm md:text-base">{user.email}</span>
                     </div>
                     <div className="bg-[#d3cebf] flex flex-row gap-2 p-1 rounded-lg">
                       <Truck />
-                      <span> Delivery in 7 to 8 working days</span>
+                      <span className="text-sm md:text-base">
+                        Delivery in 7 to 8 working days
+                      </span>
                     </div>
                   </div>
-                  <div className="flex flex-row gap-2 mx-2 p-2 mb-2 bg-white shadow-xl rounded-lg">
-                    <FileText />
-                    <span className="font-semibold">
-                      Billing and GSTIN (OPTIONAL)
-                    </span>
+
+                  {/* Billing and GSTIN Section */}
+                  <div className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between bg-white shadow-xl rounded-lg">
+                    <div className="flex gap-1 flex-row">
+                      <FileText />
+                      <span className="font-semibold text-sm md:text-base">
+                        Billing and GSTIN (OPTIONAL)
+                      </span>
+                    </div>
                   </div>
 
+                  {/* Shipping Section */}
                   <div className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between bg-white shadow-xl rounded-lg">
                     <div className="flex gap-1 flex-row">
                       <Truck />
-                      <span className="font-semibold">Shipping</span>
+                      <span className="font-semibold text-sm md:text-base">Shipping</span>
                     </div>
-                    <span className="font-bold text-green-400">
-                      FREE(above ₹499)
+                    <span className="font-bold text-green-400 text-sm md:text-base">
+                      FREE (above ₹499)
                     </span>
                   </div>
 
+                  {/* Offers Section */}
                   <div className="gap-2 mx-2 p-2 mb-2 justify-between">
-                    <span className=" font-semibold font-arial text-[20px]">
-                      Offers & Rewards
-                    </span>
+                    <span className="font-semibold text-lg md:text-xl">Offers & Rewards</span>
                   </div>
                   <div className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between items-center bg-white shadow-xl rounded-lg">
                     <div className="flex flex-col gap-1">
                       <div className="flex flex-row gap-2 items-center">
                         <Tag className="text-green-400" />
-                        <span className="font-semibold text-[20px] text-green-400">
+                        <span className="font-semibold text-lg md:text-xl text-green-400">
                           Save ₹20
                         </span>
                       </div>
-                      <span className="text-[14px]"> with "MAKEHAWANSPECIAL"</span>
+                      <span className="text-sm md:text-base">with "MAKEHAWANSPECIAL"</span>
                     </div>
-                    <span className=" border border-green-400 p-2 rounded-lg font-semibold text-green-400 ">APPLY</span>
-                    
+                    <span className="border border-green-400 p-2 rounded-lg font-semibold text-green-400 text-sm md:text-base">
+                      APPLY
+                    </span>
                   </div>
+
+                  {/* Payment Methods Section */}
                   <div className="gap-2 mx-2 p-2 mb-2 justify-between">
-                  <span className="font-semibold font-arial text-[20px]">
-                      Payment methods
-                    </span>
+                    <span className="font-semibold text-lg md:text-xl">Payment methods</span>
                   </div>
-                  <div onClick={()=>navigate("/pay1")} className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between bg-white shadow-xl rounded-lg hover:scale-110 transition duration-300 cursor-pointer">
-                    <div  className="flex gap-1 flex-row ">
+
+                  {/* UPI Payment */}
+                  <div
+                    onClick={() => navigate("/pay1")}
+                    className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between bg-white shadow-xl rounded-lg hover:scale-110 transition duration-300 cursor-pointer"
+                  >
+                    <div className="flex gap-1 flex-row">
                       <img src="/images/upi-icon.svg" alt="" className="h-7" />
-                      <span className="font-semibold"> PAY VIA UPI</span>
+                      <span className="font-semibold text-sm md:text-base"> PAY VIA UPI</span>
                     </div>
-                    <span className="font-semibold text-[20px] ">
-                    {totalCartAmount>=499? `₹${totalCartAmount}` : `₹ ${totalCartAmount} + ₹90`}
+                    <span className="font-semibold text-lg md:text-xl">
+                      {totalCartAmount >= 499
+                        ? `₹${totalCartAmount}`
+                        : `₹ ${totalCartAmount} + ₹90`}
                     </span>
                   </div>
+
+                  {/* PayPal Payment */}
                   <div className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between bg-white shadow-xl rounded-lg hover:scale-110 cursor-pointer transition duration-300">
                     <div className="flex gap-1 flex-row">
                       <img src="/images/paypal-icon.svg" alt="" className="h-7" />
-                      <span className="font-semibold"> PAY VIA PAYPAL</span>
+                     
                     </div>
-                    <span className="font-semibold text-[20px] ">
-                    {totalCartAmount>=499? `₹${totalCartAmount}` : `₹ ${totalCartAmount} + ₹90`}
+                    <span className="font-semibold text-lg md:text-xl">
+                      {totalCartAmount >= 499
+                        ? `₹${totalCartAmount}`
+                        : `₹ ${totalCartAmount} + ₹90`}
                     </span>
                   </div>
-                 
-                  <div onClick={()=>{navigate("/pay2")}} className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between bg-white shadow-xl rounded-lg hover:scale-110 cursor-pointer transition duration-300">
+
+                  {/* Pay On Delivery */}
+                  <div
+                    onClick={() => {
+                      navigate("/pay2");
+                    }}
+                    className="flex flex-row gap-2 mx-2 p-2 mb-2 justify-between bg-white shadow-xl rounded-lg hover:scale-110 cursor-pointer transition duration-300"
+                  >
                     <div className="flex gap-1 flex-row">
-                    <Wallet />
-                      <span className="font-semibold">PAY ON DELIVERY</span>
+                      <Wallet />
+                      <span className="font-semibold text-sm md:text-base">PAY ON DELIVERY</span>
                     </div>
-                    <span className="font-semibold text-[20px] ">
-                      {totalCartAmount>=499? `₹${totalCartAmount}` : `₹ ${totalCartAmount} + ₹90`}
-                    
+                    <span className="font-semibold text-lg md:text-xl">
+                      {totalCartAmount >= 499
+                        ? `₹${totalCartAmount}`
+                        : `₹ ${totalCartAmount} + ₹90`}
                     </span>
                   </div>
                 </div>
               </div>
-
-            
             </>
           ) : (
             <div className="bg-gray-100 flex items-center justify-center h-screen">
@@ -208,7 +238,7 @@ export const ShoppingCheckout = () => {
                 </p>
                 <button
                   className="bg-orange-500 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                  onClick={() => (window.location.href = "/shop/home")} // Change '/shop' to the actual page where users can shop
+                  onClick={() => (window.location.href = "/shop/home")}
                 >
                   Start Shopping
                 </button>
