@@ -5,8 +5,9 @@ const AddressSchema = new mongoose.Schema({
   address:String,
   city:String,
   pincode:String,
+  state:String,
   phone:String,
-  notes:String
+  landmark:String
 },{timestamps:true})
 
 module.exports =mongoose.model("Adderss",AddressSchema)

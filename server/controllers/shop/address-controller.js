@@ -3,9 +3,10 @@ const Address=require("../../model/address")
 
 const addAddress=async(req,res)=>{
 try {
-  const {userId,address,city,pincode,phone,notes}=req.body;
 
-  if(!userId || !address || !city || ! pincode || !phone ){
+  const {userId,address,city,pincode,phone,state,landmark}=req.body;
+
+  if(!userId || !address || !city || ! pincode || !phone || !state ){
     return res.status(400).json({
       success:false,
       message:'invlaid data provided'
@@ -13,7 +14,7 @@ try {
   }
 
 const newlyCreatedAddress=new Address({
-      userId,address,city,pincode,phone,notes
+      userId,address,city,pincode,phone,state,landmark
     })
 
   await newlyCreatedAddress.save();

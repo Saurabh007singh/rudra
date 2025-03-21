@@ -48,7 +48,7 @@ export function CartWrapper({ cartItems ,setOpenCartSheet}) {
             </span>
           </div>
           <button
-            onClick={() => {navigate("/shop/checkout");
+            onClick={() => {navigate("/checkout");
               setOpenCartSheet(false)
             }}
             className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "

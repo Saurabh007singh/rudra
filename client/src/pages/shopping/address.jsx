@@ -17,7 +17,8 @@ const initialAddressFormData = {
   city: "",
   phone: "",
   pincode: "",
-  notes: "",
+  state:"",
+  landmark: "",
 };
 
 export function Address() {
@@ -35,9 +36,9 @@ export function Address() {
   function handleManageAddress(event) {
     event.preventDefault();
 
-    if (addressList.length >= 3 && currentEditedId === null) {
+    if (addressList.length >= 1 && currentEditedId === null) {
       toast({
-        title: "You can only add up to three addresses",
+        title: "You can only add up to one address for now",
         variant: "destructive",
       });
       setFormData(initialAddressFormData);

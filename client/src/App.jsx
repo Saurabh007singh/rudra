@@ -28,8 +28,8 @@ import { Category } from "./pages/shopping/shopcategorymain";
 import { PaymentOptions } from "./components/shopping/paymentsoptions";
 import { Blogs } from "./pages/shopping/blogs";
 import { PayUpi } from "./components/payment/payviaupi";
-import { PayPayPal } from "./components/payment/payviapaypal";
 import { Congrats } from "./components/payment/congrats";
+import { PayDelivery } from "./components/payment/pay-on-delivery";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -108,14 +108,7 @@ function App() {
             path="listing"
             element={<ShoppingListing></ShoppingListing>}
           ></Route>
-          <Route
-            path="checkout"
-            element={
-              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-             <ShoppingCheckout></ShoppingCheckout>
-            </CheckAuth>
-            }
-          ></Route>
+          
           <Route
             path="account"
             element={
@@ -141,6 +134,14 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>} />
         <Route path="/unauth" element={<Unauth></Unauth>} />
         <Route
+            path="checkout"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+             <ShoppingCheckout></ShoppingCheckout>
+            </CheckAuth>
+            }
+          ></Route>
+        <Route
             path="confirmation"
             element={
               <CheckAuth isAuthenticated={isAuthenticated} user={user}>
@@ -160,10 +161,11 @@ function App() {
             path="pay2"
             element={
               <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-              <PayPayPal></PayPayPal>
+              <PayDelivery></PayDelivery>
             </CheckAuth>
             }
           ></Route>
+          
       </Routes>
     </div>
   );
