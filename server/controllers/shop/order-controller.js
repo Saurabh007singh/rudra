@@ -34,7 +34,7 @@ const createOrder = async (req, res) => {
       cartItems,
       address,
       orderStatus:"pending",
-      paymentMethod:"upi",
+      paymentMethod,
       paymentStatus:"pending",
       totalAmount,
       orderDate,

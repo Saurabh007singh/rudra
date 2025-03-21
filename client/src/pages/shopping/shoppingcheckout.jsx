@@ -16,6 +16,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { getAllAddress } from "@/store/shop/address-slice";
+import { Loading } from "../loading/loading";
 
 export const ShoppingCheckout = () => {
   const navigate = useNavigate();
@@ -216,7 +217,7 @@ export const ShoppingCheckout = () => {
           )}
         </>
       ) : (
-        <>Loading</>
+        <Loading></Loading>
       )}
     </>
   );

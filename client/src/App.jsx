@@ -25,7 +25,6 @@ import { ProductDetails } from "./components/admin/productdetails";
 import { AboutUs } from "./pages/shopping/aboutus";
 import { ContactUs } from "./pages/shopping/contact-us";
 import { Category } from "./pages/shopping/shopcategorymain";
-import { PaymentOptions } from "./components/shopping/paymentsoptions";
 import { Blogs } from "./pages/shopping/blogs";
 import { PayUpi } from "./components/payment/payviaupi";
 import { Congrats } from "./components/payment/congrats";
@@ -114,14 +113,6 @@ function App() {
             element={
               <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <ShoppingAccount></ShoppingAccount>
-            </CheckAuth>
-            }
-          ></Route>
-          <Route
-            path="pay"
-            element={
-              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-              <PaymentOptions></PaymentOptions>
             </CheckAuth>
             }
           ></Route>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export function PayDelivery() {
-  const { user, isLoading } = useSelector((state) => state.auth);
+  const { user} = useSelector((state) => state.auth);
   const { addressList } = useSelector((state) => state.address);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,6 +30,7 @@ export function PayDelivery() {
     address: addressList[0],
     totalAmount: totalCartAmount,
     orderDate: new Date(),
+    paymentMethod:"PAYONDELIVERY"
   };
 
   function handlePayment() {

@@ -33,6 +33,7 @@ const navigate=useNavigate()
     address:addressList[0],
     totalAmount:totalCartAmount,
     orderDate:new Date(),
+    paymentMethod:"UPI"
   };
 
 
