@@ -36,6 +36,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Loading } from "../loading/loading";
 
 export function ShoppingProduct() {
   const { id } = useParams();
@@ -116,8 +117,7 @@ export function ShoppingProduct() {
     navigate(`/shop/product/${getCurrentProductId}`);
   }
 
-  return (
-    <div className=" flex flex-col gap-6">
+  return (<>{!isFetchProductsLoading?<div className=" flex flex-col gap-6">
       {isFetchProductsLoading ? (
         <p>Loading...</p>
       ) : productDetails ? (
@@ -401,6 +401,8 @@ export function ShoppingProduct() {
           ))
         )}
       </div>
-    </div>
+    </div>:<Loading></Loading>}
+    </>
+    
   );
 }
