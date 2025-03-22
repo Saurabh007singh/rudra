@@ -84,7 +84,7 @@ const navigate=useNavigate()
       <img
         src={image}
         alt={title}
-        className="w-auto h-auto lg:h-[450px] lg:w-full hidden lg:block md:block sm:block"
+        className="w-auto h-auto lg:h-[450px] xl:h-[550px] 2xl:h-[600px]  lg:w-full hidden lg:block md:block sm:block"
       />
       <img
         src={image2}

@@ -128,7 +128,7 @@ export const ShoppingHome = () => {
           </h2>
         </div>
       </section>
-      <div className="flex flex-col lg:flex-row justify-center items-center   gap-6 mx-10">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-6 mx-10">
         {isLoading ? (
           <p>Loading</p>
         ) : (
