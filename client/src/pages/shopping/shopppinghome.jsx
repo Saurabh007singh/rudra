@@ -78,7 +78,7 @@ export const ShoppingHome = () => {
   return (
     <div className="flex flex-col min-h-screen w-full ">
       <ScrollArea className=" flex  justify-center whitespace-nowrap h-[210px] mb-[-30px] mt-2 ">
-        <div className="flex mx-auto my-auto w-max space-x-2 gap-6 p-4 lg:gap-20 md:gap-12 sm:gap-8">
+        <div className="flex mx-auto my-auto w-max space-x-2 gap-6 p-4 lg:gap-20 md:gap-12 sm:gap-8 xl:gap-24 2xl:gap-28 ">
           {filterOptions.map((item, index) => (
             <div
               onClick={() => navigate(item.path)}
