@@ -6,8 +6,15 @@ import {
   SheetTitle,
 } from "../ui/sheet";
 import { UserCartItemsContent } from "./usercartcontent";
+import { useSelector } from "react-redux";
 
 export function CartWrapper({ cartItems ,setOpenCartSheet}) {
+
+  const { addressList,isAddressLoading } = useSelector((state) => state.address);
+
+
+
+  
   const navigate = useNavigate();
 
   const totalCartAmount =
@@ -47,14 +54,29 @@ export function CartWrapper({ cartItems ,setOpenCartSheet}) {
               ₹{totalCartAmount}.00
             </span>
           </div>
-          <button
+
+          {
+            !isAddressLoading?<>{
+            addressList.length !==0?
+            <button
             onClick={() => {navigate("/checkout");
               setOpenCartSheet(false)
             }}
             className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "
           >
             CheckOut
+          </button>:<button
+            onClick={() => {navigate("/shop/account");
+              setOpenCartSheet(false)
+            }}
+            className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "
+          >
+            Add Address
           </button>
+          }</>:<>Loading</>
+          }
+          
+          
         </div>
       )}
     </SheetContent>

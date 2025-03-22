@@ -2,7 +2,7 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  isLoading: true,
+  isAddressLoading: true,
   addressList: [],
   selectedAddress:{}
 };
@@ -61,36 +61,36 @@ state.selectedAddress=[...action.payload.address]
   },} ,
   extraReducers: (builder) => {
     builder.addCase(addNewAddress.pending,(state)=>{
-      state.isLoading=true;
+      state.isAddressLoading=true;
     }).addCase(addNewAddress.fulfilled,(state,action)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=action.payload.data;
     }).addCase(addNewAddress.rejected,(state)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=[];
     }).addCase(editAddress.pending,(state)=>{
-      state.isLoading=true;
+      state.isAddressLoading=true;
     }).addCase(editAddress.fulfilled,(state,action)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=action.payload.data;
     }).addCase(editAddress.rejected,(state)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=[];
     }).addCase(deleteAddress.pending,(state)=>{
-      state.isLoading=true;
+      state.isAddressLoading=true;
     }).addCase(deleteAddress.fulfilled,(state,action)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=action.payload.data;
     }).addCase(deleteAddress.rejected,(state)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=[];
     }).addCase(getAllAddress.pending,(state)=>{
-      state.isLoading=true;
+      state.isAddressLoading=true;
     }).addCase(getAllAddress.fulfilled,(state,action)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=action.payload.data;
     }).addCase(getAllAddress.rejected,(state)=>{
-      state.isLoading=false;
+      state.isAddressLoading=false;
       state.addressList=[];
     })
   },

@@ -7,7 +7,6 @@ import {
   ChevronDown,
   ChevronRight,
   FileText,
-  HandCoins,
   Mail,
   MapPin,
   Phone,

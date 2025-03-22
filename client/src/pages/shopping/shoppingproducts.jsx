@@ -38,6 +38,7 @@ import {
 } from "@/components/ui/dialog";
 import { Loading } from "../loading/loading";
 
+
 export function ShoppingProduct() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -47,7 +48,8 @@ export function ShoppingProduct() {
   const { productList, isLoading } = useSelector(
     (state) => state.adminProducts
   );
-
+  const { addressList,isAddressLoading } = useSelector((state) => state.address);
+ 
   const array = [1, 2, 3, 4, 5, 6, 7];
   const randomIndex = Math.floor(Math.random() * array.length);
 
@@ -226,12 +228,26 @@ export function ShoppingProduct() {
                     Add To Cart
                   </button>
                   
-                  <button
-                    className="text-md w-[45%] h-12 bg-white text-[#786B4A] border"
-                    onClick={() => navigate("/checkout")}
-                  >
-                    Checkout
-                  </button>
+                  {
+            !isAddressLoading?<>{
+            addressList.length !==0?
+            <button
+            onClick={() => {navigate("/checkout");
+              setOpenCartSheet(false)
+            }}
+            className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "
+          >
+            CheckOut
+          </button>:<button
+            onClick={() => {navigate("/shop/account");
+              setOpenCartSheet(false)
+            }}
+            className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "
+          >
+            Add Address
+          </button>
+          }</>:<>Loading</>
+          }
                 </div>
               ) : (
                 <div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
