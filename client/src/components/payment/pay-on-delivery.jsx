@@ -2,7 +2,6 @@ import { getAllAddress } from "@/store/shop/address-slice";
 import {
   deleteCart,
   fetchCartItems,
-  updateCartQuantity,
 } from "@/store/shop/cart-slice/cart-slice";
 import { createOrder } from "@/store/shop/order-slice";
 import { useEffect } from "react";
@@ -16,7 +15,9 @@ export function PayDelivery() {
   const { addressList } = useSelector((state) => state.address);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
+  const email=user.email
+  
   const { cartItems } = useSelector((state) => state.shopCart);
   console.log(cartItems);
 
@@ -52,7 +53,9 @@ export function PayDelivery() {
       .then((data) => {
         if (data.payload.success === true) {
           dispatch(updateStockQuantity(cartItems)).then(data=>console.log(data))
-          sendMail(user.email,data.payload.data,totalCartAmount);
+          
+          
+          sendMail(email,data.payload.data,totalCartAmount);
         }
       }).then(() => {
         dispatch(deleteCart({ userId:user?.id }));
