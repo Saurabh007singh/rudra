@@ -52,7 +52,7 @@ export function PayDelivery() {
       .then((data) => {
         if (data.payload.success === true) {
           dispatch(updateStockQuantity(cartItems)).then(data=>console.log(data))
-          // sendMail(user.email,data.payload.data,totalCartAmount);
+          sendMail(user.email,data.payload.data,totalCartAmount);
         }
       }).then(() => {
         dispatch(deleteCart({ userId:user?.id }));
