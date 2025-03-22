@@ -1,5 +1,7 @@
-import { deleteCart } from "@/store/shop/cart-slice/cart-slice";
+import { getAllAddress } from "@/store/shop/address-slice";
+import { deleteCart, fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 import { createOrder } from "@/store/shop/order-slice";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +12,11 @@ export function PayUpi() {
   const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.shopCart);
+
+  useEffect(() => {
+      dispatch(fetchCartItems({ userId: user?.id }));
+      dispatch(getAllAddress(user?.id));
+    }, [dispatch]);
 
   const totalCartAmount =
     cartItems && cartItems.length > 0

@@ -77,28 +77,28 @@ export const ShoppingHome = () => {
 
   return (
     <div className="flex flex-col min-h-screen w-full ">
-      <ScrollArea className=" whitespace-nowrap ">
-        <div className="flex mx-auto w-max space-x-2 gap-6 p-4 lg:gap-12 md:gap-12 sm:gap-8">
+      <ScrollArea className=" flex  justify-center whitespace-nowrap h-[210px] mb-[-30px] mt-2 ">
+        <div className="flex mx-auto my-auto w-max space-x-2 gap-6 p-4 lg:gap-28 md:gap-12 sm:gap-8">
           {filterOptions.map((item, index) => (
             <div
               onClick={() => navigate(item.path)}
               key={index}
-              className="cursor-pointer hover:shadow-lg transition-shadow   "
+              className="cursor-pointer hover:shadow-lg transition-shadow"
             >
               <div className=" flex flex-col items-center gap-1">
                 <img
-                  src={`/images/${index}.jpg`}
-                  alt=""
-                  className="h-20 w-20"
+                  src={`/images/${index}.avif`}
+                  alt={item.id}
+                  className="h-32 w-28 object-fit scale-[2]"
                 />
-                <span className="text-[13px] text-[#9A713B] font-[arial] ">
+                <span className="text-[13px]  font-[arial] ">
                   {item.id}
                 </span>
               </div>
             </div>
           ))}
         </div>
-        <ScrollBar orientation="horizontal" className="hidden" />
+        <ScrollBar orientation="horizontal" className="" />
       </ScrollArea>
       <div className="relative w-full h-[auto] hidden lg:block md:block sm:block ">
         <SimpleImageSlider
@@ -165,7 +165,7 @@ export const ShoppingHome = () => {
       </div>
 
       <div className="lg:mx-10">
-        <img src="/images/banner-mid.webp" alt="" />
+        <img src="/images/banner-mid.avif" alt="" />
       </div>
 
 

@@ -34,6 +34,12 @@ export const fetchProductDetails = createAsyncThunk("/products/fetchProductDetai
 
 )
 
+export const updateStockQuantity=createAsyncThunk("/products/updateStockQuantity",async(cartItems)=>{
+  console.log(cartItems)
+  const response=await axios.post(`${import.meta.env.VITE_API_URL}/api/shop/products/update`,{cartItems})
+  return response.data;
+})
+
 
 const ShopProductSlice=createSlice({
 name:"shopProducts",
@@ -58,6 +64,14 @@ builder.addCase(fetchAllShopProducts.pending,(state)=>{
   state.isFetchProductsLoading=false;
   state.productDetails=action.payload.data;
 }).addCase(fetchProductDetails.rejected,(state)=>{
+  state.isFetchProductsLoading=false;
+  state.productDetails=[]
+}).addCase(updateStockQuantity.pending,(state)=>{
+  state.isFetchProductsLoading=true;
+}).addCase(updateStockQuantity.fulfilled,(state,action)=>{
+  state.isFetchProductsLoading=false;
+  state.productDetails=action.payload.data;
+}).addCase(updateStockQuantity.rejected,(state)=>{
   state.isFetchProductsLoading=false;
   state.productDetails=[]
 })

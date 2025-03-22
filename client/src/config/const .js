@@ -161,13 +161,11 @@ export const addProductFormElements = [
 ];
 
 
-export const filterOptions=[{id:"Hawan Essentials",label:"Hawan Essentials",path:"/shop/category/havan"},
-  {id:"Dhoop & Fragrances",label:"Dhoop & Fragrances",path:"/shop/category/dhoop"},
-  {id:"Sacred Purification Items",label:"Sacred Purification Items",path:"/shop/category/sacred"},
-  {id:"Festival Special Kits",label:"Festival Special Kits",path:"/shop/category/festival"},
-  {id:"Ceremonial & Ritual Kits",label:"Ceremonial & Ritual Kits",path:"/shop/category/ceremonial"},
-  {id:"Festival-Based Shopping",label:"Festival-Based Shopping",path:"/shop/category/fest"},
-  {id:"Ritual-Specific Shopping",label:"Ritual-Specific Shopping",path:"/shop/category/ritual"}
+export const filterOptions=[{id:"Hawan Essentials",label:"Hawan Essentials",path:"/shop/category/havan",img:"havan"},
+  {id:"Dhoop & Fragrances",label:"Dhoop & Fragrances",path:"/shop/category/dhoop",img:"dhoop"},
+  {id:"Sacred Purification Items",label:"Sacred Purification Items",path:"/shop/category/sacred",img:"sacred"},
+  {id:"Festival Special Kits",label:"Festival Special Kits",path:"/shop/category/festival",img:"festival"},
+  {id:"Ceremonial & Ritual Kits",label:"Ceremonial & Ritual Kits",path:"/shop/category/ceremonial",img:"ceremonial"},
 ]
 
 

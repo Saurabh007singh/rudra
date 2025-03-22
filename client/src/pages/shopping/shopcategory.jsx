@@ -57,35 +57,21 @@ const navigate=useNavigate()
       items = productList.filter(
         (products) => products.category === "Sacred Purification Items"
       );
-      image = "/images/sacredbanner.jpg";
+      image = "/images/banner3.avif";
       break;
     case "festival":
       title = "Festival Special Kits";
       items = productList.filter(
         (products) => products.category === "Festival Special Kits"
       );
-      image = "/images/festivalbanner.jpg";
+      image = "/images/banner4.avif";
       break;
     case "ceremonial":
       title = "Ceremonial & Ritual Kits";
       items = productList.filter(
         (products) => products.category === "Ceremonial & Ritual Kits"
       );
-      image = "/images/ceremonialbanner.jpg";
-      break;
-    case "fest":
-      title = "Festival-Based Shopping";
-      items = productList.filter(
-        (products) => products.category === "Festival-Based Shopping"
-      );
-      image = "/images/festbanner.jpg";
-      break;
-    case "ritual":
-      title = "Ritual-Specific Shopping";
-      items = productList.filter(
-        (products) => products.category === "Ritual-Specific Shopping"
-      );
-      image = "/images/ritualbanner.jpg";
+      image = "/images/banner5.avif";
       break;
     default:
       title = "";

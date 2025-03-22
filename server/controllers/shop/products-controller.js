@@ -86,4 +86,45 @@ try {
 }
 }
 
-module.exports ={getFilteredProducts,getProductDetails,getStarProducts};
+const updateProductStock=async(req,res)=>{
+const {cartItems}=req.body;
+console.log(cartItems)
+console.log("called")
+try {
+  for(let item of cartItems){
+    const product=await Product.findById(item.productId);
+    if(!product){
+      return res.status(400).json({
+        success:false,
+        message:"something went wrong"
+      })
+    }
+
+    const updatedStock=product.totalStock - item.quantity
+
+    if(updatedStock>=0){
+      product.totalStock=updatedStock;;
+      await product.save();
+     
+    }else{
+      return res.status(400).json({
+        success:false,
+        data:"not enough stock for product"
+      }) 
+    }
+
+  }
+  return res.status(200).json({
+    success:true,
+    message:"stock udated successfully"
+  })
+
+} catch (error) {
+  return res.status(400).json({
+    success:false,
+    data:"something went wrong"
+  }) 
+}
+}
+
+module.exports ={getFilteredProducts,getProductDetails,getStarProducts,updateProductStock};

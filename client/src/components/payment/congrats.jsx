@@ -1,15 +1,14 @@
-import { deleteCart, fetchCartItems } from '@/store/shop/cart-slice/cart-slice';
+
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
 export const Congrats= () => {
   const [showCheckmark, setShowCheckmark] = useState(false);
-  const dispatch=useDispatch()
   const {user}=useSelector(state=>state.auth)
 
   // Show the checkmark after 1000ms (1 second)
   useEffect(() => {
-    dispatch(deleteCart({userId:user?.id}))
+    
     const timer = setTimeout(() => {
       setShowCheckmark(true); // Show checkmark after 1 second
     }, 1000);
