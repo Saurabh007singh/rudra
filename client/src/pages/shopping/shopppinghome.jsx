@@ -100,7 +100,7 @@ export const ShoppingHome = () => {
         </div>
         <ScrollBar orientation="horizontal" className="" />
       </ScrollArea>
-      <div className="relative w-full h-[auto] hidden lg:block md:block sm:block ">
+      <div className="relative w-full h-[full] hidden lg:block md:block sm:block ">
         <SimpleImageSlider
           width="100%"
           height={500}
@@ -164,8 +164,8 @@ export const ShoppingHome = () => {
         )}
       </div>
 
-      <div className="lg:mx-10 w-full h-auto ">
-        <img src="/images/banner-mid.avif" alt="" />
+      <div className="mx-10">
+        <img src="/images/banner-mid.avif" alt="" className="w-full" />
       </div>
 
 
