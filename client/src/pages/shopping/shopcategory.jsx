@@ -73,6 +73,14 @@ const navigate=useNavigate()
       );
       image = "/images/banner5.avif";
       break;
+      case "ornaments":
+      title = "Ornaments & Wearables";
+      items = productList.filter(
+        (products) => products.category === "Ornaments & Wearables"
+      );
+      image = "/images/ornaments.avif";
+      break;
+      
     default:
       title = "";
       items = "";

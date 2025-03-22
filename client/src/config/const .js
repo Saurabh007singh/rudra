@@ -66,8 +66,7 @@ export const addProductFormElements = [
       {id:"Sacred Purification Items",label:"Sacred Purification Items"},
       {id:"Festival Special Kits",label:"Festival Special Kits"},
       {id:"Ceremonial & Ritual Kits",label:"Ceremonial & Ritual Kits"},
-      {id:"Festival-Based Shopping",label:"Festival-Based Shopping"},
-      {id:"Ritual-Specific Shopping",label:"Ritual-Specific Shopping"}
+      {id:"Ornaments & Wearables",label:"Ornaments & Wearables"},
     ]
     
   },
@@ -166,6 +165,8 @@ export const filterOptions=[{id:"Hawan Essentials",label:"Hawan Essentials",path
   {id:"Sacred Purification Items",label:"Sacred Purification Items",path:"/shop/category/sacred",img:"sacred"},
   {id:"Festival Special Kits",label:"Festival Special Kits",path:"/shop/category/festival",img:"festival"},
   {id:"Ceremonial & Ritual Kits",label:"Ceremonial & Ritual Kits",path:"/shop/category/ceremonial",img:"ceremonial"},
+  {id:"Ornaments & Wearables",label:"Ornaments & Wearables",path:"/shop/category/ornaments",img:"ornaments"}
+  
 ]
 
 
