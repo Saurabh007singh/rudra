@@ -164,7 +164,7 @@ export const ShoppingHome = () => {
         )}
       </div>
 
-      <div className="lg:mx-10">
+      <div className="lg:mx-10 w-full h-auto ">
         <img src="/images/banner-mid.avif" alt="" />
       </div>
 
