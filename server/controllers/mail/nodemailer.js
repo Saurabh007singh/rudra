@@ -9,7 +9,7 @@ let transporter=nodemailer.createTransport({
 })
 
 const sendMail=async(req,res)=>{
-const {to,orderData,totalAmount}=req.body
+const {to,orderData,totalAmount}=req.body;
 subject="Order confirmation"
 emailHtml=`
 <html>
@@ -72,8 +72,6 @@ emailHtml=`
   </head>
   <body>
     <div class="container">
-      <h1>Congrats, User!</h1>
-      <h2>Your order is confirmed! We will initiate shipping within one working day.</h2>
       <p>Thank you for your order!</p>
 
       <h3>Order Details:</h3>
@@ -82,7 +80,6 @@ emailHtml=`
           (item) => `
           <li>
             <strong>${item.title}</strong><br>
-            <img src="${item.image}" class="product-image" alt="${item.title}" />
             Price: ₹${item.salePrice > 0 ? item.salePrice : item.price} x ${item.quantity}
           </li>`
         ).join('')}
@@ -104,6 +101,7 @@ let mailOptions={
   from:process.env.EMAIL,
   to:to,
   subject:subject,
+  text:"Congrats,User! Your order is confirmed!we will initiate shipping within one working day ",
   html:emailHtml
 }
   try {

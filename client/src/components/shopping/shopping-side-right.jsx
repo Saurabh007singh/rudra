@@ -251,7 +251,7 @@ function HeaderRight({ user, isAuthenticated }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             side="right"
-            className="w-52 h-28 mt-4 flex flex-col "
+            className="w-52 h-40 mt-4 flex flex-col "
           >
             <DropdownMenuLabel>
               Logged In As {user.userName.toUpperCase()}

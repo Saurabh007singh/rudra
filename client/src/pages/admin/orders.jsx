@@ -7,26 +7,43 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import CommonForm from "@/components/common/form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllOrders } from "@/store/shop/order-slice";
+import { Loading } from "../loading/loading";
 
 const initialFormData = {
   status: "",
 };
 
+
 export const AdminOrders = () => {
+  
+const {user}=useSelector(state=>state.auth)
+
+
+const {allOrders,isOrdersLoading}=useSelector(state=>state.orders)
+const dispatch=useDispatch()
+
+console.log(allOrders)
+
+useEffect(()=>{
+  dispatch(getAllOrders(user?.id))
+},[dispatch])
+
   const [formData, setFormData] = useState(initialFormData);
 
   function handleUpdateStatus(event){
 event.preventDefault();
   }
 
-  return (
-    <Card>
+  return (<>{
+      !isOrdersLoading ?<Card>
       <CardHeader>OrderHistory</CardHeader>
       <CardContent>
         <Table>
@@ -42,8 +59,8 @@ event.preventDefault();
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>124241</TableCell>
+            {allOrders.map(item=><TableRow key={item._id}>
+              <TableCell>{item._id}</TableCell>
               <TableCell>124241</TableCell>
               <TableCell>124241</TableCell>
               <TableCell>124241</TableCell>
@@ -53,12 +70,14 @@ event.preventDefault();
                   <DialogTrigger className="bg-black text-white h-8 w-16 rounded">
                     Details
                   </DialogTrigger>
+                  <DialogTitle></DialogTitle>
+                  <DialogDescription></DialogDescription>
                   <DialogContent className="sm:max-w-[600px]">
-                    <div clasName="grid gap-6">
+                    <div className="grid gap-6">
                       <div className="grid gap-2">
                         <div className="flex mt-6 items-center justify-between">
                           <p className="font-medium ">Order Id</p>
-                          <Label>123456</Label>
+                          <Label>{123456}</Label>
                         </div>
                         <div className="flex mt-2 items-center justify-between">
                           <p className="font-medium ">Order Date</p>
@@ -76,7 +95,7 @@ event.preventDefault();
                         <div className="grid gap-4">
                           <div className="grid gap-2">
                             <div className="font-medium">Order details</div>
-                            <ul clasName="grid gap-3">
+                            <ul className="grid gap-3">
                               <li className="flex items-center justify-between">
                                 <span>Product One</span>
                                 <span>100</span>
@@ -124,10 +143,14 @@ event.preventDefault();
                   </DialogContent>
                 </Dialog>
               </TableCell>
-            </TableRow>
+            </TableRow>)}
+            
           </TableBody>
         </Table>
       </CardContent>
-    </Card>
+    </Card>:<Loading/>
+    }</>
+    
+    
   );
 };

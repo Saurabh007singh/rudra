@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { UserCartItemsContent } from "@/components/shopping/usercartcontent";
 import { useNavigate } from "react-router-dom";
 import { fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 import { useEffect } from "react";
@@ -60,7 +59,7 @@ export const ShoppingCheckout = () => {
     <>
       {!isLoading ? (
         <>
-          {totalCartAmount !== 0 ? (
+          {totalCartAmount !==0 ? (
             <>
               <div className="flex flex-col w-full lg:w-[60%] mx-auto border">
                 <div className="sticky flex px-4 w-full flex-row justify-between items-center h-14 bg-[#FFFFFF]">
@@ -72,10 +71,10 @@ export const ShoppingCheckout = () => {
                     <span className="font-semibold text-lg md:text-xl">Order Total</span>
                     <div className="flex items-center gap-1 flex-row">
                       <span className="line-through text-sm md:text-base text-slate-500 font-semibold">
-                        ₹{totalPrice}
+                        ₹{totalPrice }
                       </span>
                       <span className="font-semibold text-lg md:text-2xl">
-                        ₹{totalCartAmount}
+                        ₹{totalCartAmount <= 499 ? totalCartAmount+90:totalCartAmount}
                       </span>
                       <ChevronDown />
                     </div>
