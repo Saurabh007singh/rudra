@@ -64,8 +64,9 @@ const fetchCartItems = async (req, res) => {
 
     const cart = await Cart.findOne({ userId }).populate({
       path: "items.productId",
-      select: "image title price salePrice",
+      select: "image title price salePrice totalStock",
     });
+
 
     
 
@@ -78,6 +79,7 @@ const fetchCartItems = async (req, res) => {
     }
 
     const validItems=cart.items.filter(productItem=>productItem.productId)
+    
 
     
 
@@ -92,8 +94,8 @@ const fetchCartItems = async (req, res) => {
       title:item.productId.title,
       price:item.productId.price,
       salePrice:item.productId.salePrice,
+      totalStock:item.productId.totalStock,
       quantity:item.quantity,
-
     }))
 
   
@@ -150,7 +152,7 @@ const updateCartItemQuantity = async (req, res) => {
 
     await cart.populate({
       path:'items.productId',
-      select: "image title price salePrice",
+      select: "image title price salePrice totalStock",
     })
 
     const populateCartItems = cart.items.map(item => ({
@@ -159,6 +161,7 @@ const updateCartItemQuantity = async (req, res) => {
       title: item.productId ? item.productId.title : "product not found",
       price: item.productId ? item.productId.price : null,
       salePrice: item.productId ? item.productId.salePrice : null,
+      totalStock:item.productId ? item.productId.totalStock:null,
       quantity: item.quantity,
     }));
 
@@ -193,7 +196,7 @@ const deleteCartItems = async (req, res) => {
 
     const cart=await Cart.findOne({userId}).populate({
       path:'items.productId',
-      select:'image title price salePrice',
+      select:'image title price salePrice totalStock',
     })
 
     if(!cart){
@@ -209,7 +212,7 @@ const deleteCartItems = async (req, res) => {
 
     await cart.populate({
       path:'items.productId',
-      select:'image title price salePrice',
+      select:'image title price salePrice totalStock',
     })
 
     const populateCartItems = cart.items.map(item => ({
@@ -218,6 +221,7 @@ const deleteCartItems = async (req, res) => {
       title: item.productId ? item.productId.title : "product not found",
       price: item.productId ? item.productId.price : null,
       salePrice: item.productId ? item.productId.salePrice : null,
+      totalStock:item.productId? item.productId.totalStock:null,
       quantity: item.quantity,
     }));
 
@@ -274,10 +278,6 @@ try {
     message:"some error occured"
   })
 }
-
-
-       
-
 
 }
 

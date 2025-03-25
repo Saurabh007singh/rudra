@@ -126,7 +126,7 @@ dispatch(getImages(id))
                     productDetails.price) *
                     100
                 )}
-                %{" "}
+                %
               </span>
               <span className="text-4xl">₹{productDetails.salePrice}</span>
             </div>

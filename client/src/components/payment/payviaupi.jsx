@@ -4,14 +4,17 @@ import { createOrder } from "@/store/shop/order-slice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { sendMail } from "../mail/mailer";
+import { updateStockQuantity } from "@/store/shop/product-slice";
 
 export function PayUpi() {
-  const { user, isLoading } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const { addressList } = useSelector((state) => state.address);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.shopCart);
+  const email=user.email
 
   useEffect(() => {
       dispatch(fetchCartItems({ userId: user?.id }));
@@ -34,21 +37,29 @@ export function PayUpi() {
   const ordersData = {
     userId: user.id,
     cartItems: cartItems,
+    orderStatus:"received",
     address: addressList[0],
-    totalAmount: totalCartAmount,
+    totalAmount: totalCartAmount <=499 ? totalCartAmount+90:totalCartAmount,
     orderDate: new Date(),
-    paymentMethod: "UPI",
+    paymentMethod: "UPI SCANNER",
   };
 
   function handlePayment() {
-    dispatch(createOrder(ordersData))
-      .then(() => {
-        dispatch(deleteCart({ userId: user?.id }));
-      })
-      .then(() => {
-        navigate("/confirmation");
-      });
-  }
+      dispatch(createOrder(ordersData))
+        .then((data) => {
+          if (data.payload.success === true) {
+            dispatch(updateStockQuantity(cartItems))
+            
+            
+            sendMail(email,data.payload.data,totalCartAmount);
+          }
+        }).then(() => {
+          dispatch(deleteCart({ userId:user?.id }));
+        })
+        .then(() => {
+          navigate("/confirmation");
+        });
+    }
 
   return (
     <>

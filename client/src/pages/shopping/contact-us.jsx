@@ -20,7 +20,7 @@ export function ContactUs() {
             <div className="flex-col flex gap-2">
               <div className="flex flex-col ">
                 <div className="flex flex-row items-center mt-4 ">
-                  <FaWhatsapp className="h-6 w-6 text-[#B39D6F]" />{" "}
+                  <FaWhatsapp className="h-6 w-6 text-[#B39D6F]" />
                   <span className="font-serif text-2xl text-[#B39D6F] ">
                     Whatsapp
                   </span>
@@ -29,7 +29,7 @@ export function ContactUs() {
               </div>
               <div className="flex flex-col ">
                 <div className="flex flex-row items-center mt-4 ">
-                  <MdOutlineMailOutline className="h-6 w-6 text-[#B39D6F]" />{" "}
+                  <MdOutlineMailOutline className="h-6 w-6 text-[#B39D6F]" />
                   <span className="font-serif text-2xl text-[#B39D6F] ">
                     Email Us
                   </span>
@@ -38,7 +38,7 @@ export function ContactUs() {
               </div>
               <div className="flex flex-col ">
                 <div className="flex flex-row items-center mt-4 ">
-                  <FaLocationDot  className="h-6 w-6 text-[#B39D6F]" />{" "}
+                  <FaLocationDot  className="h-6 w-6 text-[#B39D6F]" />
                   <span className="font-serif text-2xl text-[#B39D6F] ">
                     Location
                   </span>

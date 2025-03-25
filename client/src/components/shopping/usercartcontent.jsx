@@ -25,7 +25,11 @@ dispatch(updateCartQuantity({
   }
 })
 }
+console.log(cartItems)
 
+if(cartItems.totalStock ==0){
+  handleCartItemDelete(cartItems)
+}
 
 
   return <div className="flex items-center space-x-4">

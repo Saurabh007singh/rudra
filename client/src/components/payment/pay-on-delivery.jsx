@@ -15,11 +15,13 @@ export function PayDelivery() {
   const { addressList } = useSelector((state) => state.address);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  
   
   const email=user.email
   
   const { cartItems } = useSelector((state) => state.shopCart);
-  console.log(cartItems);
+
 
   useEffect(() => {
     dispatch(fetchCartItems({ userId: user?.id }));
@@ -39,20 +41,23 @@ export function PayDelivery() {
         )
       : 0;
 
+    
+
   const ordersData = {
     userId: user.id,
     cartItems: cartItems,
+    orderStatus:"received",
     address: addressList[0],
-    totalAmount: totalCartAmount,
+    totalAmount: totalCartAmount <=499 ? totalCartAmount+90:totalCartAmount,
     orderDate: new Date(),
-    paymentMethod: "PAYONDELIVERY",
+    paymentMethod: "COD",
   };
 
   function handlePayment() {
     dispatch(createOrder(ordersData))
       .then((data) => {
         if (data.payload.success === true) {
-          dispatch(updateStockQuantity(cartItems)).then(data=>console.log(data))
+          dispatch(updateStockQuantity(cartItems))
           
           
           sendMail(email,data.payload.data,totalCartAmount);

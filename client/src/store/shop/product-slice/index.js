@@ -35,7 +35,7 @@ export const fetchProductDetails = createAsyncThunk("/products/fetchProductDetai
 )
 
 export const updateStockQuantity=createAsyncThunk("/products/updateStockQuantity",async(cartItems)=>{
-  console.log(cartItems)
+
   const response=await axios.post(`${import.meta.env.VITE_API_URL}/api/shop/products/update`,{cartItems})
   return response.data;
 })

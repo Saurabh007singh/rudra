@@ -319,7 +319,7 @@ export const addressFormControls = [
   },
   {
     label: "Pincode",
-    name: "pincode",
+    name: "pinCode",
     componentType: "input",
     type: "text",
     placeholder: "Enter your pincode",

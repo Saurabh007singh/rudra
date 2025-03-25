@@ -16,7 +16,7 @@ const initialAddressFormData = {
   address: "",
   city: "",
   phone: "",
-  pincode: "",
+  pinCode: "",
   state:"",
   landmark: "",
 };
@@ -84,7 +84,7 @@ export function Address() {
       address: getCurrentAddress?.address,
       city: getCurrentAddress?.city,
       phone: getCurrentAddress?.phone,
-      pincode: getCurrentAddress?.pincode,
+      pinCode: getCurrentAddress?.pinCode,
       notes: getCurrentAddress?.notes,
     });
   }

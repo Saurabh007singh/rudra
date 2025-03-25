@@ -82,11 +82,14 @@ export function ShoppingProductTile({
             </span>
           </div>
           <div className="flex justify-end">
-            {isAuthenticated ? (
-              <FaCartPlus
+            {isAuthenticated ? (<>{product.totalStock !=0 ?<FaCartPlus
                 onClick={() => handleAddToCart(product._id)}
                 className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
-              />
+              />:<FaCartPlus
+              onClick={()=>{alert(`currently out of stock!  We will restock it soon`)}}
+              className="text-[#A27E4C] rounded h-7 w-7 hover:scale-125 transition-transform duration-300"
+            />}</>
+              
             ) : (
               <Dialog>
                 <DialogTrigger>
@@ -98,13 +101,13 @@ export function ShoppingProductTile({
                       You need to log in
                     </DialogTitle>
                     <DialogDescription className=" text-center">
-                      You must log in to add items to the cart. Please log in{" "}
+                      You must log in to add items to the cart. Please log in
                       <span
                         onClick={() => navigate("/auth/login")}
                         className="font font-semibold underline hover:text-[#A27E4C]"
                       >
                         Here
-                      </span>{" "}
+                      </span>
                       first.
                     </DialogDescription>
                   </DialogHeader>

@@ -8,12 +8,13 @@ const OrderSchema=new mongoose.Schema({
     image:String,
     price:String,
     salePrice:String,
-    quantity:Number  
+    quantity:Number,  
   }],
   address:{
     address:String,
     city:String,
     pinCode:String,
+    state:String,
     phone:String,
     notes:String,
   },

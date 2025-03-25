@@ -109,10 +109,10 @@ export const ShoppingCheckout = () => {
                   <div className="flex flex-col gap-2 mx-2 p-2 mb-2 bg-white shadow-xl rounded-lg">
                     <span className="text-sm md:text-base">{address.address}</span>
                     <div className="flex flex-row gap-1">
-                      <span className="text-sm md:text-base">{address.city}</span>,{" "}
-                      <span className="text-sm md:text-base">{address.state}</span>,{" "}
+                      <span className="text-sm md:text-base">{address.city}</span>,
+                      <span className="text-sm md:text-base">{address.state}</span>,
                       <span className="font-semibold text-sm md:text-base">
-                        {address.pincode}
+                        {address.pinCode}
                       </span>
                     </div>
                     <div className="flex flex-row gap-2">

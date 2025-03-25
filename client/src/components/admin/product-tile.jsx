@@ -11,7 +11,7 @@ export function AdminProductTile({
 }) {
   const navigate = useNavigate();
   return (
-    <Card className="w-full  display-flex flex-col justify-between max-w-sm mx-auto">
+    <Card className="w-full relative flex flex-col justify-between max-w-sm mx-auto">
       <div
         className="relative cursor-pointer"
         onClick={() => {
@@ -51,6 +51,11 @@ export function AdminProductTile({
         </Button>
         <Button onClick={() => handleDelete(product?._id)}>Delete</Button>
       </CardFooter>
+      {product.totalStock ==0?<div className="absolute top-0 left-0 bg-red-500 p-1 runded animate-bounce">
+        !out of Stock
+      </div>:null}
+      
+      
     </Card>
   );
 }

@@ -50,7 +50,7 @@ export function ShoppingProduct() {
   );
   const { addressList,isAddressLoading } = useSelector((state) => state.address);
  
-  const array = [1, 2, 3, 4, 5, 6, 7];
+  const array = [1, 2, 3, 4, 5, 6];
   const randomIndex = Math.floor(Math.random() * array.length);
 
   const list = productList.filter(
@@ -127,18 +127,18 @@ export function ShoppingProduct() {
           <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
             <Link to="/shop/home" className="text-[#5A769E]">
               Home
-            </Link>{" "}
+            </Link>
             &gt;
             <Link to="/shop/listing" className="text-[#5A769E]">
-              {" "}
+              
               Products
-            </Link>{" "}
+            </Link>
             &gt;
             <Link
               to={`/shop/product/${productDetails._id}`}
               className="text-[#9B7442]"
             >
-              {" "}
+              
               {productDetails.title}
             </Link>
           </nav>
@@ -221,12 +221,18 @@ export function ShoppingProduct() {
 
               {isAuthenticated ? (
                 <div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
-                  <button
+                  {productDetails.totalStock !=0 ? <button
                     className="text-md w-[44%] h-12 bg-[#786B4A] text-white"
                     onClick={() => handleAddToCart(productDetails._id)}
                   >
                     Add To Cart
-                  </button>
+                  </button>:<button
+                    className="text-md w-[44%] h-12 bg-[#a32727] text-white"
+                    
+                  >
+                    !Out of Stock
+                  </button>}
+                  
                   
                   {
             !isAddressLoading?<>{
@@ -235,14 +241,14 @@ export function ShoppingProduct() {
             onClick={() => {navigate("/checkout");
               setOpenCartSheet(false)
             }}
-            className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "
+            className="w-[45%]  text-md h-12 bg-[#786B4A] text-white "
           >
             CheckOut
           </button>:<button
             onClick={() => {navigate("/shop/account");
               setOpenCartSheet(false)
             }}
-            className="w-full mt-6 text-md h-12 bg-[#786B4A] text-white "
+            className="w-[45%]  text-md h-12 bg-[#786B4A] text-white "
           >
             Add Address
           </button>
@@ -253,7 +259,7 @@ export function ShoppingProduct() {
                 <div className="flex w-full lg:justify-start justify-center flex-row gap-2 mt-4 ">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="text-md w-[44%] h-12 bg-[#786B4A] text-white">
+                      <button className="text-md w-[45%] h-12 bg-[#786B4A] text-white">
                         Add To Cart
                       </button>
                     </DialogTrigger>
@@ -264,13 +270,13 @@ export function ShoppingProduct() {
                         </DialogTitle>
                         <DialogDescription className=" text-center">
                           You must log in to add items to the cart. Please log
-                          in{" "}
+                          in
                           <span
                             onClick={() => navigate("/auth/login")}
                             className="font font-semibold underline hover:text-[#A27E4C]"
                           >
                             Here
-                          </span>{" "}
+                          </span>
                           first.
                         </DialogDescription>
                       </DialogHeader>
@@ -289,13 +295,13 @@ export function ShoppingProduct() {
                         </DialogTitle>
                         <DialogDescription className=" text-center">
                           You must log in to add items to the cart. Please log
-                          in{" "}
+                          in
                           <span
                             onClick={() => navigate("/auth/login")}
                             className="font font-semibold underline hover:text-[#A27E4C]"
                           >
                             Here
-                          </span>{" "}
+                          </span>
                           first.
                         </DialogDescription>
                       </DialogHeader>
@@ -306,7 +312,7 @@ export function ShoppingProduct() {
 
               <div className="flex flex-row gap-2">
                 <IoLogoFacebook className="w-6 h-6 text-[#786B4A]" />
-                <RiTwitterXFill className="w-6 h-6 text-[#786B4A]" />{" "}
+                <RiTwitterXFill className="w-6 h-6 text-[#786B4A]" />
                 <FaPinterestP className="w-6 h-6 text-[#786B4A]" />
               </div>
               <Accordion type="single" collapsible className="w-[90%]">

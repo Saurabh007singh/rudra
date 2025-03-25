@@ -17,9 +17,10 @@ export function AddressCard({
       <CardContent className="grid p-4 gap-2">
         <Label>Address: {addressInfo?.address}</Label>
         <Label>City: {addressInfo?.city}</Label>
-        <Label>PinCode: {addressInfo?.pincode}</Label>
+        <Label>PinCode: {addressInfo?.pinCode}</Label>
+        <Label>State:{addressInfo?.state}</Label>
         <Label>Phone: {addressInfo?.phone}</Label>
-        <Label>Delivery Instructions: {addressInfo?.notes}</Label>
+        <Label>Landmark: {addressInfo?.landmark}</Label>
       </CardContent>
       <CardFooter className="flex justify-between p-3">
         <button className="text-md w-[44%] h-12 bg-[#786B4A] text-white" onClick={() => handleEditAddress(addressInfo)}>
