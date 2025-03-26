@@ -34,6 +34,11 @@ const response=await axios.get(`${import.meta.env.VITE_API_URL}/api/orders/get/u
 return response.data
 })
 
+export const deleteOrders=createAsyncThunk("/orders/deleteOrders",async(orderId)=>{
+  const response=await axios.delete(`${import.meta.env.VITE_API_URL}/api/orders/delete/${orderId}`)
+  return response.data
+  })
+
 
 const orderSlice=createSlice({
   name:"orders",
@@ -74,6 +79,13 @@ const orderSlice=createSlice({
       state.isUSerOrdersLoading=false;
       state.userOrders=action.payload.data
     }).addCase(getUserOrders.rejected,(state)=>{
+      state.isUSerOrdersLoading=false
+    }).addCase(deleteOrders.pending,(state)=>{
+      state.isUSerOrdersLoading=true;
+    }).addCase(deleteOrders.fulfilled,(state,action)=>{
+      state.isUSerOrdersLoading=false;
+      state.userOrders=action.payload.data
+    }).addCase(deleteOrders.rejected,(state)=>{
       state.isUSerOrdersLoading=false
     })
   }

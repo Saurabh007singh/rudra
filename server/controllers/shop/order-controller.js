@@ -107,7 +107,7 @@ const getAllOrders = async (req, res) => {
       })  
     }
 
-    const orders=await Orders.find()
+    const orders=await Orders.find().sort({createdAt:-1})
   
 
     return res.status(200).json({
@@ -192,4 +192,30 @@ const {userId}=req.params;
   }
 }
 
-module.exports = { createOrder, changeOrderStatus, getAllOrders,getSingleOrder,getUserOrders };
+const deleteOrder=async(req,res)=>{
+
+const {orderId}=req.params;
+try {
+  if(!orderId){
+    return res.status(400).json({
+      success:false,
+      message:"something went wrong"
+    })
+  }
+
+  const order = await Orders.findOneAndDelete({_id:orderId})
+
+  res.status(200).json({
+    success:true,
+    message:"deleted successfully",
+    data:order
+  })
+
+
+} catch (error) {
+  
+}
+
+}
+
+module.exports = { createOrder, changeOrderStatus, getAllOrders,getSingleOrder,getUserOrders,deleteOrder };

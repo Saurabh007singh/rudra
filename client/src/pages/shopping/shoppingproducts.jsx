@@ -36,6 +36,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Loading } from "../loading/loading";
+import { getReviews } from "@/store/shop/review-slice";
+import { ReviewsSection } from "@/components/shopping/review-wrapper";
 
 export function ShoppingProduct() {
   const { id } = useParams();
@@ -49,6 +51,8 @@ export function ShoppingProduct() {
   const { addressList, isAddressLoading } = useSelector(
     (state) => state.address
   );
+  const {reviews}=useSelector(state=>state.reviews)
+  console.log(reviews)
 
   
 
@@ -76,9 +80,10 @@ list = productList.filter(
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchProductDetails({ id }));
-    dispatch(getImages(id));
+    dispatch(fetchProductDetails({ id })).then(()=>{dispatch(getImages(id))}).then(()=>{dispatch(getReviews(id))});
   }, [dispatch, id]);
+
+
 
   function handleAddToCart(getCurrentProductId) {
     dispatch(
@@ -454,6 +459,7 @@ list = productList.filter(
               ))
             )}
           </div>
+          <ReviewsSection reviews={reviews}></ReviewsSection>
         </div>
       ) : (
         <Loading></Loading>

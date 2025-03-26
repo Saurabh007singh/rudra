@@ -60,7 +60,7 @@ export function PayDelivery() {
           dispatch(updateStockQuantity(cartItems))
           
           
-          sendMail(email,data.payload.data,totalCartAmount);
+          // sendMail(email,data.payload.data,totalCartAmount);
         }
       }).then(() => {
         dispatch(deleteCart({ userId:user?.id }));

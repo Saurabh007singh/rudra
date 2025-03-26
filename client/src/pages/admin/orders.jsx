@@ -22,13 +22,14 @@ import CommonForm from "@/components/common/form";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteOrders,
   getAllOrders,
   getSingleOrders,
   updateStatus,
 } from "@/store/shop/order-slice";
 import { Loading } from "../loading/loading";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { FileText, Mail, Phone, Search } from "lucide-react";
+import { ArrowBigDown, FileText, Mail, Phone, Search, Trash } from "lucide-react";
 import Papa from "papaparse";
 
 const initialFormData = {
@@ -53,7 +54,7 @@ export const AdminOrders = () => {
   },[]);
 
 
-  console.log(singleOrder)
+ 
 
   function handleUpdateStatus(event, orderId,formData) {
 
@@ -145,6 +146,13 @@ export const AdminOrders = () => {
       setSearched(true); 
     }
   }
+
+  function handleOrderDelete(item){
+dispatch(deleteOrders(item)).then(()=>{dispatch(getAllOrders(user?.id));setSearched(false)
+  setSearch("")})
+
+
+  }
     
   return (
     <>
@@ -194,7 +202,7 @@ export const AdminOrders = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {(searched ? singleOrder:allOrders).slice().reverse().map((item) => (
+                  {(searched ? singleOrder:allOrders).slice().map((item) => (
                     <TableRow key={item._id}>
                       <TableCell>{item._id}</TableCell>
                       <TableCell>
@@ -352,7 +360,29 @@ export const AdminOrders = () => {
                             </ScrollArea>
                           </DialogContent>
                         </Dialog>
-                      </TableCell>
+                      </TableCell>{
+                        searched?<TableCell>
+                        <Dialog>
+                          <DialogTrigger><Trash className="text-red-500"/></DialogTrigger>
+                          <DialogTitle></DialogTitle>
+                          <DialogDescription></DialogDescription>
+                          <DialogContent>
+                            <div className=" font-bold flex flex-col items-center justify-center gap-3  "> <span className="text-red-500 motion-safe:animate-ping text-4xl mb-10">Warning!</span>
+                            <span className="">You are about to delete an order </span>
+                            <span className="">Are you sure you want to delete </span>
+                            <span>Click Trash icon to delete</span>
+                            <ArrowBigDown className="animate-bounce text-red-500 "></ArrowBigDown>
+                            <Trash onClick={()=>handleOrderDelete(item._id)} className="text-red-500"></Trash>
+                            </div>
+                          
+                          </DialogContent>
+                        </Dialog>
+
+                        
+                       
+                      </TableCell>:null
+                      }
+                      
                     </TableRow>
                   ))}
                 </TableBody>
