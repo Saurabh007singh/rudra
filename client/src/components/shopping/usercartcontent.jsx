@@ -25,7 +25,7 @@ dispatch(updateCartQuantity({
   }
 })
 }
-console.log(cartItems)
+
 
 if(cartItems.totalStock ==0){
   handleCartItemDelete(cartItems)
@@ -41,9 +41,12 @@ if(cartItems.totalStock ==0){
           <Minus className="w-4 h-4"></Minus>
         </Button>
         <span className="font-semibold">{cartItems.quantity}</span>
-        <Button variant="outline" size="icon"  onClick={()=>handleUpdateQuantity(cartItems,'plus')} className="h-8 w-8 rounded-full text-[#9B7442]">
+        {cartItems.quantity < cartItems.totalStock ? <Button variant="outline" size="icon"  onClick={()=>handleUpdateQuantity(cartItems,'plus')} className="h-8 w-8 rounded-full text-[#9B7442]">
           <Plus className="w-4 h-4"></Plus>
-        </Button>
+        </Button>:<Button variant="outline" disabled size="icon" className="h-8 w-8 rounded-full text-[#9B7442]">
+          <Plus className="w-4 h-4"></Plus>
+        </Button> }
+        
       </div>
     </div>
     <div className="flex flex-col items-end">
