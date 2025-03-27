@@ -150,11 +150,9 @@ export function ShoppingProductTile({
           </DialogContent>
         </Dialog>
       )}
-      {product.offer !== "no" ? (
-  <div className="absolute top-0 left-0 h-7 rounded-r-lg px-4  w-auto bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white font-bold text-sm shadow-lg animate-pulse-scale animate-pulse ">
-    <span className="flex items-center justify-center">
-      <span className="text-lg font-extrabold">{product.offer}</span>
-    </span>
+   {product.offer !== "no" ? (
+  <div className="absolute top-0 left-0 p-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-xs font-semibold rounded-lg shadow-xl transform  translate-x-2 translate-y-2">
+    <span>{product.offer}</span>
   </div>
 ) : null}
       

@@ -31,14 +31,6 @@ import {
 import ImageSlider from "@/components/shopping/imageslider";
 
 export const ShoppingHome = () => {
-  const images = [
-    { url: "/images/banner1.avif" },
-    { url: "/images/banner2.avif" },
-  ];
-  const mobileImages = [
-    { url: "/images/mobilebanner1.avif" },
-    { url: "/images/mobilebanner2.avif" },
-  ];
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

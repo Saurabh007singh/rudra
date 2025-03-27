@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { registerUser } from "../../store/auth-slice";
-import { useToast } from "@/hooks/use-toast"
-
-
+import { useToast } from "@/hooks/use-toast";
 
 function AuthRegister() {
-  const { toast } = useToast()
-
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
+  const { toast } = useToast();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // State to store form values
   const [userName, setUserName] = useState("");
@@ -24,98 +21,109 @@ function AuthRegister() {
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
 
+  const formData = {
+    userName,
+    password,
+    email,
+  };
 
-  const formData={
-    userName, password, email
-  }
   // Handle form submission
   const register = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-    dispatch(registerUser(formData)).then((data) => {
-      if (data?.payload?.success) {
-        // On success, navigate to login page and show success toast
-        navigate("/auth/login");
-        toast({
-          title: "Success",
-          description: "Registration successful",
-        })
-      } else {
-        // On failure, show an error toast
-        toast({
-          title: "Faliure",
-          description: "Couldnt register something went wrong",
-        })
-      }
-    }).catch(() => {
-      // In case of unexpected errors, show a generic error toast
-      toast({
-        title: "Faliure",
-        description: "Couldnt register something went wrong",
+    dispatch(registerUser(formData))
+      .then((data) => {
+        if (data?.payload?.success) {
+          // On success, navigate to login page and show success toast
+          navigate("/auth/login");
+          toast({
+            title: "Success",
+            description: "Registration successful",
+          });
+        } else {
+          // On failure, show an error toast
+          toast({
+            title: "Failure",
+            description: "Could not register, something went wrong",
+          });
+        }
       })
-    });
-    
-  
+      .catch(() => {
+        // In case of unexpected errors, show a generic error toast
+        toast({
+          title: "Failure",
+          description: "Could not register, something went wrong",
+        });
+      });
   };
 
   return (
-    <>
-      
-      <div className="absolute bg-pink-500 rounded-lg">
-        <div className="flex flex-col items-center justify-center w-[330px] h-[100px]  bg-white bg-opacity-25 rounded-t-lg">
-          <p className="text-white text-opacity-65 text-center font-extrabold text-3xl">
-            Welcome <br /> to Rudra
-          </p>
+    <div className="flex justify-center items-center h-screen  opacity-90 ">
+      <div className=" bg-white rounded-lg shadow-lg p-6 w-[400px] h-[600px] ">
+        {/* Header Section */}
+        <div className="text-center mb-6">
+          <img src="/images/rudra.png" alt="rudra" />
+          <p className="text-gray-500 mt-2">Create your account to get started</p>
         </div>
-        <form
-          onSubmit={register} // Handle form submission
-          className="flex flex-col items-center gap-4 w-[330px] h-[300px] bg-white bg-opacity-50 rounded-b-lg shadow-lg"
-        >
-          <p className="mt-4 text-white text-opacity-65 text-2xl">Register Now</p>
-          <div className="flex items-center gap-2">
-            <FaUserAlt className="opacity-60 text-white text-2xl" />
+
+        {/* Form Section */}
+        <form onSubmit={register} className="flex flex-col gap-4">
+          {/* Username Field */}
+          <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
+            <FaUserAlt className="text-gray-500 text-xl" />
             <input
-              value={userName} // Controlled input
-              onChange={handleUserNameChange} // Handle change
-              className="text-center rounded-xl border-none opacity-60"
+              value={userName}
+              onChange={handleUserNameChange}
+              className="flex-1 p-2 text-gray-700 focus:outline-none"
               placeholder="Enter Username"
               required
             />
           </div>
-          <div className="flex items-center gap-2">
-            <FaLock className="opacity-60 text-white text-2xl" />
+
+          {/* Password Field */}
+          <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
+            <FaLock className="text-gray-500 text-xl" />
             <input
               type="password"
-              value={password} // Controlled input
-              onChange={handlePasswordChange} // Handle change
-              className="text-center rounded-xl border-none opacity-60"
+              value={password}
+              onChange={handlePasswordChange}
+              className="flex-1 p-2 text-gray-700 focus:outline-none"
               placeholder="Enter Password"
               required
             />
           </div>
-          <div className="flex items-center gap-2">
-            <MdMarkEmailUnread className="opacity-60 text-white text-2xl" />
+
+          {/* Email Field */}
+          <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
+            <MdMarkEmailUnread className="text-gray-500 text-xl" />
             <input
               type="email"
-              value={email} // Controlled input
-              onChange={handleEmailChange} // Handle change
-              className="text-center rounded-xl border-none opacity-60"
+              value={email}
+              onChange={handleEmailChange}
+              className="flex-1 p-2 text-gray-700 focus:outline-none"
               placeholder="Enter Email"
               required
             />
           </div>
+
+          {/* Submit Button */}
           <button
-            
-            type="submit" // Button type should be submit to trigger form submission
-            className="bg-white rounded-lg opacity-60 p-1 px-3 text-[14px] font-bold text-slate-500"
+            type="submit"
+            className="bg-blue-500 text-white p-2 rounded-lg mt-4 hover:bg-blue-600 focus:outline-none"
           >
             Register
           </button>
-          <div className="flex flex-col items-center text-blue-700"><span>Already Having An Account?</span><span><Link to="/auth/login">Login</Link></span></div>
         </form>
+
+        {/* Login Link */}
+        <div className="text-center mt-4 text-blue-600">
+          <span>Already have an account?</span>
+          <Link to="/auth/login" className="ml-1 font-semibold hover:underline">
+            Login Here
+          </Link>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
 export default AuthRegister;
-

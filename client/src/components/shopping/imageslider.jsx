@@ -80,13 +80,13 @@ const ImageSlider = () => {
       <div className="absolute top-1/2 transform -translate-y-1/2 w-full">
         <button
           onClick={handlePrev}
-          className="hidden md:block absolute left-4 sm:left-8 md:left-10 text-white text-2xl bg-gray-700 p-2 opacity-50 hover:opacity-100"
+          className="hidden md:block absolute lg:left-2 left-2 sm:left-8 md:left-10 text-white text-2xl bg-gray-500 p-2 opacity-30 hover:opacity-100"
         >
           <ArrowLeft />
         </button>
         <button
           onClick={handleNext}
-          className="hidden md:block absolute right-4 sm:right-8 md:right-10 text-white text-2xl bg-gray-700 p-2 opacity-50 hover:opacity-100"
+          className="hidden md:block absolute right-2 lg:right-2 sm:right-8 md:right-10 text-white text-2xl bg-gray-500 p-2 opacity-30 hover:opacity-100"
         >
           <ArrowRight />
         </button>
