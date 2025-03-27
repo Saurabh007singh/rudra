@@ -1,4 +1,4 @@
-import SimpleImageSlider from "react-simple-image-slider";
+
 import { filterOptions } from "@/config/const ";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useNavigate } from "react-router-dom";
