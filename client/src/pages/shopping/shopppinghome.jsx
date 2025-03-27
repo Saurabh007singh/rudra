@@ -28,6 +28,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import ImageSlider from "@/components/shopping/imageslider";
 
 export const ShoppingHome = () => {
   const images = [
@@ -100,26 +101,7 @@ export const ShoppingHome = () => {
         </div>
         <ScrollBar orientation="horizontal" className="" />
       </ScrollArea>
-      <div className="relative w-full h-[full] hidden lg:block md:block sm:block ">
-        <SimpleImageSlider
-          width="100%"
-          height={500}
-          images={images}
-          showNavs={true}
-          autoPlay={true}
-          autoPlayDelay={2.0}
-        />
-      </div>
-      <div className="relative w-[full] h-[auto] lg:hidden md:hidden sm:hidden  ">
-        <SimpleImageSlider
-          width="100%"
-          height={500}
-          images={mobileImages}
-          showNavs={true}
-          autoPlay={true}
-          autoPlayDelay={2.0}
-        />
-      </div>
+      <ImageSlider></ImageSlider>
 
       <section className="py-2 ">
         <div className="container mx-auto px-4">
