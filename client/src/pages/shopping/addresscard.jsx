@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Trash } from "lucide-react";
 
 export function AddressCard({
   addressInfo,
@@ -23,12 +24,12 @@ export function AddressCard({
         <Label>Landmark: {addressInfo?.landmark}</Label>
       </CardContent>
       <CardFooter className="flex justify-between p-3">
-        <button className="text-md w-[44%] h-12 bg-[#786B4A] text-white" onClick={() => handleEditAddress(addressInfo)}>
+        <button className="text-md w-[40%] h-10 bg-[#786B4A] rounded-lg text-white" onClick={() => handleEditAddress(addressInfo)}>
           Edit
         </button>
-        <button className="text-md w-[44%] h-12 bg-[#786B4A] text-white" onClick={() => handleDeleteAddress(addressInfo)}>
+        <Trash className="text-md h-12 text-red-600" onClick={() => handleDeleteAddress(addressInfo)}>
           Delete
-        </button>
+        </Trash>
       </CardFooter>
     </Card>
   );

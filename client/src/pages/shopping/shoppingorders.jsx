@@ -28,6 +28,7 @@ import { addReview } from "@/store/shop/review-slice";
 export function Orders() {
   const [rating, setRating] = useState(1); 
   const [reviewText, setReviewText] = useState(""); 
+  const [reviewDialog,setReviewDialog]=useState(false)
 
   const handleRating = (value) => {
     setRating(value);
@@ -59,7 +60,7 @@ export function Orders() {
 
   function handleSubmitReview(productId,userId){
 
-    dispatch(addReview({productId,userId,rating,reviewText}))
+    dispatch(addReview({productId,userId,rating,reviewText})).then(()=>{setReviewDialog(false)})
   }
 
   function ShowStatus({ status }) {
@@ -303,7 +304,7 @@ export function Orders() {
                                             </div>
                                             {item.orderStatus ===
                                               "delivered" && (
-                                              <Dialog>
+                                              <Dialog open={reviewDialog} onOpenChange={setReviewDialog}>
                                                 <DialogTrigger>
                                                   <span className="bg-[#786B4A] p-2 lg:w-[200px] text-white rounded-sm">
                                                     Review this product
@@ -368,7 +369,7 @@ export function Orders() {
                                                         />
                                                       </div>
 
-                                                      {/* Submit Button */}
+                                                  
                                                       <div className="flex justify-center mt-4">
                                                         {reviewText.trim()!=""?<button
                                                           className="bg-[#786B4A] text-white p-2 px-4 rounded-sm"

@@ -80,8 +80,11 @@ list = productList.filter(
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchProductDetails({ id })).then(()=>{dispatch(getImages(id))}).then(()=>{dispatch(getReviews(id))});
-  }, [dispatch, id]);
+    dispatch(fetchProductDetails({ id }))
+    dispatch(getImages(id))
+    dispatch(getReviews(id))
+  }, [dispatch,id]);
+
 
 
 

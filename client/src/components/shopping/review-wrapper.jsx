@@ -19,7 +19,7 @@ export function ReviewsSection({ reviews }) {
         
         {/* Display Average Rating */}
         <div className="flex items-center mb-4">
-          <span className="text-xl font-bold text-gray-700">{averageRating.toFixed(1)} </span>
+          <span className="text-xl font-bold text-gray-700">{averageRating ? averageRating.toFixed(1):null} </span>
           <div className="flex text-[#9B7237] ml-2">
             {renderStars(Math.round(averageRating))}
           </div>
