@@ -4,8 +4,8 @@ import { useSwipeable } from "react-swipeable"; // Importing react-swipeable
 
 const ImageSlider = () => {
   const images = [
-    { url: "/images/banner1.avif" },
-    { url: "/images/banner2.avif" },
+    { url: "/images/bannermain1.avif" },
+    { url: "/images/bannermain2.avif" },
   ];
 
   const mobileImages = [
