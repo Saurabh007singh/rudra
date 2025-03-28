@@ -138,7 +138,7 @@ export const ShoppingHome = () => {
         )}
       </div>
 
-      <div className="lg:mx-10 ">
+      <div className="lg:mx-10 mt-6 ">
         <img src="/images/banner-mid.avif" alt="" className="w-full" />
       </div>
 
@@ -195,7 +195,7 @@ export const ShoppingHome = () => {
       <CarouselNext />
     </Carousel>
 
-      <div className="lg:mx-10 my-3">
+      <div className="lg:mx-10 my-3 mt-2">
         <img src="/images/why-choose.webp" alt="" />
       </div>
 
