@@ -270,12 +270,12 @@ function HeaderRight({ user, isAuthenticated }) {
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <Button
+        <button
           onClick={() => navigate("/auth/login")}
-          className="text-1xl bg-[#3E506D] text-[white] font-bold cursor-pointer"
+          className="text-[12px] w-12 h-7  bg-[#3E506D] text-[white] font-bold cursor-pointer"
         >
           Login
-        </Button>
+        </button>
       )}
     </div>
   );

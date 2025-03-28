@@ -71,7 +71,7 @@ export const ShoppingHome = () => {
   return (
     <div className="flex flex-col min-h-screen w-full ">
       <ScrollArea className=" flex  justify-center whitespace-nowrap h-[210px] mb-[-30px] mt-2 ">
-        <div className="flex mx-auto my-auto w-max space-x-2 gap-6 p-4 lg:gap-20 md:gap-12 sm:gap-8 xl:gap-24 2xl:gap-28 ">
+        <div className="flex mx-auto my-auto w-max space-x-2 gap-6 p-4 lg:gap-16 md:gap-12 sm:gap-8 xl:gap-24 2xl:gap-28 ">
           {filterOptions.map((item, index) => (
             <div
               onClick={() => navigate(item.path)}
@@ -82,7 +82,7 @@ export const ShoppingHome = () => {
                 <img
                   src={`/images/${index}.avif`}
                   alt={item.id}
-                  className="h-32 w-28 object-fit scale-[2]"
+                  className="lg:h-32 lg:w-28 md:h-28 md:w-24 w-20 h-24  object-fit scale-[2]"
                 />
                 <span className="text-[13px]  font-[arial] ">
                   {item.id}
@@ -123,11 +123,11 @@ export const ShoppingHome = () => {
           </h2>
         </div>
       </section>
-      <div className="grid lg:grid-cols-4 gap-7 grid-cols-2  md:grid-cols-3 sm:grid-cols-2 mb-2 p-2 lg:mx-10 lg:h-[500px] md:h-[450px]  h-[400px]  ">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1   ">
         {isLoading ? (
           <>Loading</>
         ) : (
-          hawanEssentials.map((items) => (
+          hawanEssentials.slice(0,4).map((items) => (
             <ShoppingProductTile
               product={{ ...items }}
               key={items._id}
@@ -150,7 +150,7 @@ export const ShoppingHome = () => {
           </h2>
         </div>
       </section>
-      <div className="grid lg:grid-cols-4 gap-7 grid-cols-2  md:grid-cols-3 sm:grid-cols-2 mb-2 p-2 lg:mx-10 lg:h-[500px] md:h-[450px]  h-[400px] ">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1 ">
         {isLoading ? (
           <>Loading</>
         ) : (

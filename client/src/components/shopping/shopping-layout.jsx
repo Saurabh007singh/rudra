@@ -40,27 +40,30 @@ export const ShoppingLayout = () => {
       </div>
       <Footer></Footer>
 
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2  md:left-auto md:right-2 z-50 ">
-      <div className="flex gap-5"><a
-    href="https://wa.me/+919999999999"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-green-500 hover:text-green-600 transition-transform transform hover:scale-110"
-    aria-label="WhatsApp"
-  >
-    <FaWhatsapp size={40} />
-  </a>
+      <div className="fixed w-full z-50 bottom-0 ">
+  <div className="flex gap-5 w-full lg:justify-end md:justify-end justify-center bg-[#786B4A] p-2 lg:bg-transparent">
+    <div className="flex w-[50%] lg:hidden">
+      <a
+        href="https://wa.me/+919999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-green-500 hover:text-green-600 transition-transform transform hover:scale-110"
+        aria-label="WhatsApp"
+      >
+        <FaWhatsapp size={30} />
+      </a>
+    </div>
 
-  {/* Phone Icon */}
-  <a
-    href="tel:+91999999999"
-    className="text-blue-500 lg:hidden md:hidden xl:hidden 2xl:hidden hover:text-blue-600 transition-transform transform hover:scale-110"
-    aria-label="Call us"
-  >
-    <FaPhone size={40} className="transform scale-x-[-1]" />
-  </a></div>
-  {/* WhatsApp Icon */}
-  
+    <div className="flex">
+      <a
+        href="tel:+91999999999"
+        className="text-blue-500 lg:hidden md:hidden xl:hidden 2xl:hidden hover:text-blue-600 transition-transform transform hover:scale-110"
+        aria-label="Call us"
+      >
+        <FaPhone size={30} className="transform scale-x-[-1]" />
+      </a>
+    </div>
+  </div>
 </div>
 
     </div>
