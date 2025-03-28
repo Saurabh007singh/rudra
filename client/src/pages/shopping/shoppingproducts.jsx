@@ -102,12 +102,14 @@ list = productList.filter(
   }
   //for description
   const formatDescription = (description) => {
-    return description.split("  ").map((part, index) => (
+    if(description!=""){
+      return description.split("  ").map((part, index) => (
       <span key={index}>
         {part}
         {index < description.split("  ").length - 1 && <br />}
       </span>
-    ));
+    ));}else{return "hi there"}
+    
   };
 
   //  for rendring images
@@ -177,7 +179,7 @@ list = productList.filter(
                       <CarouselItem key={items}>
                         <img
                           src={items}
-                          className="p-1 w-full h-[400px] lg:h-[550px] md:h-[500px] object-cover rounded-lg"
+                          className="p-1 w-full h-[400px] lg:h-[550px] md:h-[500px] object-fit rounded-lg"
                           alt="product Image"
                         />
                       </CarouselItem>

@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { registerUser } from "../../store/auth-slice";
 import { useToast } from "@/hooks/use-toast";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function AuthRegister() {
-  const { toast } = useToast();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+  const { toast } = useToast();
+  const navigate =useNavigate();
   // State to store form values
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -29,21 +28,20 @@ function AuthRegister() {
 
   // Handle form submission
   const register = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
     dispatch(registerUser(formData))
       .then((data) => {
         if (data?.payload?.success) {
-          // On success, navigate to login page and show success toast
-          navigate("/auth/login");
+        navigate("/auth/login")
           toast({
             title: "Success",
-            description: "Registration successful",
+            description: "Registration successful! Please log in.",
           });
         } else {
           // On failure, show an error toast
           toast({
             title: "Failure",
-            description: "Could not register, something went wrong",
+            description: data.payload.message,
           });
         }
       })
@@ -51,18 +49,18 @@ function AuthRegister() {
         // In case of unexpected errors, show a generic error toast
         toast({
           title: "Failure",
-          description: "Could not register, something went wrong",
+          description: "Something went wrong. Please try again later.",
         });
       });
   };
 
   return (
-    <div className="flex justify-center items-center h-screen  opacity-90 ">
-      <div className=" bg-white rounded-lg shadow-lg p-6 w-[400px] h-[600px] ">
+    <div className="flex justify-center items-center opacity-90">
+      <div className="w-[400px] h-[600px] bg-white rounded-lg shadow-lg p-6">
         {/* Header Section */}
         <div className="text-center mb-6">
           <img src="/images/rudra.png" alt="rudra" />
-          <p className="text-gray-500 mt-2">Create your account to get started</p>
+          <p className="text-gray-500 mt-2">Register to continue</p>
         </div>
 
         {/* Form Section */}

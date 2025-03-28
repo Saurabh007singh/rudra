@@ -108,7 +108,7 @@ export const ShoppingHome = () => {
         ) : (
           starProduct.map((item) => (
             <div onClick={() => { navigate(`/shop/product/${item._id}`); }} key={item._id} className="h-[450px] w-[400px]  shadow-lg ">
-              <img src={item.image} alt=""  className="object-cover h-full w-full hover:scale-110 transition-transform duration-300"/>
+              <img src={item.image} alt=""  className="object-fit h-full w-full hover:scale-110 transition-transform duration-300"/>
               
             </div>
           ))
@@ -123,7 +123,7 @@ export const ShoppingHome = () => {
           </h2>
         </div>
       </section>
-      <div className="grid lg:grid-cols-4 gap-4 grid-cols-2 mb-2 p-2 lg:mx-10  ">
+      <div className="grid lg:grid-cols-4 gap-7 grid-cols-2  md:grid-cols-3 sm:grid-cols-2 mb-2 p-2 lg:mx-10 lg:h-[500px] md:h-[450px]  h-[400px]  ">
         {isLoading ? (
           <>Loading</>
         ) : (
@@ -150,11 +150,11 @@ export const ShoppingHome = () => {
           </h2>
         </div>
       </section>
-      <div className="grid lg:grid-cols-5 gap-4 grid-cols-2 mt-2 mb-2 p-2 lg:mx-10 ">
+      <div className="grid lg:grid-cols-4 gap-7 grid-cols-2  md:grid-cols-3 sm:grid-cols-2 mb-2 p-2 lg:mx-10 lg:h-[500px] md:h-[450px]  h-[400px] ">
         {isLoading ? (
           <>Loading</>
         ) : (
-          dhoop.map((items) => (
+          dhoop.slice(0,4).map((items) => (
             <ShoppingProductTile
               product={{ ...items }}
               key={items._id}

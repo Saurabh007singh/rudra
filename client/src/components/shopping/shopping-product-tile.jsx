@@ -42,7 +42,7 @@ export function ShoppingProductTile({
  
 
   return (
-    <div className=" relative flex flex-col justify-between p-1 h-auto md:h-[350px]  transition-shadow shadow-lg">
+    <div className=" relative flex flex-col justify-between p-1 h-auto   transition-shadow shadow-lg">
       <div
         onClick={() => handleGetProductsDetails(product?._id)}
         className="h-[70%] overflow-hidden hover:cursor-pointer"
@@ -124,12 +124,12 @@ export function ShoppingProductTile({
           className="absolute text-[red]  top-2 right-2  hover:scale-125 transition-transform duration-200 "
         />:<Heart
         onClick={() => handleAddToWhishList()}
-        className="absolute  top-2 right-2 text-[#9A703E] hover:scale-125 transition-transform duration-200 "
+        className="absolute  top-2 right-2 text-white hover:scale-125 transition-transform duration-200 "
       />
       ) : (
         <Dialog>
           <DialogTrigger>
-            <Heart className="absolute  top-2 right-2 text-[#9A703E] hover:scale-125 transition-transform duration-200 " />
+            <Heart className="absolute  top-2 right-2 text-white hover:scale-125 transition-transform duration-200 " />
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>

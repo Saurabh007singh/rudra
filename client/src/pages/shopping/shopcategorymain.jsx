@@ -66,11 +66,11 @@ export function Category() {
               <ArrowRight className="text-[#99703A]"/>
               </div>
             </section>
-            <div className="grid lg:grid-cols-5 gap-4 grid-cols-2 mt-2 mb-2 p-2 lg:mx-10 shadow-lg ">
+            <div className="grid lg:grid-cols-4 gap-4 grid-cols-2  md:grid-cols-3 mt-2 mb-2 p-2 lg:mx-10 shadow-lg ">
               {isLoading ? (
                 <>Loading..</>
               ) : (
-                products(items.label).map((items) => (
+                products(items.label).slice(0,4).map((items) => (
                   <ShoppingProductTile
                     product={{ ...items }}
                     key={items._id}
