@@ -21,9 +21,9 @@ export function Footer() {
       <img src="/images/rudra.png" alt="Logo" className="h-16 w-auto" />
     </div>
   
-    {/* Main Content Section */}
+   
     <div className="flex flex-col w-full  gap-8 lg:flex-row lg:gap-4">
-      {/* Stay in Touch Section */}
+      
       <div className="flex flex-col gap-7 items-center w-full lg:w-[34%]">
         <span className="font-semibold mt-6">Stay In Touch</span>
         <span className="text-slate-600 mt-5">
@@ -38,13 +38,21 @@ export function Footer() {
             <span>info@rudra.com</span>
           </div>
           <div className="flex items-center gap-2">
-            <FaWhatsapp className="w-6 h-6 text-[#9B733E]" />
-            <span>+91 9999999999</span>
+          <a
+        href="https://wa.me/+919810300847"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-6 h-6 text-[#9B733E]"
+        aria-label="WhatsApp"
+      >
+        <FaWhatsapp className="w-6 h-6 text-[#9B733E]" />
+      </a>
+            <span>+91 9810300847</span>
           </div>
         </div>
       </div>
   
-      {/* Top Categories Section */}
+      
       <div className="flex flex-col gap-2 w-full lg:w-[16%]">
         <span className="mt-5 font-semibold text-slate-600">Top Categories</span>
         <div className="flex flex-col gap-4 mt-2">
@@ -62,7 +70,7 @@ export function Footer() {
         </div>
       </div>
   
-      {/* Festival Specials Section */}
+      
       <div className="flex flex-col gap-2 w-full lg:w-[16%]">
         <span className="mt-5 font-semibold text-slate-600">Festival Specials</span>
         <div className="flex flex-col gap-4 mt-2">
@@ -80,7 +88,7 @@ export function Footer() {
         </div>
       </div>
   
-      {/* About Us Section */}
+     
       <div className="flex flex-col gap-2 w-full lg:w-[16%]">
         <span className="mt-5 font-semibold text-slate-600">About Us</span>
         <div className="flex flex-col gap-4 mt-2">
@@ -94,7 +102,7 @@ export function Footer() {
         </div>
       </div>
   
-      {/* Quick Links Section */}
+      
       <div className="flex flex-col gap-2 w-full lg:w-[16%]">
         <span className="mt-5 font-semibold text-slate-600">Quick Links</span>
         <div className="flex flex-col gap-4 mt-2">
@@ -108,7 +116,7 @@ export function Footer() {
         </div>
       </div>
   
-      {/* Help Section */}
+     
       <div className="flex flex-col gap-2 w-full lg:w-[16%]">
         <span className="mt-5 font-semibold text-slate-600">Help</span>
         <div className="flex flex-col gap-4 mt-2">

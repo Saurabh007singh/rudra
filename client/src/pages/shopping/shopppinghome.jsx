@@ -237,9 +237,9 @@ export const ShoppingHome = () => {
 
 </span>
 </div>
-<Dialog className="max-w-[800px]">  {/* Adjust max width for the dialog */}
+<Dialog className="max-w-[800px]">  
   <DialogTrigger className="underline text-[#9B703C]">Read More...</DialogTrigger>
-  <DialogContent className="w-[90vw] max-w-[900px] h-[80vh]"> {/* Increase width & height */}
+  <DialogContent className="w-[90vw] max-w-[900px] h-[80vh]"> 
     <DialogHeader>
       <DialogTitle>Are you absolutely sure?</DialogTitle>
       

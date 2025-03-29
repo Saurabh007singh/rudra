@@ -44,7 +44,7 @@ export const ShoppingLayout = () => {
   <div className="flex gap-5 w-full lg:justify-end md:justify-end justify-center bg-[#786B4A] p-2 lg:bg-transparent">
     <div className="flex w-[50%] lg:hidden">
       <a
-        href="https://wa.me/+919999999999"
+        href="https://wa.me/+919810300847"
         target="_blank"
         rel="noopener noreferrer"
         className="text-green-500 hover:text-green-600 transition-transform transform hover:scale-110"
@@ -56,7 +56,7 @@ export const ShoppingLayout = () => {
 
     <div className="flex">
       <a
-        href="tel:+91999999999"
+        href="tel:+919810300847"
         className="text-blue-500 lg:hidden md:hidden xl:hidden 2xl:hidden hover:text-blue-600 transition-transform transform hover:scale-110"
         aria-label="Call us"
       >
