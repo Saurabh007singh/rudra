@@ -9,8 +9,8 @@ const ImageSlider = () => {
   ];
 
   const mobileImages = [
-    { url: "/images/mobilebanner1.avif" },
-    { url: "/images/mobilebanner2.avif" },
+    { url: "/images/mobilebannermain1.avif" },
+    { url: "/images/mobilebannermain2.avif" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

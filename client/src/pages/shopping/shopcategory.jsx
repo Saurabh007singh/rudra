@@ -58,6 +58,7 @@ const navigate=useNavigate()
         (products) => products.category === "Sacred Purification Items"
       );
       image = "/images/banner3.avif";
+      image2="/images/mobilebanner3.avif"
       break;
     case "festival":
       title = "Festival Special Kits";
@@ -65,6 +66,7 @@ const navigate=useNavigate()
         (products) => products.category === "Festival Special Kits"
       );
       image = "/images/banner4.avif";
+      image2="/images/mobilebanner4.avif"
       break;
     case "ceremonial":
       title = "Ceremonial & Ritual Kits";
@@ -72,6 +74,7 @@ const navigate=useNavigate()
         (products) => products.category === "Ceremonial & Ritual Kits"
       );
       image = "/images/banner5.avif";
+      image2="/images/mobilebanner5.avif"
       break;
       case "ornaments":
       title = "Ornaments & Wearables";
@@ -79,6 +82,7 @@ const navigate=useNavigate()
         (products) => products.category === "Ornaments & Wearables"
       );
       image = "/images/ornaments.avif";
+      image2="/images/mobilebanner6.avif"
       break;
       
     default:
