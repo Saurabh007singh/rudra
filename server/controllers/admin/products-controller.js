@@ -50,10 +50,24 @@ const addProduct=async(req,res)=>{
 //fetch all products
 const fetchAllProducts=async(req,res)=>{
   try {
-    const listOfProducts=await Product.find({})
+    const page=parseInt(req.query.page)
+    const limit=parseInt(req.query.limit)
+
+    const skip=(page-1)*limit;
+
+    const listOfProducts=await Product.find({}).skip(skip).limit(limit)
+
+    const totalProducts=await Product.countDocuments();
+
+    
     res.status(200).json({
       success:true,
-      data:listOfProducts
+      data:listOfProducts,
+      pagination:{
+        currentPage:page,
+        totalPages:Math.ceil(totalProducts/limit),
+        totalProducts:totalProducts,
+      }
     })
 
   } catch (error) {

@@ -1,4 +1,5 @@
 import { ShoppingProductTile } from "@/components/shopping/shopping-product-tile";
+import { filterOptions } from "@/config/const ";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -91,6 +92,13 @@ const navigate=useNavigate()
       image = "";
   }
 
+  const lastword=window.location.pathname.split('/').filter(Boolean).pop();
+
+  const list=filterOptions.filter(products=>products.img != lastword )
+  console.log(list)
+
+  
+
   return (
     <>
       <img
@@ -112,7 +120,7 @@ const navigate=useNavigate()
             &gt;
             <Link to="/shop/category" className="text-[#5A769E]">
               
-              Category
+              All Category
             </Link>
             &gt;
             <Link
@@ -123,6 +131,9 @@ const navigate=useNavigate()
             </Link>
           </nav>
         </div>
+
+        
+
         <section className="py-2 ">
         <div className="container mx-auto px-4">
           <h2 className="text-[30px] p-2 font-[arial] text-center ">
@@ -143,6 +154,19 @@ const navigate=useNavigate()
             ></ShoppingProductTile>
           ))
         )}
+      </div>
+      <section className="py-2 ">
+        <div className="container mx-auto px-4">
+          <h2 className="text-[30px] p-2 font-[arial] text-center ">
+            Explore more categories
+          </h2>
+        </div>
+      </section>
+
+      <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  gap-4 mx-10">
+      {list.map(items=>{ return <div onClick={()=>{navigate(items.path)}} key={items.id} className="flex flex-col"><img  src={`/images/${items.icon}.avif` } alt={items.id} className="rounded-lg"/><span className="text-center">{items.id}</span></div>
+     
+      })}
       </div>
     </>
   );

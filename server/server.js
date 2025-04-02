@@ -14,8 +14,8 @@ const imageUploadRouter=require("./router/productImages");
 const whishListRouter=require("./router/whishrouter");
 const orderRoutes=require("./router/order-routes");
 const mailRouter=require("./router/mail-router");
-const reviewRouter=require("./router/review-routes")
-
+const reviewRouter=require("./router/review-routes");
+const locationRouter=require("./router/location-router")
 const app = express();
 
 
@@ -48,6 +48,7 @@ app.use("/api/whish",whishListRouter);
 app.use("/api/orders",orderRoutes);
 app.use("/api",mailRouter);
 app.use("/api/review",reviewRouter)
+app.use("/api",locationRouter)
 
 const PORT = process.env.PORT;
 db().then(() => {

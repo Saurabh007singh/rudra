@@ -160,13 +160,12 @@ export const addProductFormElements = [
 ];
 
 
-export const filterOptions=[{id:"Hawan Essentials",label:"Hawan Essentials",path:"/shop/category/havan",img:"havan"},
-  {id:"Dhoop & Fragrances",label:"Dhoop & Fragrances",path:"/shop/category/dhoop",img:"dhoop"},
-  {id:"Sacred Purification Items",label:"Sacred Purification Items",path:"/shop/category/sacred",img:"sacred"},
-  {id:"Festival Special Kits",label:"Festival Special Kits",path:"/shop/category/festival",img:"festival"},
-  {id:"Ceremonial & Ritual Kits",label:"Ceremonial & Ritual Kits",path:"/shop/category/ceremonial",img:"ceremonial"},
-  {id:"Ornaments & Wearables",label:"Ornaments & Wearables",path:"/shop/category/ornaments",img:"ornaments"}
-  
+export const filterOptions=[{id:"Hawan Essentials",label:"Hawan Essentials",path:"/shop/category/havan",img:"havan",icon:"havanicon"},
+  {id:"Dhoop & Fragrances",label:"Dhoop & Fragrances",path:"/shop/category/dhoop",img:"dhoop",icon:"dhoopicon"},
+  {id:"Sacred Purification Items",label:"Sacred Purification Items",path:"/shop/category/sacred",img:"sacred",icon:"sacredicon"},
+  {id:"Festival Special Kits",label:"Festival Special Kits",path:"/shop/category/festival",img:"festival",icon:"festivalicon"},
+  {id:"Ceremonial & Ritual Kits",label:"Ceremonial & Ritual Kits",path:"/shop/category/ceremonial",img:"ceremonial",icon:"cerimonialicon"},
+  {id:"Ornaments & Wearables",label:"Ornaments & Wearables",path:"/shop/category/ornaments",img:"ornaments",icon:"ornamentsicon"}
 ]
 
 

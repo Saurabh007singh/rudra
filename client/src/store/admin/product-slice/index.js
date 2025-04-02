@@ -25,9 +25,9 @@ export const addNewProduct = createAsyncThunk(
 
 export const fetchAllProducts = createAsyncThunk(
   "/products/fetchAllProducts",
-  async () => {
+  async ({page,limit}) => {
     const result = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/admin/products/get`
+      `${import.meta.env.VITE_API_URL}/api/admin/products/get?page=${page}&limit=${limit}`
     );
     return result.data;
   }

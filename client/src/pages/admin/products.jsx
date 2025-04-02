@@ -31,6 +31,12 @@ const initialFormData = {
 };
 
 export const AdminProducts = () => {
+
+const [currentPage,setCurrentPage]=useState(1);
+const [totalPages,setTotalPages]=useState(1);
+const [itemsPerPage,setItemsPerPage]=useState(12)
+
+
   const [createProductDialogue, setCreateProductDialogue] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
 
@@ -47,8 +53,10 @@ export const AdminProducts = () => {
   
 
   useEffect(() => {
-    dispatch(fetchAllProducts());
-  }, [dispatch]);
+    dispatch(fetchAllProducts({page:currentPage,limit:itemsPerPage})).then(data=>{console.log(data);
+      setTotalPages(data.payload.pagination.totalPages)
+    });
+  }, [dispatch,currentPage,itemsPerPage]);
 
   function onSubmit(e) {
     e.preventDefault();
@@ -56,7 +64,7 @@ export const AdminProducts = () => {
       formData
     })).then(data=>{
       if(data?.payload?.success){
-        dispatch(fetchAllProducts())
+        dispatch(fetchAllProducts({page:currentPage,limit:itemsPerPage}))
         setCreateProductDialogue(false)
         setFormData(initialFormData); 
         setCurrentEditedId(null)
@@ -80,11 +88,12 @@ export const AdminProducts = () => {
 
   function handleDelete(getCurrentProductId){
     dispatch(deleteProduct({id:getCurrentProductId}));
-    dispatch(fetchAllProducts())
+    dispatch(fetchAllProducts({page:currentPage,limit:itemsPerPage}))
   }
 
-  function handleDownloadFullExel(item) {
-    console.log(item)
+  function handleDownloadFullExel() {
+    let item
+    dispatch(fetchAllProducts({page:1,limit:500})).then(data=>item =data.payload.data).then(()=>{
       let productsData = item.map((item) => ({
         productId: item._id,
         category:item.category,
@@ -109,19 +118,32 @@ export const AdminProducts = () => {
         document.body.appendChild(link); // Append the link to the document
         link.click(); // Simulate a click to trigger the download
         document.body.removeChild(link); // Clean up by removing the link
-      }
+      }})
+    
     }
+
+  const handlePrevPage=()=>{
+    if(currentPage>1){
+      setCurrentPage(currentPage-1)
+    }
+  }
+
+  const handleNextPage=()=>{
+    if(currentPage<totalPages){
+      setCurrentPage(currentPage+1)
+    }
+  }
   
 
   return (
     <Fragment>
       <div className="mb-5 w-full flex justify-between ">
       <div
-              onClick={() => handleDownloadFullExel(productList)}
+              onClick={() => handleDownloadFullExel()}
               className="flex felx-row bg-red-500 rounded h-10 w-50 items-center p-2 cursor-pointer"
             >
               <FileText />
-              <span>Download all Orders </span>
+              <span>Download product Details </span>
             </div>
         <Button
           onClick={() => {
@@ -136,6 +158,18 @@ export const AdminProducts = () => {
       </div>
       <div className="grid gap-2 md:grid-cols-4 lg-grid-cols-4 ">{productList && productList.length>0 ? productList.map((productItems) => (<AdminProductTile key={productItems._id} product={productItems} setCurrentEditedId={setCurrentEditedId} setFormData={setFormData} setCreateProductDialogue={setCreateProductDialogue} handleDelete={handleDelete}></AdminProductTile>)):<span>No products addded</span>}
       </div>
+      <div className="flex justify-between items-center mt-5">
+      <Button disabled={currentPage === 1} onClick={handlePrevPage}>
+        Previous
+      </Button>
+      <span>
+        Page {currentPage} of {totalPages}
+      </span>
+      <Button disabled={currentPage === totalPages} onClick={handleNextPage}>
+        Next
+      </Button>
+    </div>
+
         <Sheet
           open={createProductDialogue}
           onOpenChange={() => {

@@ -17,7 +17,7 @@ export const ShoppingLayout = () => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
  
   useEffect(() => {
-    dispatch(fetchAllProducts());
+    dispatch(fetchAllProducts({page:1,limit:1000}));
     if (isAuthenticated && user?.id) {
       dispatch(fetchCartItems({ userId: user?.id }));
       dispatch(fetchWhishList({ userId: user?.id }));
