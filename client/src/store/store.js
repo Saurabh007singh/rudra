@@ -9,6 +9,7 @@ import whishListSlice from "../store/shop/whish-list-slice"
 import orderSlice from "../store/shop/order-slice"
 import reviewSlice from "../store/shop/review-slice"
 import locationSlice from "../store/shop/location-slice"
+import blogSlice from "../store/admin/blogslice"
 
 const store=configureStore({
   reducer:{
@@ -21,7 +22,8 @@ const store=configureStore({
     whish:whishListSlice,
     orders:orderSlice,
     reviews:reviewSlice,
-    location:locationSlice
+    location:locationSlice,
+    blog:blogSlice
   }
 })
 

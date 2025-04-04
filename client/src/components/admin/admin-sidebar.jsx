@@ -5,6 +5,7 @@ import { MdDashboard } from "react-icons/md";
 import { MdOutlineVerified } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../ui/sheet";
+import { Rss } from "lucide-react";
 
 const adminSidebarMenuItems = [
   {
@@ -24,6 +25,12 @@ const adminSidebarMenuItems = [
     lable: "Orders",
     path: "/admin/orders",
     icon: <MdOutlineVerified />,
+  },
+  {
+    id: "blogs",
+    lable: "blogs",
+    path: "/admin/blogs",
+    icon:<Rss />,
   },
 ];
 

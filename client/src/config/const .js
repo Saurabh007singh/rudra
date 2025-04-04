@@ -43,6 +43,19 @@
 //   }
 // ];
 
+export const addblogelements=[ {
+  label: "Title",
+  name: "title",
+  componentType: "input",
+  type: "text",
+  placeholder: "Enter blog title",
+},{
+  label: "Content",
+  name: "content",
+  componentType: "textarea",
+  placeholder: "Enter content here",
+},]
+
 export const addProductFormElements = [
   {
     label: "Title",

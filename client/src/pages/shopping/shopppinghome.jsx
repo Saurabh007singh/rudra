@@ -35,6 +35,7 @@ export const ShoppingHome = () => {
   const { productList, isLoading } = useSelector(
     (state) => state.adminProducts
   );
+  const {allBlogs,isBlogLoading}=useSelector(state=>state.blog)
   const { user } = useSelector((state) => state.auth);
 
   const starProduct = productList.filter(
@@ -73,7 +74,6 @@ if ("geolocation" in navigator) {
       
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          console.log(position); // Logs the entire position object
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
           const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
@@ -81,14 +81,14 @@ if ("geolocation" in navigator) {
             .then((response) => response.json())
             .then((data) => {
               if (data && data.address) {
-                console.log(data)
+              
                const locationData={address:data.address.city,state:data.address.state,country:data.address.country};
-               console.log(locationData)
+         
                dispatch(saveLocation(locationData))
               
                 localStorage.setItem("locationStored",true);
               } else {
-                console.log("Geocoding failed");
+                console.log("");
               }
             }).catch((error) => {
               console.error("Error");
@@ -98,24 +98,24 @@ if ("geolocation" in navigator) {
           console.error("Error occurred while getting location:", error);
           switch (error.code) {
             case error.PERMISSION_DENIED:
-              console.log("User denied the request for Geolocation.");
+              console.log("");
               break;
             case error.POSITION_UNAVAILABLE:
-              console.log("Location information is unavailable.");
+              console.log("");
               break;
             case error.TIMEOUT:
-              console.log("The request to get user location timed out.");
+              console.log("");
               break;
             case error.UNKNOWN_ERROR:
-              console.log("An unknown error occurred.");
+              console.log("");
               break;
           }
         }
       );
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      console.log("");
     }
-    }else{console.log("location already stored")}
+    }else{console.log("")}
     
   },[])
   
@@ -174,14 +174,14 @@ if ("geolocation" in navigator) {
         )}
       </div>
 
-      <section className="py-2 ">
+      <section className="py-2 mt-4 ">
         <div className="container mx-auto px-4">
           <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
             Hawan Essentials
           </h2>
         </div>
       </section>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1   ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1   ">
         {isLoading ? (
           <>Loading</>
         ) : (
@@ -209,7 +209,7 @@ if ("geolocation" in navigator) {
           </h2>
         </div>
       </section>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1 ">
         {isLoading ? (
           <>Loading</>
         ) : (
@@ -274,12 +274,22 @@ if ("geolocation" in navigator) {
           </div>
         </section>
         <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
+          {allBlogs.map((item,index) => (
             <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/3">
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-3xl font-semibold">{index + 1}</span>
+                    <div onClick={()=>{navigate(`/shop/blogs/${item._id}`)}} ><div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-[250px] w-full object-fit rounded-t-lg"
+                  />
+                </div>
+                <div className="p-2 text-center">
+                  <span className="font-arial text-[18px]">{item.title}</span>
+                </div></div>
+                  
                   </CardContent>
                 </Card>
               </div>

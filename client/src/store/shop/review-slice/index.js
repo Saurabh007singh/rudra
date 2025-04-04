@@ -9,12 +9,12 @@ const initialState = {
 export const addReview = createAsyncThunk(
   "/review/addReview",
   async ({productId,userId,rating,reviewText}) => {
-    console.log(productId,userId)
+    
     const response =await axios.post(
       `${import.meta.env.VITE_API_URL}/api/review/add`,
       {productId,userId,rating,reviewText}
     );
-    console.log(response);
+   
     return response.data;
   }
 );

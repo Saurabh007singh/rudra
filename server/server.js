@@ -16,6 +16,7 @@ const orderRoutes=require("./router/order-routes");
 const mailRouter=require("./router/mail-router");
 const reviewRouter=require("./router/review-routes");
 const locationRouter=require("./router/location-router")
+const blogRouter=require("./router/bolg-router")
 const app = express();
 
 
@@ -49,6 +50,7 @@ app.use("/api/orders",orderRoutes);
 app.use("/api",mailRouter);
 app.use("/api/review",reviewRouter)
 app.use("/api",locationRouter)
+app.use("/api/admin/blog",blogRouter)
 
 const PORT = process.env.PORT;
 db().then(() => {

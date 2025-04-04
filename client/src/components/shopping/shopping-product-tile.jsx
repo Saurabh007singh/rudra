@@ -42,7 +42,7 @@ export function ShoppingProductTile({
  
 
   return (
-    <div className=" relative flex flex-col justify-between p-1 h-[350px]  lg:h-[500px] md:h-[450px] sm:h-[400px]   transition-shadow shadow-lg">
+    <div className=" relative flex flex-col justify-between p-1 h-[300px]  lg:h-[450px] md:h-[400px] sm:h-[350px]   transition-shadow shadow-lg">
       <div
         onClick={() => handleGetProductsDetails(product?._id)}
         className="h-[70%] overflow-hidden hover:cursor-pointer"

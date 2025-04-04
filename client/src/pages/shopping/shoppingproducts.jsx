@@ -38,6 +38,7 @@ import {
 import { Loading } from "../loading/loading";
 import { getReviews } from "@/store/shop/review-slice";
 import { ReviewsSection } from "@/components/shopping/review-wrapper";
+import { ChevronRight } from "lucide-react";
 
 export function ShoppingProduct() {
   const { id } = useParams();
@@ -52,7 +53,7 @@ export function ShoppingProduct() {
     (state) => state.address
   );
   const {reviews}=useSelector(state=>state.reviews)
-  console.log(reviews)
+
 
   
 
@@ -148,19 +149,19 @@ list = productList.filter(
           {isFetchProductsLoading ? (
             <p>Loading...</p>
           ) : productDetails ? (
-            <div className="flex felx-row mt-10 ml-4 lg:ml-10">
-              <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
-                <Link to="/shop/home" className="text-[#5A769E]">
+            <div className="flex felx-row mt-4 ml-4 lg:ml-10">
+              <nav style={{ marginBottom: "20px", fontSize: "16px" }} className="flex flex-row">
+                <Link to="/shop/home" className="text-[#5A769E] text-[14px]">
                   Home
                 </Link>
-                &gt;
-                <Link to="/shop/listing" className="text-[#5A769E]">
+                <ChevronRight className="text-slate-500"/>
+                <Link to="/shop/listing" className="text-[#5A769E] text-[14px]">
                   Products
                 </Link>
-                &gt;
+                <ChevronRight className="text-slate-500"/>
                 <Link
                   to={`/shop/product/${productDetails._id}`}
-                  className="text-[#9B7442]"
+                  className="text-[#9B7442] text-[14px]"
                 >
                   {productDetails.title}
                 </Link>

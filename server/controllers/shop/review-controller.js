@@ -15,7 +15,7 @@ try {
     const product=await Product.findById(productId);
 
     if(!product){
-      console.log("yeah");
+      
       return res.status(404).json({
       success:false,
       message:"product not found"
@@ -23,7 +23,7 @@ try {
 
     const user=await User.findById(userId);
     if(!user){
-      console.log("yeah");
+      
       return res.status(404).json({
         success:false,
         message:"user not found"

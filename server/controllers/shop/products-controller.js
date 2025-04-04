@@ -88,8 +88,8 @@ try {
 
 const updateProductStock=async(req,res)=>{
 const {cartItems}=req.body;
-console.log(cartItems)
-console.log("called")
+
+
 try {
   for(let item of cartItems){
     const product=await Product.findById(item.productId);

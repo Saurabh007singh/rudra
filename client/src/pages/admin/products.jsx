@@ -53,7 +53,7 @@ const [itemsPerPage,setItemsPerPage]=useState(12)
   
 
   useEffect(() => {
-    dispatch(fetchAllProducts({page:currentPage,limit:itemsPerPage})).then(data=>{console.log(data);
+    dispatch(fetchAllProducts({page:currentPage,limit:itemsPerPage})).then(data=>{
       setTotalPages(data.payload.pagination.totalPages)
     });
   }, [dispatch,currentPage,itemsPerPage]);
@@ -187,7 +187,7 @@ const [itemsPerPage,setItemsPerPage]=useState(12)
             <ImageUpload
               imageFile={imageFile}
               setImageFile={setImageFile}
-              uploadedImageUrl={uploadedImageUrl}
+              uploaImagededImageUrl={uploadedImageUrl}
               setUploadedImageUrl={setUploadedImageUrl}
               imageLoadingState={imageLoadingState}
               setImageLoadingState={setImageLoadingState}

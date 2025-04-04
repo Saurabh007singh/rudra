@@ -13,7 +13,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from "@radix-ui/react-dropdown-menu";
-import { ArrowUpDownIcon } from "lucide-react";
+import { ArrowUpDownIcon, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -63,13 +63,13 @@ const array=[0,1,2,3,4,5,6]
   return (
     <div className="">
       <img src="/images/banner2.avif" alt="banner image"  className="w-full h-[400px] object-cover object-center"/>
-      <div className="flex felx-row  ml-4 lg:ml-14">
-          <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
-            <Link to="/shop/home" className="text-[#5A769E]">
+      <div className="flex flex-row mt-4  ml-4 lg:ml-14">
+          <nav style={{ marginBottom: "20px", fontSize: "16px" }} className="flex flex-row">
+            <Link to="/shop/home" className="text-[#5A769E] text-[14px]">
               Home
             </Link>
-            &gt;
-            <Link to="/shop/listing" className="text-[#9A733F]">
+            <ChevronRight className="text-slate-500"/>
+            <Link to="/shop/listing" className="text-[#9A733F] text-[14px]">
               
               All Products
             </Link>
@@ -77,7 +77,7 @@ const array=[0,1,2,3,4,5,6]
  
           </nav>
         </div>
-        <div className="lg:p-4 p-2 border-b flex items-center justify-between lg:mx-10 mx-4">
+        <div className="lg:p-4 p-2 border-b flex items-center justify-between mt-[-25px] lg:mx-10 mx-4">
           <h2 className="text-md font-semibold">All products</h2>
           <div className="flex items-center gap-3">
             <span className="text-muted-foreground">10 products</span>
@@ -108,7 +108,7 @@ const array=[0,1,2,3,4,5,6]
             </DropdownMenu>
           </div>
         </div>
-        <div className="grid lg:grid-cols-5 mx-2  grid-cols-2 lg:gap-6 gap-2 lg:mx-10 lg:mt-10 mt-4 mb-10">
+        <div className="grid lg:grid-cols-4 mx-2 md:grid-cols-3  grid-cols-2 lg:gap-6 gap-2 lg:mx-10 lg:mt-10 mt-4 mb-10">
           {
             productList && productList.length > 0
               ? productList.map((productItem) => (

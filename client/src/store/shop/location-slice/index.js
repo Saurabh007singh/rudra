@@ -5,9 +5,9 @@ const initialState={
 }
 
 export const saveLocation=createAsyncThunk("/shop/saveLocation",async(locationData)=>{
-  console.log(locationData)
+
 const response=await axios.post(`${import.meta.env.VITE_API_URL}/api/location`,{locationData})
-console.log(response.data)
+
 return response.data;
 })
 

@@ -1,7 +1,7 @@
 import { ShoppingProductTile } from "@/components/shopping/shopping-product-tile";
 import { filterOptions } from "@/config/const ";
 import { fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -42,13 +42,13 @@ export function Category() {
         alt="category banner"
         className="w-auto h-auto lg:h-[400px] lg:w-full"
       />
-      <div className="flex felx-row mt-10 ml-4 lg:ml-10">
-        <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
-          <Link to="/shop/home" className="text-[#5A769E]">
+      <div className="flex flex-row mt-5 ml-4 lg:ml-10">
+        <nav style={{ marginBottom: "20px", fontSize: "16px" }} className="flex flex-row">
+          <Link to="/shop/home" className="text-[#5A769E] text-[14px]">
             Home
           </Link>
-          &gt;
-          <Link className="text-[#9B7442]"> All Categories</Link>
+          <ChevronRight className="text-slate-500"/>
+          <Link className="text-[#9B7442] text-[14px]"> All Categories</Link>
         </nav>
       </div>
       <div className="">

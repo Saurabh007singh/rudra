@@ -1,6 +1,7 @@
 import { ShoppingProductTile } from "@/components/shopping/shopping-product-tile";
 import { filterOptions } from "@/config/const ";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
+import { ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -95,7 +96,7 @@ const navigate=useNavigate()
   const lastword=window.location.pathname.split('/').filter(Boolean).pop();
 
   const list=filterOptions.filter(products=>products.img != lastword )
-  console.log(list)
+
 
   
 
@@ -112,17 +113,17 @@ const navigate=useNavigate()
         className="w-auto h-auto lg:h-[500px] lg:w-full lg:hidden md:hidden sm:hidden"
       />
      
-      <div className="flex felx-row mt-10 ml-4 lg:ml-10">
-          <nav style={{ marginBottom: "20px", fontSize: "16px" }}>
-            <Link to="/shop/home" className="text-[#5A769E]">
+      <div className="flex flex-row mt-4 ml-4 lg:ml-10">
+          <nav style={{ marginBottom: "20px", fontSize: "16px" }} className="flex flex-row">
+            <Link to="/shop/home" className="text-[#5A769E] text-[14px]">
               Home
             </Link>
-            &gt;
-            <Link to="/shop/category" className="text-[#5A769E]">
+            <ChevronRight className="text-slate-500"/>
+            <Link to="/shop/category" className="text-[#5A769E] text-[14px]">
               
               All Category
             </Link>
-            &gt;
+            <ChevronRight className="text-slate-500 text-[14px]"/>
             <Link
               className="text-[#9B7442]"
             >

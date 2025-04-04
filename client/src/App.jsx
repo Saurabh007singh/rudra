@@ -6,7 +6,6 @@ import AdminLayout from "./components/admin/admin-layout";
 import { AdminDashboard } from "./pages/admin/dashboard";
 import { AdminProducts } from "./pages/admin/products";
 import { AdminOrders } from "./pages/admin/orders";
-import { AdminFeatures } from "./pages/admin/features";
 import { ShoppingLayout } from "./components/shopping/shopping-layout";
 import { NotFound } from "./pages/err/notfound";
 import { ShoppingHome } from "./pages/shopping/shopppinghome";
@@ -25,10 +24,12 @@ import { ProductDetails } from "./components/admin/productdetails";
 import { AboutUs } from "./pages/shopping/aboutus";
 import { ContactUs } from "./pages/shopping/contact-us";
 import { Category } from "./pages/shopping/shopcategorymain";
-import { Blogs } from "./pages/shopping/blogs";
+import { AdminBlogs } from "./pages/admin/blogs";
 import { PayUpi } from "./components/payment/payviaupi";
 import { Congrats } from "./components/payment/congrats";
 import { PayDelivery } from "./components/payment/pay-on-delivery";
+import { Blogs } from "./pages/shopping/blogs";
+import { BlogsPage } from "./components/shopping/blogs-page";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -83,14 +84,17 @@ function App() {
           ></Route>
           <Route path="orders" element={<AdminOrders></AdminOrders>}></Route>
           <Route
-            path="features"
-            element={<AdminFeatures></AdminFeatures>}
+            path="blogs"
+            element={<AdminBlogs></AdminBlogs>}
           ></Route>
         </Route>
 
         <Route path="/shop" element={<ShoppingLayout isAuthenticated={isAuthenticated} user={user}/>}>
           <Route path="home" element={<ShoppingHome></ShoppingHome>}></Route>
-          <Route path="blogs" element={<Blogs></Blogs>}></Route>
+          <Route path="blogs" element={<Blogs></Blogs>}>
+          
+          </Route>
+          <Route path="blogs/:id" element={<BlogsPage></BlogsPage>}></Route>
           <Route
             path="category/:category"
             element={<ShoppingCategory></ShoppingCategory>}

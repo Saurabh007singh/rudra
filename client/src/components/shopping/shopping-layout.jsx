@@ -10,6 +10,7 @@ import { Footer } from "./shopping-footer";
 import { fetchWhishList } from "@/store/shop/whish-list-slice";
 import { FaPhone, FaWhatsapp, FaWindows } from "react-icons/fa";
 import { getAllAddress } from "@/store/shop/address-slice";
+import { fetchAllBlogs } from "@/store/admin/blogslice";
 
 export const ShoppingLayout = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,9 @@ export const ShoppingLayout = () => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
  
   useEffect(() => {
+    
     dispatch(fetchAllProducts({page:1,limit:1000}));
+    dispatch(fetchAllBlogs())
     if (isAuthenticated && user?.id) {
       dispatch(fetchCartItems({ userId: user?.id }));
       dispatch(fetchWhishList({ userId: user?.id }));
