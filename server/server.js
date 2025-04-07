@@ -22,7 +22,7 @@ const app = express();
 
 app.use(
   cors({
-    origin:process.env.CLIENT_BASE_URL,
+    origin:[process.env.CLIENT_BASE_URL,"http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",

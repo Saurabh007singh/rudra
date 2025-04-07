@@ -14,7 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { useToast } from "@/hooks/use-toast";
 import { getImages } from "@/store/imageslice";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice/cart-slice";
@@ -54,7 +54,7 @@ export function ShoppingProduct() {
   );
   const {reviews}=useSelector(state=>state.reviews)
 
-
+const [recentlyViewed,setRecentlyViewed]=useState([])
   
 
   const array = [1, 2, 3, 4, 5, 6];
@@ -79,16 +79,49 @@ list = productList.filter(
 
   const { toast } = useToast();
   const navigate = useNavigate();
-
+ 
   useEffect(() => {
     dispatch(fetchProductDetails({ id }))
     dispatch(getImages(id))
     dispatch(getReviews(id))
+    if (id && productList.length > 0) {
+      // Get the existing item from localStorage
+      const item = localStorage.getItem("productId");
+    
+      let itemArray = [];
+    
+      try {
+        // Try to parse the item from localStorage
+        itemArray = item ? JSON.parse(item) : [];
+      } catch (error) {
+        // If parsing fails, log the error and set itemArray to an empty array
+        console.error("Error parsing productId from localStorage:", error);
+        itemArray = [];
+      }
+    
+      // Add the id to the array if it's not already present
+      if (!itemArray.includes(id)) {
+        // If there are already 4 items, remove the first one (oldest entry)
+        if (itemArray.length >= 4) {
+          itemArray.shift(); // Removes the first (oldest) item from the array
+        }
+        
+        // Add the new id to the array
+        itemArray.push(id);
+    
+        // Save the updated array back to localStorage
+        localStorage.setItem("productId", JSON.stringify(itemArray));
+      }
+    
+      setRecentlyViewed(itemArray)
+    }
+    
   }, [dispatch,id]);
 
-
-
-
+ 
+ 
+  
+  
   function handleAddToCart(getCurrentProductId) {
     dispatch(
       addToCart({

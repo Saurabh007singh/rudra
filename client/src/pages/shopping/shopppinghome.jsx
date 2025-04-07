@@ -118,6 +118,14 @@ if ("geolocation" in navigator) {
     }else{console.log("")}
     
   },[])
+
+
+  let recentItems=[]
+  const recentlyViewed=JSON.parse(localStorage.getItem("productId"))
+  if(productList){
+     recentItems=productList.filter(items=>recentlyViewed.includes(items._id))
+  console.log(recentItems)
+}
   
 
   return (
@@ -225,6 +233,33 @@ if ("geolocation" in navigator) {
             ))
         )}
       </div>
+
+      <div className="lg:mx-10 mt-6 ">
+        <img src="/images/banner-mid.avif" alt="" className="w-full" />
+      </div>
+
+      <section className="py-2 ">
+        <div className="container mx-auto px-4">
+          <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
+            Recently Viewed
+          </h2>
+        </div>
+      </section>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1 ">
+        {isLoading ? (
+          <>Loading</>
+        ) : (
+          recentItems.slice(0, 4)
+            .map((items) => (
+              <ShoppingProductTile
+                product={{ ...items }}
+                key={items._id}
+                handleAddToCart={handleAddToCart}
+                handleGetProductsDetails={handleGetProductsDetails}
+              ></ShoppingProductTile>
+            ))
+        )}
+      </div>
       <section className="py-2 ">
         <div className="container mx-auto px-4">
           <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
@@ -239,17 +274,17 @@ if ("geolocation" in navigator) {
         }}
         className="w-[80%] mx-auto lg:w-[90%] "
       >
-        <CarouselContent>
+        <CarouselContent >
           {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/5">
-              <div className="p-1">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-3xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
+         <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/5 sm:basis-1/3">
+         <div className="p-1">
+           <Card className="h-full flex-shrink-0">
+             <CardContent className="flex aspect-square items-center justify-center p-6 ">
+               <span className="text-3xl font-semibold text-ellipsis overflow-hidden whitespace-nowrap">{index + 1}</span>
+             </CardContent>
+           </Card>
+         </div>
+       </CarouselItem>
           ))}
         </CarouselContent>
         <CarouselPrevious />

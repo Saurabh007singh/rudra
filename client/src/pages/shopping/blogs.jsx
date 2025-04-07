@@ -1,7 +1,7 @@
-import { fetchAllBlogs } from "@/store/admin/blogslice";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useSelector } from "react-redux";
 import { Loading } from "../loading/loading";
-import { useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 export function Blogs() {
