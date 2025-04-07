@@ -292,7 +292,95 @@ if ("geolocation" in navigator) {
         <img src="/images/why-choose.webp" alt="" />
       </div>
 
-      <Carousel
+      
+
+      <div className="mx-10 mt-10 flex flex-col lg:items-start gap-4 mb-10">
+        <div>
+          <h1 className="text-[18px] text-center font-semibold">About Rudra</h1>
+          <span className="text-center">
+            Nestasia - India's Most Loved Lifestyle AndHome Decor StoreMake Home
+            Special is not only a motto Nestasia follows but also a way to
+            celebrate creativity and individuality. With products that are as
+            functional as they’re beautiful, Nestasia is a home decor brand with
+            a wide range of uniquely designed, quality...
+          </span>
+        </div>
+        <Dialog className="max-w-[800px]">
+          <DialogTrigger className="underline text-[#9B703C]">
+            Read More...
+          </DialogTrigger>
+          <DialogContent className="w-[90vw] max-w-[900px] h-[80vh]">
+            <DialogHeader>
+              <DialogTitle>Are you absolutely sure?</DialogTitle>
+
+              <ScrollArea className="h-[250px] w-[100%] rounded-md border p-4">
+                <DialogDescription>
+                  <span>
+                    Jokester began sneaking into the castle in the middle of the
+                    night and leaving jokes all over the place: under the king's
+                    pillow, in his soup, even in the royal toilet. The king was
+                    furious, but he couldn't seem to stop Jokester. And then,
+                    one day, the people of the kingdom discovered that the jokes
+                    left by Jokester were so funny that they couldn't help but
+                    laugh. And once they started laughing, they couldn't stop.
+                  </span>
+                </DialogDescription>
+              </ScrollArea>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <div className="w-full py-20 bg-gray-100">
+      <h2 className="text-3xl font-semibold text-center mb-12">What Our Customers Say</h2>
+
+      <div className="flex flex-wrap justify-center gap-8 max-w-screen-xl mx-auto">
+        {/* Testimony 1 */}
+        <div className="flex-1 min-w-[280px] bg-white p-6 rounded-lg shadow-lg text-center">
+          <div className="mb-4">
+            <img
+              src="https://randomuser.me/api/portraits/men/1.jpg"
+              alt="John Doe"
+              className="w-24 h-24 rounded-full mx-auto object-cover"
+            />
+          </div>
+          <p className="italic text-gray-700 mb-4">
+            "This product changed my life! The customer service was exceptional, and I couldn't be happier."
+          </p>
+          <p className="font-semibold text-gray-900">- John Doe</p>
+        </div>
+
+        {/* Testimony 2 */}
+        <div className="flex-1 min-w-[280px] bg-white p-6 rounded-lg shadow-lg text-center">
+          <div className="mb-4">
+            <img
+              src="https://randomuser.me/api/portraits/women/2.jpg"
+              alt="Jane Smith"
+              className="w-24 h-24 rounded-full mx-auto object-cover"
+            />
+          </div>
+          <p className="italic text-gray-700 mb-4">
+            "Highly recommended! The best experience I’ve had with an online store. Will definitely return."
+          </p>
+          <p className="font-semibold text-gray-900">- Jane Smith</p>
+        </div>
+
+        {/* Testimony 3 */}
+        <div className="flex-1 min-w-[280px] bg-white p-6 rounded-lg shadow-lg text-center">
+          <div className="mb-4">
+            <img
+              src="https://randomuser.me/api/portraits/men/3.jpg"
+              alt="Samuel Lee"
+              className="w-24 h-24 rounded-full mx-auto object-cover"
+            />
+          </div>
+          <p className="italic text-gray-700 mb-4">
+            "Incredible quality and fast shipping. I am thoroughly impressed with the entire experience!"
+          </p>
+          <p className="font-semibold text-gray-900">- Samuel Lee</p>
+        </div>
+      </div>
+    </div>
+    <Carousel
         opts={{
           align: "end",
         }}
@@ -332,42 +420,6 @@ if ("geolocation" in navigator) {
         <CarouselNext />
       </Carousel>
 
-      <div className="mx-10 mt-10 flex flex-col lg:items-start gap-4 mb-10">
-        <div>
-          <h1 className="text-[18px] text-center font-semibold">About Rudra</h1>
-          <span className="text-center">
-            Nestasia - India's Most Loved Lifestyle AndHome Decor StoreMake Home
-            Special is not only a motto Nestasia follows but also a way to
-            celebrate creativity and individuality. With products that are as
-            functional as they’re beautiful, Nestasia is a home decor brand with
-            a wide range of uniquely designed, quality...
-          </span>
-        </div>
-        <Dialog className="max-w-[800px]">
-          <DialogTrigger className="underline text-[#9B703C]">
-            Read More...
-          </DialogTrigger>
-          <DialogContent className="w-[90vw] max-w-[900px] h-[80vh]">
-            <DialogHeader>
-              <DialogTitle>Are you absolutely sure?</DialogTitle>
-
-              <ScrollArea className="h-[250px] w-[100%] rounded-md border p-4">
-                <DialogDescription>
-                  <span>
-                    Jokester began sneaking into the castle in the middle of the
-                    night and leaving jokes all over the place: under the king's
-                    pillow, in his soup, even in the royal toilet. The king was
-                    furious, but he couldn't seem to stop Jokester. And then,
-                    one day, the people of the kingdom discovered that the jokes
-                    left by Jokester were so funny that they couldn't help but
-                    laugh. And once they started laughing, they couldn't stop.
-                  </span>
-                </DialogDescription>
-              </ScrollArea>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-      </div>
       <section className="py-2 ">
           <div className="container mx-auto px-4">
             <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
