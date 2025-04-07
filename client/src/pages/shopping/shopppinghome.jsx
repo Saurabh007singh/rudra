@@ -122,9 +122,8 @@ if ("geolocation" in navigator) {
 
   let recentItems=[]
   const recentlyViewed=JSON.parse(localStorage.getItem("productId"))
-  if(productList){
+  if(productList && recentlyViewed){
      recentItems=productList.filter(items=>recentlyViewed.includes(items._id))
-  console.log(recentItems)
 }
   
 
