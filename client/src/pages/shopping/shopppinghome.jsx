@@ -236,16 +236,16 @@ if ("geolocation" in navigator) {
       <div className="lg:mx-10 mt-6 ">
         <img src="/images/banner-mid.avif" alt="" className="w-full" />
       </div>
-
-      <section className="py-2 ">
+{recentlyViewed?  <section className="py-2 ">
         <div className="container mx-auto px-4">
           <h2 className="lg:text-[30px] text-[24px] p-2 font-serif text-center ">
             Recently Viewed
           </h2>
         </div>
-      </section>
+      </section>:null}
+     
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:mx-10 lg:gap-2 gap-1 ">
-        {isLoading ? (
+        {isLoading && recentlyViewed ? (
           <>Loading</>
         ) : (
           recentItems.slice(0, 4)
