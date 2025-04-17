@@ -1,21 +1,21 @@
 export function AboutUs() {
   return (
     <div className="flex flex-col w-full ">
-      <img src="/images/aboutus.webp" alt="" />
+      {/* <img src="/images/aboutus.webp" alt="" /> */}
       <div className="flex flex-col  items-center mt-10 mb-20">
         <h1 className="text-4xl font-semibold mb-10">Our Story</h1>
         <p className="text-center lg:mx-40 mx-5">
-          At Nestasia, we believe that home is a sanctuary, and our products are
+          At Rudra, we believe that home is a sanctuary, and our products are
           designed to enhance your living experience. That's why we're on a
           mission to create unique, design-driven home decor and lifestyle
           products that not only look good but also feel good. Our goal is to
           help you transform your space into a true reflection of your
           personality, style, and values. Our founders, Aditi Murarka and Anurag
-          Agrawal, started Nestasia in 2019 after going through the process of
+          Agrawal, started roodraa in 2019 after going through the process of
           setting up three homes in a span of two years. Facing a lack of
           options, they set out to create a brand that offers unique,
           contemporary, and premium quality products for all areas of the house.
-          Nestasia was hence created with a mission to "Make Home Special" . Our
+          roodraa was hence created with a mission to "Make Home Special" . Our
           product line is constantly evolving to keep up with the latest global
           trends, colors and styles, ensuring that we meet the expectations of
           modern consumers. Our customers are at the heart of everything we do,

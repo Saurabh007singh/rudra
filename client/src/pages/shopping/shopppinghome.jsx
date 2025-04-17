@@ -288,9 +288,9 @@ if ("geolocation" in navigator) {
         <CarouselNext />
       </Carousel>
 
-      <div className="lg:mx-10 my-3 mt-2">
+      {/* <div className="lg:mx-10 my-3 mt-2">
         <img src="/images/why-choose.webp" alt="" />
-      </div>
+      </div> */}
 
       
 
